@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Back1 {
 	public static void main() {
@@ -6,6 +7,12 @@ public class Back1 {
 		for (int i:array) {
 			System.out.println(i);
 		}
+
+				
+		
+
+		ArrayList<Integer> bk = new ArrayList<>();
+		
 		
 	}
 }
