@@ -12,7 +12,9 @@ public class Back1 {
 		
 
 		ArrayList<Integer> bk = new ArrayList<>();
-		
+		for(int i = 0;i<10;i++) {
+			bk.add(i);
+		}
 		
 	}
 }
