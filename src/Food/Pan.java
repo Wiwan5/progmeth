@@ -2,7 +2,7 @@ package Food;
 
 import java.util.ArrayList;
 
-public class Pan extends Material implements Moveable{
+public class Pan extends Material {
 	private boolean  Cancarry;
 	private boolean  Settle;
 	private boolean  isDirty;

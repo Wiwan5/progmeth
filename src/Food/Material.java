@@ -3,10 +3,10 @@ package Food;
 import java.util.ArrayList;
 
 public abstract class Material implements Moveable {
-	boolean  Cancarry;
-	boolean  Settle;
-	boolean  isDirty;
-	ArrayList<Ingredient>	ing;
+	private boolean  Cancarry;
+	private boolean  Settle;
+	private boolean  isDirty;
+	private ArrayList<Ingredient>	ing;
 	
 	public Material() {
 		// TODO Auto-generated constructor stub
@@ -14,6 +14,29 @@ public abstract class Material implements Moveable {
 		Cancarry = false;
 		Settle = false;
 	}
+	
+	
+	@Override
+	public void wash() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void settle() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void puff() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void carry() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 	
 	
