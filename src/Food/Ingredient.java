@@ -1,13 +1,13 @@
 package Food;
 
 public abstract class Ingredient implements Moveable {
-	private boolean Cancop;
-	private boolean Canpuff;
+	private boolean cancop;
+	private boolean canpuff;
 	
 	public Ingredient() {
 		// TODO Auto-generated constructor stub
-		Cancop = true;
-		Canpuff =true;
+		cancop = true;
+		canpuff =true;
 	}
 	
 	@Override
