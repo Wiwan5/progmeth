@@ -3,7 +3,10 @@ import draw.GameScreen;
 import input.InputUtility;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import logic.GameLogic;
@@ -21,10 +24,10 @@ public class main extends Application {
 		StackPane root = new StackPane();
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
-		stage.setTitle("Tank game");
+		stage.setTitle("TOU cooking game");
 
 		GameLogic logic = new GameLogic();
-		GameScreen gameScreen = new GameScreen(900, 600);
+		GameScreen gameScreen = new GameScreen(1200, 800);
 		root.getChildren().add(gameScreen);
 		gameScreen.requestFocus();
 		
@@ -39,5 +42,6 @@ public class main extends Application {
 			}
 		};
 		animation.start();
+		
 	}
 }

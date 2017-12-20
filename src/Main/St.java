@@ -41,7 +41,7 @@ public class St extends Application {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				
-				
+				primaryStage.close();
 				
 			}
 		});

@@ -3,26 +3,26 @@ package Food;
 public abstract class Ingredient implements Moveable {
 	private boolean cancop;
 	private boolean canpuff;
+	private boolean raw;
+	private boolean iscop;
 	
-	public Ingredient() {
+	public Ingredient(boolean cop,boolean puff,boolean raw,boolean iscop) {
 		// TODO Auto-generated constructor stub
-		cancop = true;
-		canpuff =true;
+		cancop = cop;
+		canpuff =puff;
+		this.raw = raw;
+		this.iscop = iscop;
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 	@Override
 	public void carry() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public void puff() {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void wash() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -32,5 +32,7 @@ public abstract class Ingredient implements Moveable {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 
 }

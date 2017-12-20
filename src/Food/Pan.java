@@ -7,6 +7,7 @@ public class Pan extends Material {
 	private boolean  Settle;
 	private boolean  isDirty;
 	ArrayList<Ingredient>	ing;
+	final static t = 10;
 	public Pan(){
 		super();
 	}
@@ -21,14 +22,10 @@ public class Pan extends Material {
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
-	public void wash() {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
+
+	
 	public void puff() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 	
