@@ -3,7 +3,6 @@ package controller;
 public class Time {
 	private static long start;
 	private static long t ;
-	public static long curr;
 	
 	Time(long tm){
 		t = tm;	//tm in each thing or checkpoint unit ms
@@ -13,9 +12,8 @@ public class Time {
 		start = System.currentTimeMillis();		
 	}
 	
-	public static void pause(long c) {	//c is current time that send from the game
+	public static void pause(long c) {	//c is current time that send from the game 
 		setT(getT()-c);
-		setStart(c);
 	}
 	
 	public static boolean isTimeup(long c) {
