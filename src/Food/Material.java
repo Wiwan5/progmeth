@@ -1,38 +1,25 @@
 package Food;
 
 import java.util.ArrayList;
+import Utility.Pair;
 
-public abstract class Material implements Moveable {
+public abstract class Material  {
 	private boolean  Cancarry;
 	private boolean  Settle;
-	private boolean  isDirty;
 	private String name;
+	private Pair<Double,Double> position;
 	
 	
-	public Material(String name) {
+	
+	public Material(String name,boolean cc,boolean st,double x, double y) {
 		// TODO Auto-generated constructor stub
-		isDirty = false;
-		Cancarry = false;
-		Settle = false;
-		this.name = name;
+		this.name =name;
+		Cancarry = cc;
+		Settle = st;
+		position=Pair.make_pair(x,y);
 	}
 	
-	
-	@Override
-	public void settle() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public void carry() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	public void draw() {
-		
-	}
+
 	
 	
 	
