@@ -7,6 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 
 
 public class SceneManager {
@@ -53,7 +54,7 @@ public class SceneManager {
 	 }
 	 
 	 public static SceneManager getCurrent() {
-			return (SceneManager) crrS;
+			return crrS;
 		}
 	
 

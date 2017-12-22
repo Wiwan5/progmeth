@@ -7,6 +7,7 @@ import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.TextField;
+
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -25,19 +26,31 @@ public class MenuCanvas extends Canvas{
 		this.menu = menu;
 		this.setWidth(Main.weight);
 		this.setHeight(Main.height);
+		 nameField = new TextField();
+		 nameField.setMaxWidth(300);
+		 nameField.setMinWidth(300);
+		 nameField.setLayoutX(Main.weight/2);
+		 nameField.setLayoutY(400);
+		 nameField.setFont(font);
+		 nameField.setStyle("-fx-text-alignment:center;");
+		 nameField.setVisible(false);
 		
 	}
 	
 	public void draw() {
-		/*if(menu.state==0)	drawlogo();
-		else if(menu.state == 1)	textname();
-		*/
+		//bg();
+		
+		if(menu.getState()==0)	drawlogo();
+		else if(menu.getState() == 1)	textname();
+		
 		drawMenu(); 
 	}
 	
-	
-	
-	
+	/*
+	public void bg() {
+		
+	}
+	*/
 	public void drawMenu() {
 		gc.setTextBaseline(VPos.CENTER);
 		gc.setTextAlign(TextAlignment.CENTER);
@@ -59,34 +72,26 @@ public class MenuCanvas extends Canvas{
 		}
 	}
 	public void drawlogo() {
-		
+		gc.setTextBaseline(VPos.CENTER);
+		gc.setTextAlign(TextAlignment.CENTER);
+		Font font1 = new Font("Time New Roman", 100);
+		gc.setFont(font1);
+		gc.setFill(Color.BLACK);
+		gc.fillText("HURRY Lunch!",Main.weight/2,250);
+		nameField.setVisible(false);
 	}
 	
 	public void textname() {
 		try{
-			
 		gc.setTextBaseline(VPos.CENTER);
 		gc.setTextAlign(TextAlignment.CENTER);
 		gc.setFont(font);
 		gc.setFill(Color.SIENNA);
-		gc.fillText("Hello, Chief",200,100);
-		
-		//Textfill name player
-		 nameField = new TextField();
-		 nameField.setMaxWidth(400);
-		 nameField.setMinWidth(400);
-		 nameField.setLayoutX(300);
-		 nameField.setLayoutY(230);
-		 nameField.setStyle("-fx-background-color:white;"
-		    		+ "-fx-font-size:28px;"
-		    		+ "-fx-font-family:Consolas;"
-		    		+ "-fx-alignment:center;"
-		    		+ "-fx-border-width:2.5px;"
-		    		+ "-fx-border-color:sienna;"
-		    		+ "-fx-border-radius:5px;");
-
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
+		gc.fillText("Hello, Chief",Main.weight/2-100,280);
+		nameField.setVisible(true);
+			 
+			
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
@@ -94,10 +99,10 @@ public class MenuCanvas extends Canvas{
 	}
 	
 	public String getName() {
-		if(nameField.getText().trim().equals("")) {
+		if(nameField.getText().trim().isEmpty()) {
 			return "";
 		}
-		else return nameField.getText().trim();
+		return nameField.getText().trim();
 	}
 	
 	

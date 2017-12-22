@@ -3,6 +3,7 @@ package controller;
 import java.util.Set;
 import java.util.concurrent.ConcurrentSkipListSet;
 
+import javafx.application.Platform;
 import javafx.scene.input.KeyCode;
 import view.MenuCanvas;
 
@@ -11,9 +12,9 @@ public class MenuControl {
 	MenuCanvas menuC;
 	private Set<KeyCode> keyPress;
 	
-	public MenuControl(MenuCanvas mcanvas,MenuTeb menu) {
+	public MenuControl(MenuCanvas mCanvas,MenuTeb menu) {
 		this.menu = menu;
-		this.menuC = mcanvas;
+		this.menuC = mCanvas;
 		keyPress = new ConcurrentSkipListSet<>();
 	}
 	
@@ -29,6 +30,12 @@ public class MenuControl {
 				}
 				if (code == KeyCode.ENTER) {
 					menu.enter();
+				}
+				if(code == KeyCode.ESCAPE) {
+					Platform.runLater(()->{
+						Platform.exit();
+						System.exit(0);
+					});
 				}
 				keyPress.add(code);
 			}

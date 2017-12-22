@@ -15,8 +15,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 
 public class MenuTeb {
-	public int select=0;
-	public int state=0;
+	private int select=0;
+	private int state=0;
 	
 	//sound
 	/*
@@ -82,17 +82,9 @@ public class MenuTeb {
 			GamePane gameP = ((GamePane) SceneManager.getCurrent().getPane("game"));
 			MenuPane menuP = ((MenuPane) SceneManager.getCurrent().getPane("menu"));
 			if(select == 0) {
-				try {
-					Thread.sleep(2000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+				
 				String name = ((MenuCanvas) menuP.getMenuCanvas()).getName();
-				try {
-					Thread.sleep(2000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+				
 				if(name.equals(""))	{
 					
 					Alert alert = new Alert(AlertType.ERROR, "The name is empty.Please type your name", ButtonType.OK);
@@ -105,7 +97,7 @@ public class MenuTeb {
 					//call class that control game and set name of chief
 					menuP.stop();
 					SceneManager.getCurrent().goTo("game");
-					
+					gameP.start();
 				}
 				
 			}
@@ -120,6 +112,10 @@ public class MenuTeb {
 	
 	public int getSelect() {
 		return select;
+	}
+	
+	public int getState() {
+		return state;
 	}
 	
 

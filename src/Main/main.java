@@ -9,29 +9,35 @@ import view.SceneManager;
 
 public class Main extends Application {
 
-	public static int weight = 1200;
-	public static int height = 800;
+	public static final int weight = 1200;
+	public static final int height = 800;
 
 	private SceneManager sceneManager;
 	private MainControl mainController;
 
 	@Override
-	public void start(Stage primaryStage) throws Exception {
+	public void start(Stage primaryStage)  {
+		try {
 		sceneManager = new SceneManager(primaryStage);
-
+		
 		mainController = new MainControl();
 		mainController.startMain();
 
 		primaryStage.setTitle("TOU...Cooking game");
+		primaryStage.centerOnScreen();
 		primaryStage.setResizable(false);
-		primaryStage.show();
+		sceneManager.goTo("menu");
 		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		primaryStage.show();
 		primaryStage.setOnCloseRequest(event -> {
 			Platform.exit();
 			System.exit(0);
 		});
 
-		sceneManager.goTo("menu");
+		
 		
 	}
 
