@@ -1,47 +1,43 @@
-package Main;
-import draw.GameScreen;
-import input.InputUtility;
-import javafx.animation.AnimationTimer;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
-import logic.GameLogic;
-import shareObject.RenderableHolder;
+package main;
 
-public class main extends Application {
+import controller.MainControl;
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.stage.Stage;
+import view.SceneManager;
+
+
+public class Main extends Application {
+
+	public static int weight = 1200;
+	public static int height = 800;
+
+	private SceneManager sceneManager;
+	private MainControl mainController;
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		sceneManager = new SceneManager(primaryStage);
+
+		mainController = new MainControl();
+		mainController.startMain();
+
+		primaryStage.setTitle("TOU...Cooking game");
+		primaryStage.setResizable(false);
+		primaryStage.show();
+		
+		primaryStage.setOnCloseRequest(event -> {
+			Platform.exit();
+			System.exit(0);
+		});
+
+		sceneManager.goTo("menu");
+		
+	}
+
 	public static void main(String[] args) {
 		Application.launch(args);
 	}
 
-	@Override
-	public void start(Stage stage) {
-		//public static final int width = 900; create class to control canvas
-		//public static final int height = 600;
-		StackPane root = new StackPane();
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.setTitle("TOU cooking game");
-
-		GameLogic logic = new GameLogic();
-		GameScreen gameScreen = new GameScreen(1200, 800);
-		root.getChildren().add(gameScreen);
-		gameScreen.requestFocus();
-		
-		stage.show();
-		
-		AnimationTimer animation = new AnimationTimer() {
-			public void handle(long now) {
-				gameScreen.paintComponent();
-				logic.logicUpdate();
-				RenderableHolder.getInstance().update();
-				//InputUtility.updateInputState();
-			}
-		};
-		animation.start();
-		
-	}
 }
+

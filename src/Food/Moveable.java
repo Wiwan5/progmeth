@@ -6,5 +6,4 @@ public interface Moveable {
 	void getx();
 	void getY();
 	boolean iscollide();
-
 }

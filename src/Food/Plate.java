@@ -6,36 +6,47 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
 
-public class Plate extends Material{
+public class Plate extends Material implements Moveable{
 	
 	private Set<Ingredient>	ing;
-	private int x;
 	private boolean hasth ;
 	private String name;
 	
 	public Plate(){
-		super("plate");
+		super("plate",true,true,	);	// !indicate position of plate x,y
+		
 	}
-	
+/*
 	public void wash() {
 		
 	}
-	
+*/
 	@Override
 	public void settle() {
 		// TODO Auto-generated method stub
-		super.settle();
+		
 	}
 
 	@Override
 	public void carry() {
 		// TODO Auto-generated method stub
-		super.carry();
+		
 	}
 
-	
-	public boolean canPut(Ingredient i) {
-		return i.;
+	@Override
+	public void getx() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void getY() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public boolean iscollide() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	
@@ -72,6 +83,7 @@ public class Plate extends Material{
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	
 	
 	
