@@ -9,25 +9,30 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
+//import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 //import javafx.scene.media.AudioClip;
 import javafx.util.Duration;
+//import main.Main;
 
 public class MenuPane extends BorderPane{
 	private MenuTeb menu;
 	private Canvas mCanvas;
 	private KeyFrame kFrame;
 	private Timeline menuLoop;
+	
 	public MenuPane() {
 		super();
 		menu = new MenuTeb();
 		mCanvas = new MenuCanvas(menu);
 		this.setCenter(mCanvas);
-
+		
+		 
 		kFrame = new KeyFrame(Duration.millis(23), new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				drawCanvas();
+				
 			}
 		});
 		
@@ -35,6 +40,7 @@ public class MenuPane extends BorderPane{
 	
 	private void drawCanvas() {
 			((MenuCanvas) mCanvas).draw();
+			
 	}
 	
 	
@@ -45,6 +51,9 @@ public class MenuPane extends BorderPane{
 		menuLoop.getKeyFrames().add(kFrame);
 		menuLoop.play();
 	}
+	
+	
+	
 	
 	public void stop() {
 		menuLoop.stop();

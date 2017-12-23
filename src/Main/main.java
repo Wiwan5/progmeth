@@ -6,6 +6,7 @@ import javafx.application.Platform;
 import javafx.stage.Stage;
 import view.SceneManager;
 
+import Utility.ResoureLoader;
 
 public class Main extends Application {
 
@@ -22,7 +23,7 @@ public class Main extends Application {
 		
 		mainController = new MainControl();
 		mainController.startMain();
-
+		primaryStage.getIcons().add(ResoureLoader.icon);
 		primaryStage.setTitle("TOU...Cooking game");
 		primaryStage.centerOnScreen();
 		primaryStage.setResizable(false);
@@ -46,4 +47,3 @@ public class Main extends Application {
 	}
 
 }
-

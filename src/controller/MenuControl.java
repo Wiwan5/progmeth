@@ -22,6 +22,7 @@ public class MenuControl {
 		menuC.setOnKeyPressed(event -> {
 			KeyCode code = event.getCode();
 			if (!keyPress.contains(code)) {
+				keyPress.add(code);
 				if (code == KeyCode.UP) {
 					menu.changeselect(-1);
 				}
@@ -37,7 +38,6 @@ public class MenuControl {
 						System.exit(0);
 					});
 				}
-				keyPress.add(code);
 			}
 		});
 

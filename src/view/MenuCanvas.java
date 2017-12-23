@@ -1,12 +1,11 @@
 package view;
 
 import java.util.List;
-
 import controller.MenuTeb;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.TextField;
+//import javafx.scene.control.TextField;
 
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -17,7 +16,6 @@ import main.Main;
 public class MenuCanvas extends Canvas{
 	GraphicsContext gc = getGraphicsContext2D();
 	public Font font =Font.font("Time New Roman",FontWeight.BOLD,30);
-	private TextField nameField;
 	private MenuTeb menu;
 	
 	
@@ -26,31 +24,31 @@ public class MenuCanvas extends Canvas{
 		this.menu = menu;
 		this.setWidth(Main.weight);
 		this.setHeight(Main.height);
-		 nameField = new TextField();
-		 nameField.setMaxWidth(300);
-		 nameField.setMinWidth(300);
-		 nameField.setLayoutX(Main.weight/2);
-		 nameField.setLayoutY(400);
-		 nameField.setFont(font);
-		 nameField.setStyle("-fx-text-alignment:center;");
-		 nameField.setVisible(false);
-		
 	}
 	
 	public void draw() {
-		//bg();
-		
-		if(menu.getState()==0)	drawlogo();
-		else if(menu.getState() == 1)	textname();
-		
+		bg();
 		drawMenu(); 
+		if(menu.getState()==0) {
+			drawlogo();
+		
+			
+		}
+		else if(menu.getState() == 1) {
+			textname();
+			
+			
+		}
+		
+		
 	}
 	
-	/*
+	
 	public void bg() {
-		
+		gc.setFill(Color.AQUAMARINE);
+		gc.fillRect(0, 0, Main.weight, Main.height);
 	}
-	*/
+	
 	public void drawMenu() {
 		gc.setTextBaseline(VPos.CENTER);
 		gc.setTextAlign(TextAlignment.CENTER);
@@ -78,7 +76,6 @@ public class MenuCanvas extends Canvas{
 		gc.setFont(font1);
 		gc.setFill(Color.BLACK);
 		gc.fillText("HURRY Lunch!",Main.weight/2,250);
-		nameField.setVisible(false);
 	}
 	
 	public void textname() {
@@ -88,7 +85,6 @@ public class MenuCanvas extends Canvas{
 		gc.setFont(font);
 		gc.setFill(Color.SIENNA);
 		gc.fillText("Hello, Chief",Main.weight/2-100,280);
-		nameField.setVisible(true);
 			 
 			
 		} catch (Exception e) {
@@ -98,12 +94,7 @@ public class MenuCanvas extends Canvas{
 		
 	}
 	
-	public String getName() {
-		if(nameField.getText().trim().isEmpty()) {
-			return "";
-		}
-		return nameField.getText().trim();
-	}
+	
 	
 	
 	

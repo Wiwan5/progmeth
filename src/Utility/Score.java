@@ -1,4 +1,4 @@
-package Score;
+package Utility;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -51,7 +51,7 @@ public class Score implements Comparable<Score>{
 			String content = "Top ten ranking :\n\n";
 			for (int i = 0; i < 10 && !pq.isEmpty(); i++) {
 				Score s = pq.poll();
-				content += "\t"+(i + 1) + ".  Chief : " + s.getNm() + "          Score:  " + s.getNm() + "\n";
+				content += "\t"+(i + 1) + ".  Chief   " + s.getNm() + "          Score:  " + s.getSc() + "\n";
 			}
 			Alert alert = new Alert(AlertType.INFORMATION, content, ButtonType.OK);
 			alert.setHeaderText("Scoreboard");

@@ -3,7 +3,7 @@ package controller;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import Score.Score;
+import Utility.Score;
 import view.MenuCanvas;
 import view.MenuPane;
 import view.SceneManager;
@@ -65,7 +65,6 @@ public class MenuTeb {
 		if(state ==0) {
 			if(select == 0) {
 				gotoPlaymenu();
-				
 			}
 			else if(select == 1) {
 				Score.read();
@@ -83,23 +82,25 @@ public class MenuTeb {
 			MenuPane menuP = ((MenuPane) SceneManager.getCurrent().getPane("menu"));
 			if(select == 0) {
 				
-				String name = ((MenuCanvas) menuP.getMenuCanvas()).getName();
+				//String name =  menuP.getName();
 				
-				if(name.equals(""))	{
-					
+				//if(name.equals(""))	{
+					/*
 					Alert alert = new Alert(AlertType.ERROR, "The name is empty.Please type your name", ButtonType.OK);
 					alert.setHeaderText(null);
 					alert.setTitle("Name is empty");
-					alert.showAndWait();	
-				
+					alert.showAndWait();
+					*/	
+				/*
 				}
 				else {
 					//call class that control game and set name of chief
 					menuP.stop();
 					SceneManager.getCurrent().goTo("game");
 					gameP.start();
+					
 				}
-				
+			*/	
 			}
 			else if(select == 1) {
 				gotoMainmenu();						
