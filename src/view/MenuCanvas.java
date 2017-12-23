@@ -1,6 +1,8 @@
 package view;
 
 import java.util.List;
+
+import Utility.ResoureLoader;
 import controller.MenuTeb;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
@@ -70,12 +72,15 @@ public class MenuCanvas extends Canvas{
 		}
 	}
 	public void drawlogo() {
-		gc.setTextBaseline(VPos.CENTER);
+		gc.drawImage(ResoureLoader.logo,Main.weight/2-210,100);
+		
+		/*gc.setTextBaseline(VPos.CENTER);
 		gc.setTextAlign(TextAlignment.CENTER);
 		Font font1 = new Font("Time New Roman", 100);
 		gc.setFont(font1);
 		gc.setFill(Color.BLACK);
 		gc.fillText("HURRY Lunch!",Main.weight/2,250);
+		*/
 	}
 	
 	public void textname() {
