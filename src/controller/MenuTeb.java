@@ -4,15 +4,14 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import Utility.Score;
-import view.MenuCanvas;
 import view.MenuPane;
 import view.SceneManager;
 //import view.GameCanvas;
 import view.GamePane;
 import javafx.application.Platform;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
+//import javafx.scene.control.Alert;
+//import javafx.scene.control.Alert.AlertType;
+//import javafx.scene.control.ButtonType;
 
 public class MenuTeb {
 	private int select=0;

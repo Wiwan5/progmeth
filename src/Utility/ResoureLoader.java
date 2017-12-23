@@ -6,7 +6,8 @@ import javafx.scene.image.Image;
 
 public class ResoureLoader {
 	//background
-	public static Image[] bg;
+	public static Image bg0 = new Image("file:res/img/bg0.png");
+	
 	
 	//Icon
 	public static final Image icon = new Image("file:res/img/icon.png"); 

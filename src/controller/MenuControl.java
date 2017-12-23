@@ -4,15 +4,16 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentSkipListSet;
 
 import javafx.application.Platform;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyCode;
-import view.MenuCanvas;
+
 
 public class MenuControl {
 	MenuTeb menu;
-	MenuCanvas menuC;
+	Canvas menuC;
 	private Set<KeyCode> keyPress;
 	
-	public MenuControl(MenuCanvas mCanvas,MenuTeb menu) {
+	public MenuControl(Canvas mCanvas,MenuTeb menu) {
 		this.menu = menu;
 		this.menuC = mCanvas;
 		keyPress = new ConcurrentSkipListSet<>();
