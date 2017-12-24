@@ -118,14 +118,15 @@ public class MenuPane extends Pane{
 		for(int i = 0;i<m.size();i++) {
 			gc.setFill(Color.BROWN);
 			if(i == menu.getSelect())	gc.setFill(Color.CHOCOLATE);
-			gc.fillRoundRect(Main.weight/2-100, 480+i*80, 200, 50, 10, 10);
+			gc.fillRoundRect(Main.weight/2-100, 500+i*80, 200, 50, 10, 10);
 			gc.setTextBaseline(VPos.CENTER);
 			gc.setTextAlign(TextAlignment.CENTER);
 			gc.setFont(font);
 			if(i == menu.getSelect())	gc.setFill(Color.BEIGE);
 			else	gc.setFill(Color.BURLYWOOD);
-			gc.fillText((String) m.get(i),Main.weight/2,500+i*80);
+			gc.fillText((String) m.get(i),Main.weight/2,520+i*80);
 		}
+		
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

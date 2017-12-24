@@ -24,7 +24,7 @@ public class Main extends Application {
 		mainController = new MainControl();
 		mainController.startMain();
 		primaryStage.getIcons().add(ResoureLoader.icon);
-		primaryStage.setTitle("TOU...Cooking game");
+		primaryStage.setTitle("Prog Chief...Cooking game");
 		primaryStage.centerOnScreen();
 		primaryStage.setResizable(false);
 		sceneManager.goTo("menu");

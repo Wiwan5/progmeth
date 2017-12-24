@@ -3,17 +3,19 @@ package view;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Group;
+import javafx.scene.canvas.Canvas;
 import javafx.stage.Window;
+import main.Main;
 
 public class GamePane extends Group{
-	private GameCanvas gCanvas;
+	private Canvas gCanvas;
 	private Timeline gameLoop;
 	private KeyFrame kFrame;
 	
 	
 	public GamePane() {
 		super();
-		gCanvas = new GameCanvas();	
+		gCanvas = new Canvas(Main.weight,Main.height);	
 	}
 	
 	
@@ -27,7 +29,7 @@ public class GamePane extends Group{
 		
 	}
 	
-	public GameCanvas getCanvas() {
+	public Canvas getCanvas() {
 		return gCanvas;
 	}
 

@@ -1,6 +1,6 @@
 package Food;
 
-public abstract class Ingredient implements Moveable {
+public abstract class Ingredient  {
 	private boolean cancop;
 	private boolean canpuff;
 	private boolean raw;
@@ -14,24 +14,17 @@ public abstract class Ingredient implements Moveable {
 		this.iscop = iscop;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	@Override
-	public void carry() {
-		// TODO Auto-generated method stub
+	public boolean isPLget(boolean c) {
 		
+		return true;
 	}
 	
-	@Override
-	public void settle() {
-		// TODO Auto-generated method stub
-		
-	}
+	
+	
+	
+	
+	
+	
 	
 	
 
