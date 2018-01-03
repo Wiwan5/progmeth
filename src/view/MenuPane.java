@@ -26,10 +26,11 @@ import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 
 import main.Main;
+import model.player.Player;
 
 public class MenuPane extends Pane{
 	private MenuTeb menu;
-	private Canvas mCanvas;
+	private Canvas mCanvas =new Canvas(Main.weight,Main.height);
 	private KeyFrame kFrame;
 	private Timeline menuLoop;
 	public Font font =Font.font("Time New Roman",FontWeight.BOLD,30);
@@ -37,9 +38,10 @@ public class MenuPane extends Pane{
 	
 	public MenuPane() {
 		super();
+		this.setPrefSize(Main.weight, Main.height);
 		menu = new MenuTeb();		
 		name = new TextField();
-		mCanvas = new Canvas(Main.weight,Main.height);
+		
 		GraphicsContext gc = mCanvas.getGraphicsContext2D();
 		name.setLayoutX(Main.weight/2-180);
 		name.setLayoutY(350);
@@ -65,7 +67,12 @@ public class MenuPane extends Pane{
 					drawlogo(gc);
 					drawMenu(gc);
 				}
-				
+				if(menu.getState()==2) {
+					bg(gc);
+					name.setVisible(false);
+					textname(gc);
+					drawMenu(gc);
+				}
 			}
 		});
 		getChildren().addAll(mCanvas, name);
@@ -103,10 +110,10 @@ public class MenuPane extends Pane{
 	
 	//DRAW CANVAS
 	public void bg(GraphicsContext gc) {
-		gc.drawImage(ResoureLoader.bg0, 10,10);
+		gc.drawImage(ResoureLoader.bg0, 0,0,Main.weight,Main.height);
 		/*
 		gc.setFill(Color.AQUAMARINE);
-		gc.fillRect(0, 0, Main.weight+10, Main.height+10);
+		gc.fillRect(10, 10,150, 120);
 		*/
 	}
 	
@@ -150,6 +157,7 @@ public class MenuPane extends Pane{
 		gc.setFont(font);
 		gc.setFill(Color.SIENNA);
 		gc.fillText("Hello, Chief",Main.weight/2-100,280);
+		if(menu.getState() == 2)	gc.fillText(Player.name, Main.weight/2-10, 350);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

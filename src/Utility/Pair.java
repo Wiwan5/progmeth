@@ -11,7 +11,7 @@ public class Pair<x,y>{
 		this.second = s;
 	}
 		
-	public static <x,y> Pair<x,y> make_pair(x f,y s){
+	public <x,y> Pair<x,y> make_pair(x f,y s){
 		return new Pair<>(f,s);
 	}
 	

@@ -26,22 +26,6 @@ public class MenuControl {
 	}
 	
 	public void keyEvent(){
-		menuC.setOnKeyPressed(event -> {
-			KeyCode code = event.getCode();
-			if (!keyPress.contains(code)) {
-				keyPress.add(code);
-				if(code == KeyCode.ESCAPE) {
-					
-				}
-			}
-			
-		});
-
-		menuC.setOnKeyReleased(event -> {
-			KeyCode code = event.getCode();
-			keyPress.remove(code);
-		});
-		
 		
 		menuC.setOnMouseMoved(e->{
 			if(e.getX()>=Main.weight/2-100&&e.getY()>=500&& e.getX()<=200+Main.weight/2-100&&e.getY()<=500+50) {

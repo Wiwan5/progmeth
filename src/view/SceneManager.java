@@ -2,11 +2,11 @@ package view;
 
 import javafx.stage.Stage;
 
-
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.HashMap;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 //import javafx.scene.layout.Pane;
 
 
@@ -14,8 +14,8 @@ public class SceneManager {
 	private Stage stage;
 	private static SceneManager crrS= null;
 	
-	private ConcurrentHashMap<String, Scene>	mScene = new ConcurrentHashMap<>();
-	private ConcurrentHashMap<String, Parent>	mPane =new ConcurrentHashMap<>();
+	private HashMap<String, Scene>	mScene = new HashMap<>();
+	private HashMap<String, Pane>	mPane =new HashMap<>();
 	
 	public SceneManager(Stage stage) {
 		this.stage =stage;
