@@ -64,10 +64,10 @@ public class GameModel {
 	
 	public boolean serve(Food food) {
 		if (remove(food)) {
-			if(food.getIngredient(1)==true) {
+			if(food.getIngredient(Food.MEAT)==true) {
 				score+=20;
 			}
-			if(food.getIngredient(2)==true) {
+			if(food.getIngredient(Food.VEGETABLE)==true) {
 				score+=10;
 			}
 			add();
@@ -79,10 +79,9 @@ public class GameModel {
 	}
 	
 	public boolean remove(Food food) {
-		for(Iterator<Pair<Food,Time>> iter = currentMenu.iterator(); iter.hasNext();) {
-			Pair<Food,Time> data = iter.next();
-		    if (data.first.equals(food)) {
-		        iter.remove();
+		for(Pair<Food,Time>menu : currentMenu) {
+		    if (menu.first.equals(food)) {
+		        currentMenu.remove(menu);
 				return true;
 				
 		    }

@@ -1,5 +1,6 @@
 package model.field;
 
+import Utility.ResoureLoader;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import model.IRenderable;
@@ -12,15 +13,15 @@ public class Field implements IRenderable {
 
 	// ------------------------------------------------
 	public Field() {
-		field = new int[][] {{1,1,1,20,21,22,1,1,1,1,1,1,1},
-							{1,0,0,0,0,0,0,0,0,0,0,0,1},
-							{1,0,0,0,0,0,0,0,0,0,0,0,1},
-							//{1,0,0,0,0,0,0,0,0,0,0,0,1},
-							{1,1,1,1,0,0,1,1,1,1,0,0,1},
-							{1,0,0,0,0,0,0,0,0,0,0,0,6},
-							{1,0,0,0,0,0,0,0,0,0,0,0,1},
-							{4,0,0,0,0,0,0,0,0,0,0,0,1},
-							{1,1,1,3,1,3,1,5,1,9,9,1,1}};
+		field = new int[][] {{11,12,12,20,21,22,12,12,12,12,12,12,11},
+									{11,0,0,0,0,0,0,0,0,0,0,0,11},
+										{11,0,0,0,0,0,0,0,0,0,0,0,11},
+										//{1,0,0,0,0,0,0,0,0,0,0,0,1},
+										{11,12,12,12,0,0,12,12,12,12,0,0,11},
+										{11,0,0,0,0,0,0,0,0,0,0,0,6},
+										{11,0,0,0,0,0,0,0,0,0,0,0,11},
+										{4,0,0,0,0,0,0,0,0,0,0,0,11},
+										{11,11,11,3,11,3,11,5,11,9,9,11,11}};
 							
 		row = field.length;
 		col = field[0].length;
@@ -28,7 +29,7 @@ public class Field implements IRenderable {
 	//------------------modify in next time--------------------
 
 	public int getZ() {
-		return -9999;
+		return -9999999;
 	}
 	
 	public int getRow() {
@@ -46,8 +47,8 @@ public class Field implements IRenderable {
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.setFill(Color.CYAN);
-		gc.fillRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+		
+		gc.drawImage(ResoureLoader.bg1,0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
 		
 		
 		

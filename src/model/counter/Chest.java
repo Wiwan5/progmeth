@@ -1,5 +1,8 @@
 package model.counter;
 
+
+
+import Utility.ResoureLoader;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -9,14 +12,6 @@ import model.player.Player;
 public class Chest extends Counter {
 
 	private int ingredient;
-	static Image veg;
-	static Image meat;
-	static Image br;
-	{
-		veg = new Image("file:res/img/"+"counter"+9+".png");
-		meat = new Image("file:res/img/"+"counter"+8+".png");
-		br = new Image("file:res/img/"+"counter"+10+".png");
-	}
 
 	public Chest(double x, double y, int w, int h, int ingredient) {
 		super(x, y, w, h);
@@ -50,13 +45,13 @@ public class Chest extends Counter {
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		if(ingredient == Food.MEAT) {
-			gc.drawImage(meat, x - width / 2, y - height, width, height);
+			gc.drawImage(ResoureLoader.counter[2], x - width / 2, y - height, width, height);
 		}
 		else if(ingredient == Food.VEGETABLE) {
-			gc.drawImage(veg, x - width / 2, y - height, width, height);
+			gc.drawImage(ResoureLoader.counter[3], x - width / 2, y - height, width, height);
 
 		}else {
-			gc.drawImage(br, x - width / 2, y - height, width, height);
+			gc.drawImage(ResoureLoader.counter[4], x - width / 2, y - height, width, height);
 
 		}
 		

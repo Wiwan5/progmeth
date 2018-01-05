@@ -1,20 +1,24 @@
 package model.counter;
 
+
+
+import Utility.ResoureLoader;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
+
 import model.food.Bread;
 import model.food.IRenderableFood;
-import model.food.Ingredient;
+
 import model.food.Meat;
 import model.food.Plate;
 import model.food.Vegetable;
-import model.player.Player;
+
 
 public class Shelf extends Counter {
-	
-	public Shelf(double x, double y, int w, int h, IRenderableFood food) {
+	private int image;
+	public Shelf(double x, double y, int w, int h, IRenderableFood food,int i) {
 		super(x, y, w, h);
 		foodOnCounter = food;
+		image = i;
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -33,17 +37,6 @@ public class Shelf extends Counter {
 	
 	@Override
 	public IRenderableFood setFoodOnCounter(IRenderableFood foodOnPlayer) {
-		/*if (foodOnCounter == null) {
-			foodOnCounter = foodOnPlayer;
-		} else if (foodOnCounter instanceof Plate) {
-			Plate plate = (Plate) foodOnCounter;
-			if (foodOnPlayer instanceof Meat) 				plate.settleMeatOnPlate();
-			else if (foodOnPlayer instanceof Vegetable) 	plate.settleVegtableOnPlate();
-		} else if (foodOnPlayer instanceof Plate) {
-			Plate plate = (Plate) foodOnPlayer;
-			if (foodOnCounter instanceof Meat) 				foodOnCounter = plate.settleMeatOnPlate();
-			else if (foodOnCounter instanceof Vegetable) 	foodOnCounter = plate.settleVegtableOnPlate();
-		}*/
 		
 		if (foodOnCounter == null) {
 			foodOnCounter = foodOnPlayer;
@@ -66,9 +59,13 @@ public class Shelf extends Counter {
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.setFill(Color.LIGHTGRAY);
-		gc.fillRect(x-width/2, y-height, width, height);
+		if(image == 1) {
+			gc.drawImage(ResoureLoader.counter[0],x-width/2, y-height, width, height);
 		
+		}
+		else if(image ==2) {
+			gc.drawImage(ResoureLoader.counter[1],x-width/2, y-height, width, height);
+		}
 		if (foodOnCounter != null) {
 			foodOnCounter.draw(gc, x, y);
 		}

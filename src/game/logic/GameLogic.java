@@ -41,7 +41,8 @@ public class GameLogic {
 		 int size = 70;
 		 for (int i = 0; i < field.getRow(); i++) {
 		 	for (int j = 0; j < field.getCol(); j++) {
-		 		if (field.getField()[i][j] == 1) addNewObject(new Shelf(j*size+size/2+100, (i+1)*size+120, 70,70,null));
+		 		if (field.getField()[i][j] == 11) addNewObject(new Shelf(j*size+size/2+100, (i+1)*size+120, 70,70,null,1));
+		 		else if (field.getField()[i][j] == 12) addNewObject(new Shelf(j*size+size/2+100, (i+1)*size+120, 70,70,null,2));
 		 		else if (field.getField()[i][j] == 20) addNewObject(new Chest(j*size+size/2+100, (i+1)*size+120, 70,70,0));
 		 		else if (field.getField()[i][j] == 21) addNewObject(new Chest(j*size+size/2+100, (i+1)*size+120, 70,70,1));
 		 		else if (field.getField()[i][j] == 22) addNewObject(new Chest(j*size+size/2+100, (i+1)*size+120, 70,70,2));
@@ -49,7 +50,7 @@ public class GameLogic {
 		 		else if (field.getField()[i][j] == 3) addNewObject(new Chopper(j*size+size/2+100, (i+1)*size+120, 70,70));
 		 		else if (field.getField()[i][j] == 4) addNewObject(new Cashier(j*size+size/2+100, (i+1)*size+120, 70,70,model));
 		 		else if (field.getField()[i][j] == 6) addNewObject(new Garbage(j*size+size/2+100, (i+1)*size+120, 70,70));
-		 		else if (field.getField()[i][j] == 9) addNewObject(new Shelf(j*size+size/2+100, (i+1)*size+120, 70,70,new Plate()));
+		 		else if (field.getField()[i][j] == 9) addNewObject(new Shelf(j*size+size/2+100, (i+1)*size+120, 70,70,new Plate(),1));
 		 		else if (field.getField()[i][j] == 5) addNewObject(new Stove(j*size+size/2+100, (i+1)*size+120, 70,70));
 		 	}
 		 }

@@ -12,7 +12,7 @@ import Utility.ResoureLoader;
 
 public class Main extends Application {
 
-	public static final int weight = 1200;
+	public static final int weight = 1100;
 	public static final int height = 800;
 
 	private SceneManager sceneManager;

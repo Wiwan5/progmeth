@@ -8,8 +8,8 @@ import javafx.scene.media.AudioClip;
 
 public class ResoureLoader {
 	//background
-	public static Image bg0 = new Image("file:res/img/bg0.png");
-	
+	public static Image bg0 = new Image("file:res/img/bg0.png");	//menu
+	public static Image bg1 = new Image("file:res/img/bg1.png");		//game
 	
 	//Icon
 	public static final Image icon = new Image("file:res/img/icon.png"); 
@@ -24,23 +24,9 @@ public class ResoureLoader {
 		}
 	}
 	
-	//material
-	/*
-	public static HashMap<String, Image> counter;  // veg meat br plate 
-	static {
-		counter.put("counter1",new Image("file:res/img/"+"counter"+0+".png"));
-		counter.put("counter2",new Image("file:res/img/"+"counter"+1+".png"));
-		counter.put("counter3",new Image("file:res/img/"+"counter"+2+".png"));
-		counter.put("counter4",new Image("file:res/img/"+"counter"+3+".png"));
-		
-		counter.put("chest",new Image("file:res/img/"+"counter"+5+".png"));
-		
-		
-		counter.put("meat",new Image("file:res/img/"+"counter"+8+".png"));
-		counter.put("veg",new Image("file:res/img/"+"counter"+9+".png"));
-		counter.put("bread",new Image("file:res/img/"+"counter"+10+".png"));
-	}
-	*/
+	
+	public static Image[] counter= new Image[6];  // veg meat br plate 
+	
 	public static Image[] pan;
 	public static Image plate;
 	public static Image[] knift; // 
@@ -64,18 +50,26 @@ public class ResoureLoader {
 	
 	
 	static {
-		for(int i =0 ;i<10;i++) {
-			meat[i] = new Image("file:res/img/meat"+i+".png");
-			if(i<8) {
-				veg[i] = new Image("file:res/img/veg"+i+".png");
-			}
-			//0-7 chop 8-9 rip
-		}
+		
 		
 	}
 	public static void LoadResource() {
 		try {
 			click_sound = new AudioClip("file:res/sound/click.wav");
+			//load ingradient
+			for(int i =0 ;i<10;i++) {
+				meat[i] = new Image("file:res/img/meat"+i+".png");
+				if(i<8) {
+					veg[i] = new Image("file:res/img/veg"+i+".png");
+				}
+				//0-7 chop 8-9 rip
+			}
+			//load counter
+			for(int i=0 ; i<5;i++) {
+				counter[i] = new Image("file:res/img/"+"counter"+i+".jpg");
+			}
+			
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

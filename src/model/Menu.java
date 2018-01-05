@@ -35,7 +35,7 @@ public class Menu {
 			Food food = null;
 			Time t = null;
 			if(n==1) {
-				food = new Food(true,true,false);
+				food = new Food(false,true,true);
 				t = new Time(30000);
 			}
 			if(n==2) {
