@@ -28,7 +28,7 @@ public class GameScreen extends Canvas {
 	private static final Font SCORE_TIME_FONT = new Font("Monospace", 30);
 
 	private GraphicsContext gc;
-
+	Menu menu;
 	private GameModel model;
 	private Thread gameAnimation;
 	private boolean isAnimationRunning;
@@ -36,7 +36,7 @@ public class GameScreen extends Canvas {
 	public GameScreen() {
 		this.setWidth(Main.weight);
 		this.setHeight(Main.height);
-
+		menu = new Menu();
 		isAnimationRunning = false;
 		gc = this.getGraphicsContext2D();
 
@@ -96,62 +96,12 @@ public class GameScreen extends Canvas {
 		gc.fillText("Score: " + GameModel.getScore(), Main.weight - 150, Main.height -50);
 		
 		
-		updateMenu(gc);
+		menu.updateMenu(gc);
 		
 	}
 
-	public void updateMenu(GraphicsContext gc) {
-			int ch = 0;
-			boolean remove = false;
-			
-			for(Pair<Food,Time> menu : model.currentMenu) {
-				if(menu.second.isTimeup())	remove = true;
-					
-					//System.out.println("ch");
-					draw(Menu.position.get(ch),menu,gc);
-					drawTime(Menu.position.get(ch),menu,gc);
-					ch++;
-			
-			}
-			if(remove)	{
-				for(Pair<Food,Time> menu : model.currentMenu) {
-					if(menu.second.isTimeup())	{
-						model.currentMenu.remove(menu);
-						model.add();
-					}
-						
-				}
-			}
-			
-			
-		}
+	
 
-	private void draw(Pair<Double, Double> pos, Pair<Food, Time> menu,GraphicsContext gc) {
-		// TODO Auto-generated method stub
-		double x = pos.first;
-		double y = pos.second;
-		gc.setFill(Color.HONEYDEW);
-		gc.fillRect(x + 10, y, 150, 120);
-		// gc.drawImage(ResourseLoader.bread, x+60, y+100,15,15);
-
-		if (menu.first.getIngredient(0) == true) {
-			// gc.drawImage(ResourseLoader.meat,x+80,y+100,15,15);
-			
-		}
-		if (menu.first.getIngredient(1) == true) {
-			// gc.drawImage(ResourseLoader.veg,x+100, y+100,15,15);
-		}
-	}
-
-	public void drawTime(Pair<Double, Double> pos, Pair<Food, Time> menu,GraphicsContext gc) {
-		// TODO Auto-generated method stub
-		gc.setFill(Color.web("#122335"));
-		gc.fillRect(pos.first + 10, pos.second + 10, 150, 20);
-		gc.setFill(Color.web("#7EB19E"));
-		gc.fillRect(pos.first + 10, pos.second + 10,
-				(menu.second.getReduce() ) <= 0 ? 0.01 : menu.second.getReduce(), 20);
-
-	}
 	
 	
 	

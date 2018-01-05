@@ -1,5 +1,6 @@
 package view;
 
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import Utility.ResoureLoader;
 import Utility.Score;
@@ -35,8 +36,8 @@ public class GamePane extends Pane{
 	
 	
 	public void start() {
-		//music.play();
-		//music.setCycleCount(Timeline.INDEFINITE);		
+		ResoureLoader.gMusic.play();
+		ResoureLoader.gMusic.setCycleCount(Timeline.INDEFINITE);		
 		model = new GameModel();
 		canvas.setGameModel(model);
 		logic = new GameLogic(model);

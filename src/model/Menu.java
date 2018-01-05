@@ -6,8 +6,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import Utility.Pair;
+import Utility.ResoureLoader;
 import Utility.Time;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -15,7 +17,7 @@ import model.counter.Counter;
 import model.food.Food;
 
 public class Menu {
-	
+	public static CopyOnWriteArrayList<Pair<Food, Time>> allMenu=  new CopyOnWriteArrayList();
 	public static ArrayList<Pair<Double,Double>> position = new ArrayList<>();
 	static {
 		position.add(Pair.make_pair(0.0,0.0));
@@ -48,10 +50,75 @@ public class Menu {
 			}
 			
 			Pair<Food, Time> e =Pair.make_pair(food,t);
+			allMenu.add(e);
 			return e;
 		
 	}
+	public boolean remove(Food food) {
+		for(Pair<Food,Time>menu : allMenu) {
+		    if (menu.first.equals(food)) {
+		        allMenu.remove(menu);
+				return true;
+				
+		    }
+		}
+		return false;			
+	}
 	
+	public void updateMenu(GraphicsContext gc) {
+		int ch = 0;
+		boolean remove = false;
+		
+		for(Pair<Food,Time> menu : allMenu) {
+			if(menu.second.isTimeup())	remove = true;
+				
+				//System.out.println("ch");
+				draw(Menu.position.get(ch),menu,gc);
+				drawTime(Menu.position.get(ch),menu,gc);
+				ch++;
+		
+		}
+		if(remove)	{
+			generateMenu();
+			for(Pair<Food,Time> menu : allMenu) {
+				if(menu.second.isTimeup())	{
+					allMenu.remove(menu);
+					
+				}
+					
+			}
+		}
+		
+		
+	}
+
+	private void draw(Pair<Double, Double> pos, Pair<Food, Time> menu,GraphicsContext gc) {
+		// TODO Auto-generated method stub
+		double x = pos.first;
+		double y = pos.second;
+		gc.setFill(Color.HONEYDEW);
+		gc.fillRect(x + 10, y, 150, 120);
+		gc.drawImage(ResoureLoader.bread, x+30, y+70,30,30);
+
+		if (menu.first.getIngredient(0) == true) {
+			 gc.drawImage(ResoureLoader.meat[0],x+65,y+70,30,30);
+			
+		}
+		if (menu.first.getIngredient(1) == true) {
+			gc.drawImage(ResoureLoader.veg[0],x+100, y+70,30,30);
+		}
+	}
+
+	public void drawTime(Pair<Double, Double> pos, Pair<Food, Time> menu,GraphicsContext gc) {
+		// TODO Auto-generated method stub
+		gc.setFill(Color.web("#122335"));
+		gc.fillRect(pos.first + 10, pos.second + 10, 150, 20);
+		gc.setFill(Color.web("#7EB19E"));
+		gc.fillRect(pos.first + 10, pos.second + 10,
+				(menu.second.getReduce() ) <= 0 ? 0.01 : menu.second.getReduce(), 20);
+	
+
+	}
 	
 
 }

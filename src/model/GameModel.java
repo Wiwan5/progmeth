@@ -13,8 +13,7 @@ import model.food.Food;
 
 public class GameModel {
 	private RenderableHolder renderableHolder;
-	public CopyOnWriteArrayList<Pair<Food, Time>> currentMenu=  new CopyOnWriteArrayList();
-	
+
 	private Menu menu = new Menu();
 	
 	private static final long START_NANO_TIME = 180000000000L;
@@ -28,8 +27,8 @@ public class GameModel {
 		remainingNanoTime = START_NANO_TIME;
 		
 		try{
-			add();
-			add();
+			menu.generateMenu();
+			menu.generateMenu();
 			
 		}catch(Exception e) {
 			
@@ -63,14 +62,14 @@ public class GameModel {
 	}
 	
 	public boolean serve(Food food) {
-		if (remove(food)) {
+		if (menu.remove(food)) {
 			if(food.getIngredient(Food.MEAT)==true) {
 				score+=20;
 			}
 			if(food.getIngredient(Food.VEGETABLE)==true) {
 				score+=10;
 			}
-			add();
+			menu.generateMenu();
 			System.out.println("correct menu");
 			return true;
 		} 
@@ -78,23 +77,7 @@ public class GameModel {
 		return false;
 	}
 	
-	public boolean remove(Food food) {
-		for(Pair<Food,Time>menu : currentMenu) {
-		    if (menu.first.equals(food)) {
-		        currentMenu.remove(menu);
-				return true;
-				
-		    }
-		}
-		return false;			
-	}
-	public void add() {
-		if(currentMenu.size()<5) {
-			Pair<Food, Time> f=  menu.generateMenu();
-			//System.out.println("Food = "+f.first.printFood());
-			currentMenu.add(f);
-		}
-	}
+	
 	
 	
 }

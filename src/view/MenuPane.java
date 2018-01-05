@@ -38,7 +38,6 @@ public class MenuPane extends Pane{
 	
 	public MenuPane() {
 		super();
-		this.setPrefSize(Main.weight, Main.height);
 		menu = new MenuTeb();		
 		name = new TextField();
 		
@@ -82,6 +81,8 @@ public class MenuPane extends Pane{
 	
 	public void start() {
 		MenuControl.reset();
+		ResoureLoader.mMusic.play(0.7);
+		ResoureLoader.mMusic.setCycleCount(Timeline.INDEFINITE);
 		menuLoop = new Timeline();
 		menuLoop.setCycleCount(Timeline.INDEFINITE);
 		menuLoop.getKeyFrames().add(kFrame);
@@ -93,6 +94,7 @@ public class MenuPane extends Pane{
 	
 	public void stop() {
 		menuLoop.stop();
+		ResoureLoader.mMusic.stop();
 		MenuControl.reset();
 	}
 	

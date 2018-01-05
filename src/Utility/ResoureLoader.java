@@ -14,6 +14,7 @@ public class ResoureLoader {
 	//Icon
 	public static final Image icon = new Image("file:res/img/icon.png"); 
 	public static final Image logo = new Image("file:res/img/logo.png" );
+	public static final Image iconMenu = new Image("file:res/img/icon1.png");
 	
 	//player
 	public static HashMap<Integer,Image> player1 = new HashMap<>(); // pair 1->up 2->down [1]->left [2]->front [3]->right [4]->back
@@ -47,7 +48,8 @@ public class ResoureLoader {
 	
 	//public static AudioClip game_music = new AudioClip();
 	public static AudioClip click_sound ;
-	
+	public static AudioClip mMusic;
+	public static AudioClip gMusic;
 	
 	static {
 		
@@ -56,6 +58,11 @@ public class ResoureLoader {
 	public static void LoadResource() {
 		try {
 			click_sound = new AudioClip("file:res/sound/click.wav");
+			mMusic = new AudioClip("file:res/sound/mMusic.m4a");
+			gMusic = new AudioClip("file:res/sound/gMusic.m4a");
+			
+			
+			
 			//load ingradient
 			for(int i =0 ;i<10;i++) {
 				meat[i] = new Image("file:res/img/meat"+i+".png");
@@ -64,6 +71,8 @@ public class ResoureLoader {
 				}
 				//0-7 chop 8-9 rip
 			}
+			
+			
 			//load counter
 			for(int i=0 ; i<5;i++) {
 				counter[i] = new Image("file:res/img/"+"counter"+i+".jpg");
