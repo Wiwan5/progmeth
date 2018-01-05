@@ -7,21 +7,51 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+import Utility.Pair;
+import Utility.Time;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+import model.counter.Counter;
 import model.food.Food;
 
 public class Menu {
-	private static final Food[] ALLMENU = new Food[1];
 	
+	public static ArrayList<Pair<Double,Double>> position = new ArrayList<>();
 	static {
-		ALLMENU[0] = new Food(true,false);
-		// add menu
+		position.add(Pair.make_pair(0.0,0.0));
+		position.add(Pair.make_pair(200.0, 0.0));
+		position.add(Pair.make_pair(400.0, 0.0));
+		position.add(Pair.make_pair(600.0, 0.0));
+		position.add(Pair.make_pair(800.0, 0.0));
+		
+	}
+	public Menu() {
+		// TODO Auto-generated constructor stub
 	}
 	
-	static Food generateMenu() {
-		Random r = new Random();
-		//return ALLMENU[r.nextInt(ALLMENU.length)];
-		Food food = ALLMENU[r.nextInt(ALLMENU.length)];
-		//System.out.println(food.printFood());
-		return food;
+	public Pair<Food,Time> generateMenu() {
+			Random rand = new Random();
+			int n = rand.nextInt(3) + 1;
+			Food food = null;
+			Time t = null;
+			if(n==1) {
+				food = new Food(true,true,false);
+				t = new Time(30000);
+			}
+			if(n==2) {
+				food = new Food(true,true,true);
+				t = new Time(40000);
+			}
+			if(n==3) {
+				food = new Food(true,false,true);
+				t = new Time(20000);
+			}
+			
+			Pair<Food, Time> e =Pair.make_pair(food,t);
+			return e;
+		
 	}
+	
+	
+
 }

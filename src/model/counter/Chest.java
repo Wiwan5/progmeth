@@ -1,15 +1,26 @@
 package model.counter;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import model.food.*;
 import model.player.Player;
 
 public class Chest extends Counter {
 
-	public Chest(double x, double y, int w, int h) {
+	private int ingredient;
+	static Image veg;
+	static Image meat;
+	static Image br;
+	{
+		veg = new Image("file:res/img/"+"counter"+9+".png");
+		meat = new Image("file:res/img/"+"counter"+8+".png");
+		br = new Image("file:res/img/"+"counter"+10+".png");
+	}
+
+	public Chest(double x, double y, int w, int h, int ingredient) {
 		super(x, y, w, h);
-		// TODO Auto-generated constructor stub
+		this.ingredient = ingredient;
 	}
 	
 	@Override
@@ -29,14 +40,26 @@ public class Chest extends Counter {
 			IRenderableFood c = foodOnCounter;
 			foodOnCounter = null;
 			return c; 
+		} else {
+			if (ingredient == Food.MEAT) return new Meat();
+			else if (ingredient == Food.VEGETABLE)return new Vegetable();
+			else return new Bread();
 		}
-		return new Meat();
 	}
 	
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.setFill(Color.DARKORANGE);
-		gc.fillRect(x-width/2, y-height, width, height);
+		if(ingredient == Food.MEAT) {
+			gc.drawImage(meat, x - width / 2, y - height, width, height);
+		}
+		else if(ingredient == Food.VEGETABLE) {
+			gc.drawImage(veg, x - width / 2, y - height, width, height);
+
+		}else {
+			gc.drawImage(br, x - width / 2, y - height, width, height);
+
+		}
+		
 		
 		if (foodOnCounter != null) {
 			foodOnCounter.draw(gc, x, y);

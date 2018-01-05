@@ -2,12 +2,9 @@ package controller;
 
 
 
-import java.awt.Desktop.Action;
+
 import java.util.Set;
 import java.util.concurrent.ConcurrentSkipListSet;
-
-import javafx.application.Platform;
-//import javafx.event.ActionEvent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyCode;
 import main.Main;
@@ -16,7 +13,7 @@ import main.Main;
 public class MenuControl {
 	MenuTeb menu;
 	Canvas menuC;
-	private Set<KeyCode> keyPress;
+	private static Set<KeyCode> keyPress;
 	
 	public MenuControl(Canvas mCanvas,MenuTeb menu) {
 		this.menu = menu;
@@ -59,7 +56,7 @@ public class MenuControl {
 		
 	}
 	
-	public void reset() {
+	public static void reset() {
 		keyPress.clear();
 	}
 	

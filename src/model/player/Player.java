@@ -45,6 +45,7 @@ public class Player extends Entity {
 		direction = DOWN;
 	}
 
+	
 	public boolean frontHaveObject(double otherX, double otherY, int otherW, int otherH, int changeX, int changeY) {
 		double x1, x2, y1, y2;
 		x1 = x - width / 2 + changeX;
@@ -77,7 +78,20 @@ public class Player extends Entity {
 			frontY = scope;
 		for (Counter c : logic.counterInGame) {
 			if (frontHaveObject(c.getX(), c.getY(), c.getWidth(), c.getHeight(), frontX, frontY)) {
-				return c;
+				double x1, x2, y1, y2;
+				if (direction==LEFT || direction==RIGHT) {
+					y1 = y - height;
+					y2 = c.getY() - c.getHeight();
+					if ((y1>=y2 && y2+c.getHeight()-y1 >= height/2) ||
+							(y1<y2 && y1+height-y2 >= height/2))
+						return c;
+				} else if (direction==UP || direction==DOWN) {
+					x1 = x - width / 2;
+					x2 = c.getX() - c.getWidth() / 2;
+					if ((x1>=x2 && x2+c.getWidth()-x1 >= width/2) ||
+							(x1<x2 && x1+width-x2 >= width/2)) 
+						return c;
+				}
 			}
 		}
 		return null;
@@ -86,8 +100,7 @@ public class Player extends Entity {
 	private void settleFood(Counter counter) {
 		if (counter == null || !counter.canSettle(foodOnPlayer))
 			return;
-		counter.setFoodOnCounter(foodOnPlayer);
-		foodOnPlayer = null;
+		foodOnPlayer = counter.setFoodOnCounter(foodOnPlayer);
 	}
 
 	/*private void callIngredient(Counter counter) {
@@ -201,7 +214,7 @@ public class Player extends Entity {
 		// System.out.println(x + " " + y);
 		gc.fillRect(x - width / 2, y - height, width, height);
 		*/
-		gc.drawImage(ResoureLoader.player1.get(direction), x - width/2-20, y - height-20, 90, 80);
+		gc.drawImage(ResoureLoader.player1.get(direction), x - width/2-25, y - height-30, 90, 90);
 		
 		gc.setFill(Color.BLACK);
 		gc.strokeRect(x - width / 2, y - height - scope, width, scope * 2 + height);
@@ -212,7 +225,7 @@ public class Player extends Entity {
 		gc.fillText(""+direction, x-5, y-10);
 		*/
 		if (foodOnPlayer != null) {
-			foodOnPlayer.draw(gc, x, y);
+			foodOnPlayer.draw(gc, x-1, y-30);
 		}
 	}
 

@@ -1,8 +1,8 @@
 package Utility;
 
-public class Pair<x,y>{
-	public x first;
-	public y second;
+public class Pair<x,y> {
+	 public x first;
+	 public y second;
 	
 	public Pair() {	}
 	
@@ -11,10 +11,12 @@ public class Pair<x,y>{
 		this.second = s;
 	}
 		
-	public <x,y> Pair<x,y> make_pair(x f,y s){
+	public static <x,y> Pair<x,y> make_pair(x f,y s){
 		return new Pair<>(f,s);
 	}
+
 	
 		
+	
 	
 }

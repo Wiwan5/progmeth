@@ -1,6 +1,9 @@
 package model.counter;
 
+
+import Utility.ResoureLoader;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import model.food.Chopable;
 import model.food.IRenderableFood;
@@ -8,22 +11,29 @@ import model.food.Ingredient;
 import model.player.Player;
 
 public class Chopper extends Counter {
-
-	public static final int timeForCompleteChopped = 70;
+	static Image chop;
+	static {
+		chop = new Image("file:res/img/"+"counter"+4+".png");
+	}
+	static boolean check;
 
 	public Chopper(double x, double y, int w, int h) {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
+		check=false;
 	}
 	
 	public void chopping() {
 		Ingredient ingredient = (Ingredient) foodOnCounter;
-		if (ingredient.getState() != model.food.Ingredient.canChop) return;
+		if (ingredient.getState() != model.food.Ingredient.CAN_CHOP) return;
 		
 		Chopable food = (Chopable) ingredient;
 		food.addTimeToChopped();
 		System.out.println("time of Chopped " + food.getTimeToChopped());
-		if (food.getTimeToChopped() >= timeForCompleteChopped) {
+		if(food.getTimeToChopped()%10==0) {
+			check=true;
+		}
+		if (food.getTimeToChopped() >= Chopable.TIMEFORCOMPLETECHOPPED) {
 			food.setStateWhenCompleteChop();
 			System.out.println("Ingredient is complete chopped");
 		}
@@ -33,7 +43,7 @@ public class Chopper extends Counter {
 	public boolean canSettle(IRenderableFood foodOnPlayer) {
 		if (foodOnCounter == null && foodOnPlayer instanceof Chopable && foodOnPlayer instanceof Ingredient) {
 			Ingredient ingredient = (Ingredient) foodOnPlayer;
-			if (ingredient.getState() == model.food.Ingredient.canChop) 
+			if (ingredient.getState() == model.food.Ingredient.CAN_CHOP) 
 				return true;
 		}
 		return false;
@@ -42,9 +52,9 @@ public class Chopper extends Counter {
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.setFill(Color.PINK);
-		gc.fillRect(x-width/2, y-height, width, height);
-		
+		gc.drawImage(chop, x-width/2, y-height, width, height);
+			
+	
 		if (foodOnCounter != null) {
 			foodOnCounter.draw(gc, x, y);
 		}

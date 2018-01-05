@@ -2,10 +2,12 @@ package model.counter;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import model.food.Bread;
 import model.food.IRenderableFood;
 import model.food.Ingredient;
 import model.food.Meat;
 import model.food.Plate;
+import model.food.Vegetable;
 import model.player.Player;
 
 public class Shelf extends Counter {
@@ -30,18 +32,35 @@ public class Shelf extends Counter {
 	}
 	
 	@Override
-	public void setFoodOnCounter(IRenderableFood foodOnPlayer) {
-		if (foodOnCounter == null) {
+	public IRenderableFood setFoodOnCounter(IRenderableFood foodOnPlayer) {
+		/*if (foodOnCounter == null) {
 			foodOnCounter = foodOnPlayer;
 		} else if (foodOnCounter instanceof Plate) {
 			Plate plate = (Plate) foodOnCounter;
-			if (foodOnPlayer instanceof Meat) 
-				plate.settleMeatOnPlate();
+			if (foodOnPlayer instanceof Meat) 				plate.settleMeatOnPlate();
+			else if (foodOnPlayer instanceof Vegetable) 	plate.settleVegtableOnPlate();
 		} else if (foodOnPlayer instanceof Plate) {
 			Plate plate = (Plate) foodOnPlayer;
-			if (foodOnCounter instanceof Meat)
-				foodOnCounter = plate.settleMeatOnPlate();
+			if (foodOnCounter instanceof Meat) 				foodOnCounter = plate.settleMeatOnPlate();
+			else if (foodOnCounter instanceof Vegetable) 	foodOnCounter = plate.settleVegtableOnPlate();
+		}*/
+		
+		if (foodOnCounter == null) {
+			foodOnCounter = foodOnPlayer;
+		} else {
+			if (foodOnPlayer instanceof Plate) {
+				IRenderableFood temp = foodOnCounter;
+				foodOnCounter = foodOnPlayer;
+				foodOnPlayer = temp;
+			}
+			if (foodOnCounter instanceof Plate) {
+				Plate plate = (Plate) foodOnCounter;
+				if (foodOnPlayer instanceof Meat) 				plate.settleMeatOnPlate();
+				else if (foodOnPlayer instanceof Vegetable) 	plate.settleVegtableOnPlate();
+				else if (foodOnPlayer instanceof Bread) 		plate.settleBreadOnPlate();
+			}
 		}
+		return null;
 	}
 	
 	@Override

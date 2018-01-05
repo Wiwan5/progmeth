@@ -3,12 +3,18 @@ package model.food;
 import java.util.Arrays;
 
 public class Food {
-	private static final int AMOUNT_INGREDIENT = 2;
+	
+	public static final int MEAT = 0;
+	public static final int VEGETABLE = 1;
+	public static final int BREAD = 2;
+	
+	private static final int AMOUNT_INGREDIENT = 3;
 	private Boolean[] ingredients = new Boolean[AMOUNT_INGREDIENT];
 	
-	public Food(boolean haveMeat, boolean haveS) {
-		ingredients[0] = haveMeat;
-		ingredients[1] = haveS;
+	public Food(boolean haveMeat, boolean haveVegetable, boolean haveBread) {
+		ingredients[MEAT] = haveMeat;
+		ingredients[VEGETABLE] = haveVegetable;
+		ingredients[BREAD] = haveBread;
 	}
 	
 	@Override
@@ -31,10 +37,10 @@ public class Food {
 		return ingredients[i];
 	}
 	
-	public int printFood() {
+	/*public int printFood() {
 		//return Arrays.toString(ingredients);
 		return ingredients.length;
-	}
+	}*/
 	
 	public void setIngredient(int i, boolean have) {
 		ingredients[i] = have;

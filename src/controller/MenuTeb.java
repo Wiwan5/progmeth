@@ -71,6 +71,7 @@ public class MenuTeb {
 	}
 	
 	public void click() {
+		ResoureLoader.click_sound.play();
 		if(state ==0) {
 			if(select == 0) {
 				gotoPlaymenu();

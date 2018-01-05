@@ -4,8 +4,8 @@ package view;
 import java.util.List;
 
 import Utility.ResoureLoader;
-import controller.MainControl;
 
+import controller.MenuControl;
 import controller.MenuTeb;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -81,7 +81,7 @@ public class MenuPane extends Pane{
 	}
 	
 	public void start() {
-		MainControl.getCurrent().getMenuControl().reset();
+		MenuControl.reset();
 		menuLoop = new Timeline();
 		menuLoop.setCycleCount(Timeline.INDEFINITE);
 		menuLoop.getKeyFrames().add(kFrame);
@@ -93,7 +93,7 @@ public class MenuPane extends Pane{
 	
 	public void stop() {
 		menuLoop.stop();
-		MainControl.getCurrent().getMenuControl().reset();
+		MenuControl.reset();
 	}
 	
 

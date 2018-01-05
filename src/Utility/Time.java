@@ -1,58 +1,51 @@
 package Utility;
 
+import model.GameModel;
+import view.GamePane;
+import view.SceneManager;
 public class Time {
-	private static double start;
-	private static double t ;
-	private static boolean pause;
+	private long start;
+	private int t ;
+	//private static GameModel model = ((GamePane) SceneManager.getCurrent().getPane("game")).getGameModel();
 	
-	public Time(long tm){
+	public Time(int tm){
 		t = tm;	//tm in each thing or checkpoint unit ms
-		start = 0;
-		pause = false;
-	}
-	public static void start() {
-		start = 0;
-		start = System.currentTimeMillis();		
+		start = System.currentTimeMillis();
+		
 	}
 	
-	public static  void pause(double c) {	//c is current time that send from the game
+	/*
+	public  void pause(double c) {	//c is current time that send from the game
 		pause = true;
 		setT(getT()-c);		
 	}
-	public static double getReduce() {
-		return t-start;
+	*/
+	public long getReduce() {
+		return (t-( System.currentTimeMillis()-start))*150/t;
 	}
 	
-	public static boolean isTimeup() {
-		return t-start <= 0;
-	}
-	
-	public static String printTime() {
-		double i = t-start;
-		int g= (int) i/1000;
-		int mins = g/60;
-		g = g-(mins)*60;
-		return Integer.toString(mins) +":"+Integer.toString(g);
+	public boolean isTimeup() {
+		return System.currentTimeMillis()-start>= t;
 	}
 	
 	
 	//getter && setter
-	public static double getStart() {
+	public double getStart() {
 		return start;
 	}
 
 
-	public static void setStart(long start) {
-		Time.start = start;
+	public void setStart(int start) {
+		this.start = start;
 	}
 
 
-	public static double getT() {
+	public double getT() {
 		return t;
 	}
 
-	public static void setT(double t) {
-		Time.t = t;
+	public void setT(int t) {
+		this.t = t;
 	}
 	
 	

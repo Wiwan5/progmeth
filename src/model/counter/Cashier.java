@@ -1,6 +1,8 @@
 package model.counter;
 
+import Utility.ResoureLoader;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import model.GameModel;
 import model.food.IRenderableFood;
@@ -8,7 +10,10 @@ import model.food.Plate;
 import model.player.Player;
 
 public class Cashier extends Counter {
-	
+	static Image cashier;
+	static {
+		cashier=new Image("file:res/img/"+"counter"+7+".png");
+	}
 	private GameModel model;
 
 	public Cashier(double x, double y, int w, int h, GameModel model) {
@@ -26,17 +31,21 @@ public class Cashier extends Counter {
 	}
 	
 	@Override
-	public void setFoodOnCounter(IRenderableFood food) {
+	public IRenderableFood setFoodOnCounter(IRenderableFood food) {
 		Plate plate = (Plate) food;
 		model.serve(plate.getFoodOnPlate());
-		foodOnCounter = new Plate();
+		//foodOnCounter = new Plate();
+		plate.dumpFood();
+		return plate;
 	}
 
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.setFill(Color.PLUM);
-		gc.fillRect(x-width/2, y-height, width, height);
+		
+		gc.drawImage(cashier, x-width/2, y-height, width, height);
+		
+		
 		
 		if (foodOnCounter != null) {
 			foodOnCounter.draw(gc, x, y);
