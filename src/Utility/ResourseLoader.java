@@ -14,7 +14,6 @@ public class ResourseLoader {
 	//Icon
 	public static final Image icon = new Image("file:res/img/icon.png"); 
 	public static final Image logo = new Image("file:res/img/logo.png" );
-	public static final Image iconMenu = new Image("file:res/img/icon1.png");
 	
 	//player
 	public static HashMap<Integer,Image> player1 = new HashMap<>(); // pair 1->up 2->down [1]->left [2]->front [3]->right [4]->back
@@ -58,7 +57,7 @@ public class ResourseLoader {
 		try {
 			click_sound = new AudioClip("file:res/sound/click.wav");
 			mMusic = new AudioClip("file:res/sound/mMusic.mp3");
-			gMusic = new AudioClip("file:res/sound/startgame.mp3");
+			gMusic = new AudioClip("file:res/sound/gMusic.mp3");
 			gameOver_sound = new AudioClip("file:res/sound/gameOver.wav");
 			rip_sound = new AudioClip("file:res/sound/rip.wav");
 			chop_sound = new AudioClip("file:res/sound/chop.mp3");

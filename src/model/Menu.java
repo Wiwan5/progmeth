@@ -88,7 +88,7 @@ public class Menu {
 					
 			}
 		}
-		if(allMenu.size() == 1) {
+		if(allMenu.size() <= 1) {
 			new menuException();
 		}
 		

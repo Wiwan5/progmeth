@@ -13,7 +13,7 @@ public class GameModel {
 
 	private Menu menu = new Menu();
 	
-	private static final long START_NANO_TIME = 180000000000L;
+	private static final long START_NANO_TIME = 10000000000L;
 	
 	static int score;
 	long remainingNanoTime;

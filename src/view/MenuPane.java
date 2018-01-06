@@ -68,8 +68,8 @@ public class MenuPane extends Pane{
 				}
 				if(menu.getState()==2) {
 					bg(gc);
+					drawlogo(gc);
 					name.setVisible(false);
-					textname(gc);
 					drawMenu(gc);
 				}
 			}
@@ -141,15 +141,7 @@ public class MenuPane extends Pane{
 		}
 	}
 	public void drawlogo(GraphicsContext gc) {
-		gc.drawImage(ResourseLoader.logo,Main.weight/2-210,100);
-		
-		/*gc.setTextBaseline(VPos.CENTER);
-		gc.setTextAlign(TextAlignment.CENTER);
-		Font font1 = new Font("Time New Roman", 100);
-		gc.setFont(font1);
-		gc.setFill(Color.BLACK);
-		gc.fillText("HURRY Lunch!",Main.weight/2,250);
-		*/
+		gc.drawImage(ResourseLoader.logo,Main.weight/2-300,100);
 	}
 	
 	public void textname(GraphicsContext gc) {
@@ -157,9 +149,11 @@ public class MenuPane extends Pane{
 		gc.setTextBaseline(VPos.CENTER);
 		gc.setTextAlign(TextAlignment.CENTER);
 		gc.setFont(font);
+		if(menu.getState()==1) {
 		gc.setFill(Color.SIENNA);
-		gc.fillText("Hello, Chief",Main.weight/2-100,280);
-		if(menu.getState() == 2)	gc.fillText(Player.name, Main.weight/2-10, 350);
+		gc.fillText("Hello, Chef",Main.weight/2-100,280);
+		}
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
