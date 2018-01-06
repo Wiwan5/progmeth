@@ -6,7 +6,7 @@ import java.util.HashMap;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
 
-public class ResoureLoader {
+public class ResourseLoader {
 	//background
 	public static Image bg0 = new Image("file:res/img/bg0.png");	//menu
 	public static Image bg1 = new Image("file:res/img/bg1.png");		//game
@@ -50,18 +50,18 @@ public class ResoureLoader {
 	public static AudioClip click_sound ;
 	public static AudioClip mMusic;
 	public static AudioClip gMusic;
+	public static AudioClip gameOver_sound;
+	public static AudioClip rip_sound;
+	public static AudioClip chop_sound;
 	
-	static {
-		
-		
-	}
 	public static void LoadResource() {
 		try {
 			click_sound = new AudioClip("file:res/sound/click.wav");
-			mMusic = new AudioClip("file:res/sound/mMusic.m4a");
-			gMusic = new AudioClip("file:res/sound/gMusic.m4a");
-			
-			
+			mMusic = new AudioClip("file:res/sound/mMusic.mp3");
+			gMusic = new AudioClip("file:res/sound/startgame.mp3");
+			gameOver_sound = new AudioClip("file:res/sound/gameOver.wav");
+			rip_sound = new AudioClip("file:res/sound/rip.wav");
+			chop_sound = new AudioClip("file:res/sound/chop.mp3");
 			
 			//load ingradient
 			for(int i =0 ;i<10;i++) {

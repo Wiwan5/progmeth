@@ -2,7 +2,7 @@ package view;
 
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import Utility.ResoureLoader;
+import Utility.ResourseLoader;
 import Utility.Score;
 import game.logic.GameLogic;
 import game.ui.GameScreen;
@@ -26,7 +26,7 @@ public class GamePane extends Pane{
 	private static GameLogic logic ;
 	private static GraphicsContext gc=canvas.getGraphicsContext2D();
 	public static Font font =Font.font("Time New Roman",FontWeight.BOLD,100);
-//	private AudioClip music = ResourceLoader.game_music;	
+		
 	
 	public GamePane() {
 		super(canvas);
@@ -36,8 +36,10 @@ public class GamePane extends Pane{
 	
 	
 	public void start() {
-		ResoureLoader.gMusic.play();
-		ResoureLoader.gMusic.setCycleCount(Timeline.INDEFINITE);		
+		ResourseLoader.gMusic.play(0.5);
+		ResourseLoader.gMusic.setCycleCount(javafx.animation.Animation.INDEFINITE);
+	
+		
 		model = new GameModel();
 		canvas.setGameModel(model);
 		logic = new GameLogic(model);
@@ -51,12 +53,14 @@ public class GamePane extends Pane{
 
 
 	public void stop() {
+		ResourseLoader.gameOver_sound.play(1.5);
 		logic.stopGame();
 		canvas.stopAnimation();
 		gc.setFill(Color.BLACK);
 		gc.setFont(font);
 		gc.fillText("Game Over", Main.weight/2-200, 400);
 		Score.add(Player.name,GameModel.getScore());
+		ResourseLoader.gMusic.stop();
 		Platform.runLater(() -> {
 			Alert alert = new Alert(AlertType.INFORMATION,"Your score :  "+GameModel.getScore(),ButtonType.OK);
 			alert.setHeaderText("Cheif  :   "+Player.name);

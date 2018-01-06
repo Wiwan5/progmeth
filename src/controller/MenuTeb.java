@@ -5,7 +5,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 
 
-import Utility.ResoureLoader;
+import Utility.ResourseLoader;
 import Utility.Score;
 import view.MenuPane;
 import view.SceneManager;
@@ -71,7 +71,7 @@ public class MenuTeb {
 	}
 	
 	public void click() {
-		ResoureLoader.click_sound.play();
+		ResourseLoader.click_sound.play();
 		if(state ==0) {
 			if(select == 0) {
 				gotoPlaymenu();

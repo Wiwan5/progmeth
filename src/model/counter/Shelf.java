@@ -2,7 +2,7 @@ package model.counter;
 
 
 
-import Utility.ResoureLoader;
+import Utility.ResourseLoader;
 import javafx.scene.canvas.GraphicsContext;
 
 import model.food.Bread;
@@ -60,11 +60,11 @@ public class Shelf extends Counter {
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		if(image == 1) {
-			gc.drawImage(ResoureLoader.counter[0],x-width/2, y-height, width, height);
+			gc.drawImage(ResourseLoader.counter[0],x-width/2, y-height, width, height);
 		
 		}
 		else if(image ==2) {
-			gc.drawImage(ResoureLoader.counter[1],x-width/2, y-height, width, height);
+			gc.drawImage(ResourseLoader.counter[1],x-width/2, y-height, width, height);
 		}
 		if (foodOnCounter != null) {
 			foodOnCounter.draw(gc, x, y);

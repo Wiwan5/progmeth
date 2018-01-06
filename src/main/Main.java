@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import view.MenuPane;
 import view.SceneManager;
 
-import Utility.ResoureLoader;
+import Utility.ResourseLoader;
 
 public class Main extends Application {
 
@@ -22,11 +22,11 @@ public class Main extends Application {
 	public void start(Stage primaryStage)  {
 		try {
 		sceneManager = new SceneManager(primaryStage);
-		ResoureLoader.LoadResource();
+		ResourseLoader.LoadResource();
 		menuControler = new MenuControl(((MenuPane) sceneManager.getPane("menu")).getMenuCanvas(),
 				((MenuPane) sceneManager.getPane("menu")).getMenu());
 		menuControler.keyEvent();
-		primaryStage.getIcons().add(ResoureLoader.icon);
+		primaryStage.getIcons().add(ResourseLoader.icon);
 		primaryStage.setTitle("Prog Chief...Cooking game");
 		primaryStage.centerOnScreen();
 		primaryStage.setResizable(false);

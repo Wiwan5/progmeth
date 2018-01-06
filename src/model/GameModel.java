@@ -2,13 +2,10 @@ package model;
 
 
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
-import Utility.Time;
-import Utility.Pair;
+
+import java.util.List;
+
 import model.food.Food;
 
 public class GameModel {
@@ -29,7 +26,7 @@ public class GameModel {
 		try{
 			menu.generateMenu();
 			menu.generateMenu();
-			
+			menu.generateMenu();
 		}catch(Exception e) {
 			
 			e.printStackTrace();

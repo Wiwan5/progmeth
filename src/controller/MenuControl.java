@@ -5,6 +5,8 @@ package controller;
 
 import java.util.Set;
 import java.util.concurrent.ConcurrentSkipListSet;
+
+import Utility.ResourseLoader;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyCode;
 import main.Main;

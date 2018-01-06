@@ -2,7 +2,7 @@ package model.counter;
 
 
 
-import Utility.ResoureLoader;
+import Utility.ResourseLoader;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -45,13 +45,13 @@ public class Chest extends Counter {
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		if(ingredient == Food.MEAT) {
-			gc.drawImage(ResoureLoader.counter[2], x - width / 2, y - height, width, height);
+			gc.drawImage(ResourseLoader.counter[2], x - width / 2, y - height, width, height);
 		}
 		else if(ingredient == Food.VEGETABLE) {
-			gc.drawImage(ResoureLoader.counter[3], x - width / 2, y - height, width, height);
+			gc.drawImage(ResourseLoader.counter[3], x - width / 2, y - height, width, height);
 
 		}else {
-			gc.drawImage(ResoureLoader.counter[4], x - width / 2, y - height, width, height);
+			gc.drawImage(ResourseLoader.counter[4], x - width / 2, y - height, width, height);
 
 		}
 		
