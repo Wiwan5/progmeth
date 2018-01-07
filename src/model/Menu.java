@@ -71,8 +71,6 @@ public class Menu {
 		boolean remove = false;
 		for(Pair<Food,Time> menu : allMenu) {
 			if(menu.second.isTimeup())	remove = true;
-				
-				//System.out.println("ch");
 				draw(Menu.position.get(ch),menu,gc);
 				drawTime(Menu.position.get(ch),menu,gc);
 				ch++;
@@ -88,11 +86,12 @@ public class Menu {
 					
 			}
 		}
-		if(allMenu.size() <= 1) {
+		if(allMenu.size() <1||allMenu.size()>5) {
 			new menuException();
 		}
-		
-		
+		if(allMenu.size() <=2) {
+			generateMenu();
+		}
 	}
 
 	private void draw(Pair<Double, Double> pos, Pair<Food, Time> menu,GraphicsContext gc) {

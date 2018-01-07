@@ -13,6 +13,7 @@ import model.IRenderable;
 
 
 import model.Menu;
+import model.counter.Stove;
 import model.exception.menuException;
 
 public class GameScreen extends Canvas {
@@ -68,6 +69,7 @@ public class GameScreen extends Canvas {
 				e.printStackTrace();
 			}
 		}
+		Stove.setMusic(false);
 	}
 
 	public void addListerner() {
@@ -97,6 +99,7 @@ public class GameScreen extends Canvas {
 		
 		try {
 			menu.updateMenu(gc);
+			
 		}catch (menuException e) {
 			// TODO: handle exception
 			e.printStackTrace();

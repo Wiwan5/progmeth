@@ -219,11 +219,11 @@ public class Player extends Entity {
 	public void draw(GraphicsContext gc) {
 		
 		gc.drawImage(ResourseLoader.player1.get(direction), x - width/2-25, y - height-30, 90, 90);
-		
+		/*
 		gc.setFill(Color.BLACK);
 		gc.strokeRect(x - width / 2, y - height - scope, width, scope * 2 + height);
 		gc.strokeRect(x - width / 2 - scope, y - height, scope * 2 + width, height);
-		
+		*/
 		gc.drawImage(ResourseLoader.effChop, x - width/2-25, y - height-30 , 100,100);
 		if (foodOnPlayer != null) {
 			foodOnPlayer.draw(gc, x-1, y-30);

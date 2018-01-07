@@ -40,9 +40,10 @@ public class ResourseLoader {
 	
 
 	//mix
-	public Image brVeg;
-	public Image brMeat=new Image("file:res/img/brm.png");
-	public Image brVM =new Image("file:res/img/brmv.png"); 
+	public static Image brVeg = new Image("file:res/img/brveg.png");
+	public static Image brMeat=new Image("file:res/img/brm.png");
+	public static Image brVM =new Image("file:res/img/brmv.png"); 
+	public static Image meatV = new Image("file:res/img/mv.png"); 
 	
 	
 	//public static AudioClip game_music = new AudioClip();
