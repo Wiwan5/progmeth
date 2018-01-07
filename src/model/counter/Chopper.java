@@ -11,10 +11,7 @@ import model.food.Ingredient;
 import model.player.Player;
 
 public class Chopper extends Counter {
-	static Image chop;
-	static {
-		chop = new Image("file:res/img/"+"counter"+4+".png");
-	}
+
 	static boolean check;
 
 	public Chopper(double x, double y, int w, int h) {
@@ -52,7 +49,8 @@ public class Chopper extends Counter {
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(chop, x-width/2, y-height, width, height);
+		if (foodOnCounter == null) gc.drawImage(ResoureLoader.counter[5],x-width/2, y-height, width, height);
+		else gc.drawImage(ResoureLoader.counter[6],x-width/2, y-height, width, height);
 			
 	
 		if (foodOnCounter != null) {

@@ -1,6 +1,8 @@
 package model.counter;
 
+import Utility.ResoureLoader;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import model.food.IRenderableFood;
 import model.food.Plate;
@@ -39,8 +41,7 @@ public class Garbage extends Counter {
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.setFill(Color.BLUEVIOLET);
-		gc.fillRect(x-width/2, y-height, width, height);
+		gc.drawImage(ResoureLoader.counter[9], x-width/2, y-height, width, height);
 		
 		if (foodOnCounter != null) {
 			foodOnCounter.draw(gc, x, y);

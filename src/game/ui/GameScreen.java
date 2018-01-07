@@ -24,8 +24,7 @@ public class GameScreen extends Canvas {
 	private static final int FPS = 60;
 	private static final long LOOP_TIME = 1000000000 / FPS;
 
-	private static final Font TEXT_FONT = new Font("Monospace", 80);
-	private static final Font SCORE_TIME_FONT = new Font("Monospace", 30);
+	private static final Font SCORE_TIME_FONT = new Font("Monospace", 40);
 
 	private GraphicsContext gc;
 	Menu menu;
@@ -41,6 +40,8 @@ public class GameScreen extends Canvas {
 		gc = this.getGraphicsContext2D();
 
 		// this.setVisible(true);
+		gc.setFont(SCORE_TIME_FONT);
+		
 		addListerner();
 	}
 
@@ -89,11 +90,14 @@ public class GameScreen extends Canvas {
 			entity.draw(gc);
 		
 		}
-		gc.setFill(Color.BLACK);
-		gc.setFont(SCORE_TIME_FONT);
-		gc.fillText("Time: " + model.getTimeSecond(),
-				Main.weight -150,50);
-		gc.fillText("Score: " + GameModel.getScore(), Main.weight - 150, Main.height -50);
+
+		gc.setFill(Color.web("#dab41b"));
+		gc.fillText(""+model.getTimeSecond(), Main.weight-109, 77);
+		gc.setFill(Color.web("#b682b2"));
+		gc.fillText(""+GameModel.getScore(), Main.weight-95, Main.height-65);
+		gc.setFill(Color.web("#716658"));
+		gc.fillText(""+model.getTimeSecond(), Main.weight-112, 74);
+		gc.fillText(""+GameModel.getScore(), Main.weight-98, Main.height-68);
 		
 		
 		menu.updateMenu(gc);

@@ -1,5 +1,6 @@
 package model.counter;
 
+import Utility.ResoureLoader;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -12,10 +13,7 @@ public class Stove extends Counter {
 
 	private static final int FPS = 60;
 	private static final long LOOP_TIME = 1000000000 / FPS;
-	static Image stove;
-	static{
-		stove = new Image("file:res/img/"+"counter"+6+".png");
-	}
+
 	public Stove(double x, double y, int w, int h) {
 		super(x, y, w, h);
 	}
@@ -71,7 +69,7 @@ public class Stove extends Counter {
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(stove, x - width / 2, y - height, width, height);
+		gc.drawImage(ResoureLoader.counter[7], x - width / 2, y - height, width, height+25);
 
 		if (foodOnCounter != null) {
 			foodOnCounter.draw(gc, x, y);

@@ -26,7 +26,7 @@ public class ResoureLoader {
 	}
 	
 	
-	public static Image[] counter= new Image[6];  // veg meat br plate 
+	public static Image[] counter= new Image[10];  // veg meat br plate 
 	
 	public static Image[] pan;
 	public static Image plate;
@@ -74,8 +74,8 @@ public class ResoureLoader {
 			
 			
 			//load counter
-			for(int i=0 ; i<5;i++) {
-				counter[i] = new Image("file:res/img/"+"counter"+i+".jpg");
+			for(int i=0 ; i<10;i++) {
+				counter[i] = new Image("file:res/img/"+"counter"+i+".png");
 			}
 			
 			

@@ -45,13 +45,13 @@ public class Chest extends Counter {
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		if(ingredient == Food.MEAT) {
-			gc.drawImage(ResoureLoader.counter[2], x - width / 2, y - height, width, height);
+			gc.drawImage(ResoureLoader.counter[2], x - width / 2, y - height, width, height+25);
 		}
 		else if(ingredient == Food.VEGETABLE) {
-			gc.drawImage(ResoureLoader.counter[3], x - width / 2, y - height, width, height);
+			gc.drawImage(ResoureLoader.counter[3], x - width / 2, y - height, width, height+25);
 
 		}else {
-			gc.drawImage(ResoureLoader.counter[4], x - width / 2, y - height, width, height);
+			gc.drawImage(ResoureLoader.counter[4], x - width / 2, y - height, width, height+25);
 
 		}
 		

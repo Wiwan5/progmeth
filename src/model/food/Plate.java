@@ -1,9 +1,16 @@
 package model.food;
 
+import Utility.ResoureLoader;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 public class Plate implements IRenderableFood {
+	
+	private static Image image;
+	static {
+		image = new Image("file:res/img/plate.png");
+	}
 
 	private Food foodOnPlate;
 	
@@ -69,7 +76,7 @@ public class Plate implements IRenderableFood {
 	public void draw(GraphicsContext gc, double x, double y) {
 		// TODO Auto-generated method stub
 		gc.setFill(Color.WHITE);
-		gc.fillRect(x-24, y-34, 38, 28);
+		gc.drawImage(image, x-35, y-70, 70, 70);
 		double yOfIngredient = y-27;
 		
 		if (foodOnPlate.getIngredient(Food.VEGETABLE) == true) {

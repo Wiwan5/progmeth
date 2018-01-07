@@ -64,7 +64,7 @@ public class Shelf extends Counter {
 		
 		}
 		else if(image ==2) {
-			gc.drawImage(ResoureLoader.counter[1],x-width/2, y-height, width, height);
+			gc.drawImage(ResoureLoader.counter[1],x-width/2, y-height, width, height+25);
 		}
 		if (foodOnCounter != null) {
 			foodOnCounter.draw(gc, x, y);

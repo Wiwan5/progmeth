@@ -10,10 +10,7 @@ import model.food.Plate;
 import model.player.Player;
 
 public class Cashier extends Counter {
-	static Image cashier;
-	static {
-		cashier=new Image("file:res/img/"+"counter"+7+".png");
-	}
+
 	private GameModel model;
 
 	public Cashier(double x, double y, int w, int h, GameModel model) {
@@ -43,7 +40,7 @@ public class Cashier extends Counter {
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		
-		gc.drawImage(cashier, x-width/2, y-height, width, height);
+		gc.drawImage(ResoureLoader.counter[8], x-width/2 - 10, y-height, width, height);
 		
 		
 		
