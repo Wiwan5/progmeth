@@ -1,6 +1,6 @@
 package model.counter;
 
-import Utility.ResoureLoader;
+import Utility.ResourseLoader;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -40,7 +40,7 @@ public class Cashier extends Counter {
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		
-		gc.drawImage(ResoureLoader.counter[8], x-width/2 - 10, y-height, width, height);
+		gc.drawImage(ResourseLoader.counter[8], x-width/2 - 10, y-height, width, height);
 		
 		
 		

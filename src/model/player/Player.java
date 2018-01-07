@@ -10,7 +10,7 @@ import model.counter.Chopper;
 import model.counter.Counter;
 import model.food.IRenderableFood;
 import model.food.Plate;
-import Utility.ResoureLoader;
+import Utility.ResourseLoader;
 import game.logic.GameLogic;
 import input.InputUtility;
 
@@ -22,7 +22,7 @@ public class Player extends Entity {
 	private static final int DOWN = 4;
 
 	private static final int speed = 4;
-
+	private static boolean isChop = false;
 	private int scope;
 	private GameLogic logic;
 	private int direction;
@@ -131,11 +131,19 @@ public class Player extends Entity {
 		if (counter instanceof Chopper) { 
 			if (counter.counterHaveFood()) {
 				((Chopper) counter).chopping();
+				isChop =true;
 				return;
 			}
-			else System.out.println("no food can chopping");
+			else {
+				System.out.println("no food can chopping");
+				isChop = false;
+			}
+
 		}
-		else System.out.println("It's not Chopper");		
+		else {
+			System.out.println("It's not Chopper");
+			isChop = false;
+		}
 	}
 
 	private boolean canWalk(int changeX, int changeY) {
@@ -209,21 +217,14 @@ public class Player extends Entity {
 	}
 
 	public void draw(GraphicsContext gc) {
-		/*
-		gc.setFill(Color.BLUE);
-		// System.out.println(x + " " + y);
-		gc.fillRect(x - width / 2, y - height, width, height);
-		*/
-		gc.drawImage(ResoureLoader.player1.get(direction), x - width/2-25, y - height-30, 90, 90);
+		
+		gc.drawImage(ResourseLoader.player1.get(direction), x - width/2-25, y - height-30, 90, 90);
 		
 		gc.setFill(Color.BLACK);
 		gc.strokeRect(x - width / 2, y - height - scope, width, scope * 2 + height);
 		gc.strokeRect(x - width / 2 - scope, y - height, scope * 2 + width, height);
-		/*
-		gc.setFill(Color.BLACK);
-		gc.setFont(Font.font(20));
-		gc.fillText(""+direction, x-5, y-10);
-		*/
+		
+		gc.drawImage(ResourseLoader.effChop, x - width/2-25, y - height-30 , 100,100);
 		if (foodOnPlayer != null) {
 			foodOnPlayer.draw(gc, x-1, y-30);
 		}

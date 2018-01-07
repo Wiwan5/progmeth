@@ -1,10 +1,10 @@
 package model.counter;
 
-import Utility.ResoureLoader;
+
+import Utility.ResourseLoader;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
-import model.food.Chopable;
+
 import model.food.IRenderableFood;
 import model.food.Ingredient;
 import model.food.Ripenable;
@@ -24,6 +24,7 @@ public class Stove extends Counter {
 			Ripenable food = (Ripenable) foodOnCounter;
 			long lastLoopStartTime = System.nanoTime();
 			while (foodOnCounter != null && food.getTimeToRippened() < Ripenable.TIMEFORCOMPLETECHOPPED) {
+				
 				long elapsedTime = System.nanoTime() - lastLoopStartTime;
 				if (elapsedTime >= LOOP_TIME) {
 					lastLoopStartTime += LOOP_TIME;
@@ -35,17 +36,27 @@ public class Stove extends Counter {
 					e.printStackTrace();
 				}
 			}
+			setMusic(false);
 			if (food.getTimeToRippened() >= Ripenable.TIMEFORCOMPLETECHOPPED) {
 				food.setStateWhenCompleteRipen();
 				System.out.println("Ingredient is complete ripened");
 			}
 		}
 	};
+	public void setMusic(boolean play) {
+		if(play) {
+			ResourseLoader.rip_sound.play();
+			ResourseLoader.rip_sound.setVolume(5);
+			ResourseLoader.rip_sound.setCycleCount(javafx.animation.Animation.INDEFINITE);
+		}
+		else ResourseLoader.rip_sound.stop();
+	}
 
 	public void ripening() {
 		Ingredient ingredient = (Ingredient) foodOnCounter;
-		if (ingredient.getState() != model.food.Ingredient.CAN_RIPEN)
+		if (ingredient.getState() != model.food.Ingredient.CAN_RIPEN)	
 			return;
+		setMusic(true);
 		new Thread(ripen).start();
 	}
 
@@ -69,7 +80,7 @@ public class Stove extends Counter {
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(ResoureLoader.counter[7], x - width / 2, y - height, width, height+25);
+		gc.drawImage(ResourseLoader.counter[7], x - width / 2, y - height, width, height+25);
 
 		if (foodOnCounter != null) {
 			foodOnCounter.draw(gc, x, y);

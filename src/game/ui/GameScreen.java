@@ -1,10 +1,5 @@
 package game.ui;
 
-
-
-import Utility.Pair;
-
-import Utility.Time;
 import input.InputUtility;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -15,9 +10,10 @@ import javafx.scene.text.Font;
 import main.Main;
 import model.GameModel;
 import model.IRenderable;
-import model.food.Food;
+
 
 import model.Menu;
+import model.exception.menuException;
 
 public class GameScreen extends Canvas {
 
@@ -99,8 +95,12 @@ public class GameScreen extends Canvas {
 		gc.fillText(""+model.getTimeSecond(), Main.weight-112, 74);
 		gc.fillText(""+GameModel.getScore(), Main.weight-98, Main.height-68);
 		
-		
-		menu.updateMenu(gc);
+		try {
+			menu.updateMenu(gc);
+		}catch (menuException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 		
 	}
 

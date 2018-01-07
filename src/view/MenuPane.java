@@ -3,7 +3,7 @@ package view;
 
 import java.util.List;
 
-import Utility.ResoureLoader;
+import Utility.ResourseLoader;
 
 import controller.MenuControl;
 import controller.MenuTeb;
@@ -68,8 +68,8 @@ public class MenuPane extends Pane{
 				}
 				if(menu.getState()==2) {
 					bg(gc);
+					drawlogo(gc);
 					name.setVisible(false);
-					textname(gc);
 					drawMenu(gc);
 				}
 			}
@@ -81,8 +81,8 @@ public class MenuPane extends Pane{
 	
 	public void start() {
 		MenuControl.reset();
-		ResoureLoader.mMusic.play(0.7);
-		ResoureLoader.mMusic.setCycleCount(Timeline.INDEFINITE);
+		ResourseLoader.mMusic.play();
+		ResourseLoader.mMusic.setCycleCount(Timeline.INDEFINITE);
 		menuLoop = new Timeline();
 		menuLoop.setCycleCount(Timeline.INDEFINITE);
 		menuLoop.getKeyFrames().add(kFrame);
@@ -94,7 +94,7 @@ public class MenuPane extends Pane{
 	
 	public void stop() {
 		menuLoop.stop();
-		ResoureLoader.mMusic.stop();
+		ResourseLoader.mMusic.stop();
 		MenuControl.reset();
 	}
 	
@@ -112,7 +112,7 @@ public class MenuPane extends Pane{
 	
 	//DRAW CANVAS
 	public void bg(GraphicsContext gc) {
-		gc.drawImage(ResoureLoader.bg0, 0,0,Main.weight,Main.height);
+		gc.drawImage(ResourseLoader.bg0, 0,0,Main.weight,Main.height);
 		/*
 		gc.setFill(Color.AQUAMARINE);
 		gc.fillRect(10, 10,150, 120);
@@ -141,15 +141,7 @@ public class MenuPane extends Pane{
 		}
 	}
 	public void drawlogo(GraphicsContext gc) {
-		gc.drawImage(ResoureLoader.logo,Main.weight/2-210,100);
-		
-		/*gc.setTextBaseline(VPos.CENTER);
-		gc.setTextAlign(TextAlignment.CENTER);
-		Font font1 = new Font("Time New Roman", 100);
-		gc.setFont(font1);
-		gc.setFill(Color.BLACK);
-		gc.fillText("HURRY Lunch!",Main.weight/2,250);
-		*/
+		gc.drawImage(ResourseLoader.logo,Main.weight/2-300,100);
 	}
 	
 	public void textname(GraphicsContext gc) {
@@ -157,9 +149,11 @@ public class MenuPane extends Pane{
 		gc.setTextBaseline(VPos.CENTER);
 		gc.setTextAlign(TextAlignment.CENTER);
 		gc.setFont(font);
+		if(menu.getState()==1) {
 		gc.setFill(Color.SIENNA);
-		gc.fillText("Hello, Chief",Main.weight/2-100,280);
-		if(menu.getState() == 2)	gc.fillText(Player.name, Main.weight/2-10, 350);
+		gc.fillText("Hello, Chef",Main.weight/2-100,280);
+		}
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,7 +1,7 @@
 package model.counter;
 
 
-import Utility.ResoureLoader;
+import Utility.ResourseLoader;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -26,12 +26,15 @@ public class Chopper extends Counter {
 		
 		Chopable food = (Chopable) ingredient;
 		food.addTimeToChopped();
-		System.out.println("time of Chopped " + food.getTimeToChopped());
-		if(food.getTimeToChopped()%10==0) {
-			check=true;
+		if(food.getTimeToChopped()>0 && food.getTimeToChopped()%10==0) {
+			ResourseLoader.chop_sound.play();
+			
 		}
+		System.out.println("time of Chopped " + food.getTimeToChopped());
+		
 		if (food.getTimeToChopped() >= Chopable.TIMEFORCOMPLETECHOPPED) {
 			food.setStateWhenCompleteChop();
+			check=false;
 			System.out.println("Ingredient is complete chopped");
 		}
 	}
@@ -49,8 +52,8 @@ public class Chopper extends Counter {
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		if (foodOnCounter == null) gc.drawImage(ResoureLoader.counter[5],x-width/2, y-height, width, height);
-		else gc.drawImage(ResoureLoader.counter[6],x-width/2, y-height, width, height);
+		if (foodOnCounter == null) gc.drawImage(ResourseLoader.counter[5],x-width/2, y-height, width, height);
+		else gc.drawImage(ResourseLoader.counter[6],x-width/2, y-height, width, height);
 			
 	
 		if (foodOnCounter != null) {
