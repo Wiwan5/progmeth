@@ -39,15 +39,15 @@ public class Menu {
 			Time t = null;
 			if(n==1) {
 				food = new Food(false,true,true);
-				t = new Time(20000);
+				t = new Time(30000);
 			}
 			if(n==2) {
 				food = new Food(true,true,true);
-				t = new Time(40000);
+				t = new Time(50000);
 			}
 			if(n==3) {
 				food = new Food(true,false,true);
-				t = new Time(30000);
+				t = new Time(40000);
 			}
 			
 			Pair<Food, Time> e =Pair.make_pair(food,t);
