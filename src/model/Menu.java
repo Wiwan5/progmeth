@@ -1,9 +1,7 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -18,7 +16,7 @@ import model.exception.menuException;
 import model.food.Food;
 
 public class Menu {
-	public static CopyOnWriteArrayList<Pair<Food, Time>> allMenu=  new CopyOnWriteArrayList();
+	public static CopyOnWriteArrayList<Pair<Food, Time>> allMenu;
 	public static ArrayList<Pair<Double,Double>> position = new ArrayList<>();
 	static {
 		position.add(Pair.make_pair(0.0,0.0));
@@ -30,6 +28,7 @@ public class Menu {
 	}
 	public Menu() {
 		// TODO Auto-generated constructor stub
+		allMenu = new CopyOnWriteArrayList();
 	}
 	
 	public Pair<Food,Time> generateMenu() {

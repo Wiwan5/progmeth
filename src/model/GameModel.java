@@ -11,7 +11,7 @@ import model.food.Food;
 public class GameModel {
 	private RenderableHolder renderableHolder;
 
-	private Menu menu = new Menu();
+	private Menu menu ;
 	
 	private static final long START_NANO_TIME = 180000000000L;
 	
@@ -22,7 +22,7 @@ public class GameModel {
 		renderableHolder = new RenderableHolder();
 		score = 0;
 		remainingNanoTime = START_NANO_TIME;
-		
+		menu = new Menu();
 		try{
 			menu.generateMenu();
 			menu.generateMenu();
