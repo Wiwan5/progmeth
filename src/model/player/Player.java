@@ -2,8 +2,6 @@ package model.player;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import main.Main;
 import model.Entity;
 import model.counter.Chopper;

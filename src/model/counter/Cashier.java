@@ -2,12 +2,9 @@ package model.counter;
 
 import Utility.ResourseLoader;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 import model.GameModel;
 import model.food.IRenderableFood;
 import model.food.Plate;
-import model.player.Player;
 
 public class Cashier extends Counter {
 
@@ -40,7 +37,7 @@ public class Cashier extends Counter {
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		
-		gc.drawImage(ResourseLoader.counter[8], x-width/2 - 10, y-height, width, height);
+		gc.drawImage(ResourseLoader.counter[8], x-width/2 - 20, y-height, width+20, height);
 		
 		
 		
