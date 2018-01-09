@@ -78,31 +78,34 @@ public class Plate implements IRenderableFood {
 		gc.setFill(Color.WHITE);
 		gc.drawImage(image, x-35, y-70, 70, 70);
 		double yOfIngredient = y-27;
-		
-		if (foodOnPlate.getIngredient(Food.VEGETABLE) == true) {
-			gc.setFill(Color.GREENYELLOW);
-			gc.fillRect(x-20, yOfIngredient, 30, 20);
-			gc.strokeRect(x-20, yOfIngredient, 6, 20);
-			gc.strokeRect(x-14, yOfIngredient, 6, 20);
-			gc.strokeRect(x-8, yOfIngredient, 6, 20);
-			gc.strokeRect(x-2, yOfIngredient, 6, 20);
-			gc.strokeRect(x+4, yOfIngredient, 6, 20);
-			yOfIngredient -= 3;
-		}
+	
 		if (foodOnPlate.getIngredient(Food.MEAT) == true) {
-			gc.setFill(Color.CHOCOLATE);
-			gc.fillRect(x-20, yOfIngredient, 30, 20);
-			gc.strokeRect(x-20, yOfIngredient, 6, 20);
-			gc.strokeRect(x-14, yOfIngredient, 6, 20);
-			gc.strokeRect(x-8, yOfIngredient, 6, 20);
-			gc.strokeRect(x-2, yOfIngredient, 6, 20);
-			gc.strokeRect(x+4, yOfIngredient, 6, 20);
-			yOfIngredient -= 3;
+			if(foodOnPlate.getIngredient(Food.BREAD) == true) {
+				if(foodOnPlate.getIngredient(Food.VEGETABLE) == true) {
+					gc.drawImage(ResourseLoader.brVM,x-25, yOfIngredient-35, 50, 45);
+				}
+				else gc.drawImage(ResourseLoader.brMeat,x-25, yOfIngredient-35, 50, 45);
+			}
+			else if(foodOnPlate.getIngredient(Food.VEGETABLE) == true) {
+				gc.drawImage(ResourseLoader.meatV,x-25, yOfIngredient-35, 55, 50);
+			}
+			else {
+				gc.drawImage(ResourseLoader.meat[9],x-25, yOfIngredient-30, 45, 40);
+				
+			}
 		}
-		if (foodOnPlate.getIngredient(Food.BREAD) == true) {
-			gc.setFill(Color.BURLYWOOD); 
-			gc.fillRect(x-20, yOfIngredient, 30, 20);
-			yOfIngredient -= 3;
+		else if (foodOnPlate.getIngredient(Food.BREAD) == true) {
+			if(foodOnPlate.getIngredient(Food.VEGETABLE) == true) {
+				gc.drawImage(ResourseLoader.brVeg,x-25, yOfIngredient-35, 50, 45);
+			}
+			else{
+				gc.drawImage(ResourseLoader.bread,x-25, yOfIngredient-30, 50, 45);
+			}
+			
+		}
+		else if (foodOnPlate.getIngredient(Food.VEGETABLE) == true) {
+			gc.drawImage(ResourseLoader.veg[7],x-25, yOfIngredient-30, 50, 45);
+			
 		}
 	}
 

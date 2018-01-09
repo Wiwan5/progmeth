@@ -43,7 +43,7 @@ public class Stove extends Counter {
 			}
 		}
 	};
-	public void setMusic(boolean play) {
+	public static void setMusic(boolean play) {
 		if(play) {
 			ResourseLoader.rip_sound.play();
 			ResourseLoader.rip_sound.setVolume(5);

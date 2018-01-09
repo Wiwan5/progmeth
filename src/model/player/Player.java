@@ -181,7 +181,7 @@ public class Player extends Entity {
 	public void update() {
 		Counter counter = checkFrontObject();
 
-		/*if (InputUtility.getKeyPressed(KeyCode.RIGHT)) {
+		if (InputUtility.getKeyPressed(KeyCode.RIGHT)) {
 			right();
 		}
 		if (InputUtility.getKeyPressed(KeyCode.LEFT)) {
@@ -191,19 +191,6 @@ public class Player extends Entity {
 			up();
 		}
 		if (InputUtility.getKeyPressed(KeyCode.DOWN)) {
-			down();
-		}*/
-		
-		if (InputUtility.getKeyPressed(KeyCode.RIGHT)) {
-			right();
-		}
-		else if (InputUtility.getKeyPressed(KeyCode.LEFT)) {
-			left();
-		}
-		else if (InputUtility.getKeyPressed(KeyCode.UP)) {
-			up();
-		}
-		else if (InputUtility.getKeyPressed(KeyCode.DOWN)) {
 			down();
 		}
 		
@@ -233,11 +220,11 @@ public class Player extends Entity {
 	public void draw(GraphicsContext gc) {
 		
 		gc.drawImage(ResourseLoader.player1.get(direction), x - width/2-25, y - height-30, 90, 90);
-		
+		/*
 		gc.setFill(Color.BLACK);
 		gc.strokeRect(x - width / 2, y - height - scope, width, scope * 2 + height);
 		gc.strokeRect(x - width / 2 - scope, y - height, scope * 2 + width, height);
-		
+		*/
 		gc.drawImage(ResourseLoader.effChop, x - width/2-25, y - height-30 , 100,100);
 		if (foodOnPlayer != null) {
 			foodOnPlayer.draw(gc, x-1, y-30);

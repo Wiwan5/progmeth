@@ -37,10 +37,7 @@ public class Food {
 		return ingredients[i];
 	}
 	
-	/*public int printFood() {
-		//return Arrays.toString(ingredients);
-		return ingredients.length;
-	}*/
+	
 	
 	public void setIngredient(int i, boolean have) {
 		ingredients[i] = have;

@@ -13,6 +13,7 @@ import model.IRenderable;
 
 
 import model.Menu;
+import model.counter.Stove;
 import model.exception.menuException;
 
 public class GameScreen extends Canvas {
@@ -68,6 +69,7 @@ public class GameScreen extends Canvas {
 				e.printStackTrace();
 			}
 		}
+		Stove.setMusic(false);
 	}
 
 	public void addListerner() {
@@ -90,9 +92,9 @@ public class GameScreen extends Canvas {
 		if (model.getTimeSecond() < 10) {
 			gc.setFont(DEADLINE);
 			gc.setFill(Color.web("#dab41b"));
-			gc.fillText(""+model.getTimeSecond(), Main.weight-109, 77);
+			gc.fillText(""+model.getTimeSecond(), Main.weight-109, 79);
 			gc.setFill(Color.RED);
-			gc.fillText(""+model.getTimeSecond(), Main.weight-112, 74);
+			gc.fillText(""+model.getTimeSecond(), Main.weight-112, 76);
 		} else {
 			gc.setFont(SCORE_TIME_FONT);
 			gc.setFill(Color.web("#dab41b"));
@@ -109,6 +111,7 @@ public class GameScreen extends Canvas {
 		
 		try {
 			menu.updateMenu(gc);
+			
 		}catch (menuException e) {
 			// TODO: handle exception
 			e.printStackTrace();
