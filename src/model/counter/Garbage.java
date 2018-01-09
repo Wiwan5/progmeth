@@ -2,8 +2,6 @@ package model.counter;
 
 import Utility.ResourseLoader;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 import model.food.IRenderableFood;
 import model.food.Plate;
 
