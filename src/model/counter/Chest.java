@@ -46,15 +46,9 @@ public class Chest extends Counter {
 		// TODO Auto-generated method stub
 		if(ingredient == Food.MEAT) {
 			gc.drawImage(ResourseLoader.counter[2], x - width / 2, y - height, width, height+25);
-/*||||||| merged common ancestors
-			gc.drawImage(ResoureLoader.counter[2], x - width / 2, y - height, width, height);
-=======
-			gc.drawImage(ResourseLoader.counter[2], x - width / 2, y - height, width, height);
->>>>>>> e5852d28ed33b2aee63c22926729ca6e728590e7*/
-		}
-		else if(ingredient == Food.VEGETABLE) {
+		} else if(ingredient == Food.VEGETABLE) {
 			gc.drawImage(ResourseLoader.counter[3], x - width / 2, y - height, width, height+25);
-		}else {
+		} else {
 			gc.drawImage(ResourseLoader.counter[4], x - width / 2, y - height, width, height+25);
 		}
 		

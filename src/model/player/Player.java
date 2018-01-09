@@ -181,7 +181,7 @@ public class Player extends Entity {
 	public void update() {
 		Counter counter = checkFrontObject();
 
-		if (InputUtility.getKeyPressed(KeyCode.RIGHT)) {
+		/*if (InputUtility.getKeyPressed(KeyCode.RIGHT)) {
 			right();
 		}
 		if (InputUtility.getKeyPressed(KeyCode.LEFT)) {
@@ -192,7 +192,21 @@ public class Player extends Entity {
 		}
 		if (InputUtility.getKeyPressed(KeyCode.DOWN)) {
 			down();
+		}*/
+		
+		if (InputUtility.getKeyPressed(KeyCode.RIGHT)) {
+			right();
 		}
+		else if (InputUtility.getKeyPressed(KeyCode.LEFT)) {
+			left();
+		}
+		else if (InputUtility.getKeyPressed(KeyCode.UP)) {
+			up();
+		}
+		else if (InputUtility.getKeyPressed(KeyCode.DOWN)) {
+			down();
+		}
+		
 		if (InputUtility.getKeyPressed(KeyCode.S)) {
 			chopping(counter);
 		}
