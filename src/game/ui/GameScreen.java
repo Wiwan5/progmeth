@@ -11,7 +11,6 @@ import main.Main;
 import model.GameModel;
 import model.IRenderable;
 
-
 import model.Menu;
 import model.counter.Stove;
 import model.exception.menuException;
@@ -36,9 +35,8 @@ public class GameScreen extends Canvas {
 		menu = new Menu();
 		isAnimationRunning = false;
 		gc = this.getGraphicsContext2D();
-
 		// this.setVisible(true);
-		
+
 		addListerner();
 	}
 
@@ -82,48 +80,43 @@ public class GameScreen extends Canvas {
 	}
 
 	public void updateAnimation(long now) {
-		//GraphicsContext gc = this.getGraphicsContext2D();
-		
-		for (IRenderable entity : model.getEntities()) {
-			entity.draw(gc);
-		
-		}
-		
-		if (model.getTimeSecond() < 10) {
-			gc.setFont(DEADLINE);
-			gc.setFill(Color.web("#dab41b"));
-			gc.fillText(""+model.getTimeSecond(), Main.weight-109, 79);
-			gc.setFill(Color.RED);
-			gc.fillText(""+model.getTimeSecond(), Main.weight-112, 76);
-		} else {
-			gc.setFont(SCORE_TIME_FONT);
-			gc.setFill(Color.web("#dab41b"));
-			gc.fillText(""+model.getTimeSecond(), Main.weight-109, 77);
-			gc.setFill(Color.web("#716658"));
-			gc.fillText(""+model.getTimeSecond(), Main.weight-112, 74);
-		}		
-		
-		gc.setFont(SCORE_TIME_FONT);
-		gc.setFill(Color.web("#b682b2"));
-		gc.fillText(""+GameModel.getScore(), Main.weight-95, Main.height-65);
-		gc.setFill(Color.web("#716658"));
-		gc.fillText(""+GameModel.getScore(), Main.weight-98, Main.height-68);
-		
+		// GraphicsContext gc = this.getGraphicsContext2D();
 		try {
+
+			for (IRenderable entity : model.getEntities()) {
+				entity.draw(gc);
+
+			}
+
+			if (model.getTimeSecond() < 10) {
+				gc.setFont(DEADLINE);
+				gc.setFill(Color.web("#dab41b"));
+				gc.fillText("" + model.getTimeSecond(), Main.weight - 105, 79);
+				gc.setFill(Color.RED);
+				gc.fillText("" + model.getTimeSecond(), Main.weight - 109, 76);
+			} else {
+				gc.setFont(SCORE_TIME_FONT);
+				gc.setFill(Color.web("#dab41b"));
+				gc.fillText("" + model.getTimeSecond(), Main.weight - 105, 77);
+				gc.setFill(Color.web("#716658"));
+				gc.fillText("" + model.getTimeSecond(), Main.weight - 109, 74);
+			}
+
+			gc.setFont(SCORE_TIME_FONT);
+			gc.setFill(Color.web("#b682b2"));
+			gc.fillText("" + GameModel.getScore(), Main.weight - 80, Main.height - 57);
+			gc.setFill(Color.web("#716658"));
+			gc.fillText("" + GameModel.getScore(), Main.weight - 83, Main.height - 60);
+
 			menu.updateMenu(gc);
-			
-		}catch (menuException e) {
+
+		} catch (menuException e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		
+
 	}
 
-	
-
-	
-	
-	
 	public void setGameModel(GameModel model) {
 		this.model = model;
 	}

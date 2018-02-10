@@ -11,7 +11,7 @@ public class Garbage extends Counter {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
 	public boolean counterHaveFood() {
 		return false;
@@ -19,13 +19,15 @@ public class Garbage extends Counter {
 
 	@Override
 	public boolean canSettle(IRenderableFood foodOnPlayer) {
-		if (!(foodOnPlayer instanceof Plate)) return true;
+		if (!(foodOnPlayer instanceof Plate))
+			return true;
 		Plate plate = (Plate) foodOnPlayer;
-		if (!plate.plateHaveFood()) return false;
+		if (!plate.plateHaveFood())
+			return false;
 		return true;
 
 	}
-	
+
 	@Override
 	public IRenderableFood setFoodOnCounter(IRenderableFood food) {
 		if (food instanceof Plate) {
@@ -35,12 +37,12 @@ public class Garbage extends Counter {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(ResourseLoader.counter[9], x-width/2, y-height, width, height);
-		
+		gc.drawImage(ResourseLoader.counter[9], x - width / 2, y - height, width, height);
+
 		if (foodOnCounter != null) {
 			foodOnCounter.draw(gc, x, y);
 		}

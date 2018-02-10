@@ -13,33 +13,30 @@ public class Field implements IRenderable {
 
 	// ------------------------------------------------
 	public Field() {
-		field = new int[][] {{11,12,12,20,21,22,12,12,12,12,12,12,11},
-									{11,0,0,0,0,0,0,0,0,0,0,0,11},
-										{11,0,0,0,0,0,0,0,0,0,0,0,11},
-										//{1,0,0,0,0,0,0,0,0,0,0,0,1},
-										{11,0,0,12,12,12,5,12,12,12,0,0,11},
-										{11,0,0,0,0,0,0,0,0,0,0,0,6},
-										{0,0,0,0,0,0,0,0,0,0,0,0,11},
-										{4,0,0,0,0,0,0,0,0,0,0,0,11},
-										{11,11,11,3,11,3,11,11,11,9,9,11,11}};
-							
+		field = new int[][] { { 11, 12, 12, 20, 21, 22, 12, 12, 12, 12, 12, 12, 11 },
+				{ 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11 }, { 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11 },
+				// {1,0,0,0,0,0,0,0,0,0,0,0,1},
+				{ 11, 0, 0, 12, 12, 12, 5, 12, 12, 12, 0, 0, 11 }, { 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11 }, { 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11 },
+				{ 11, 11, 11, 3, 11, 3, 11, 11, 11, 9, 9, 11, 11 } };
+
 		row = field.length;
 		col = field[0].length;
 	}
-	//------------------modify in next time--------------------
+	// ------------------modify in next time--------------------
 
 	public int getZ() {
 		return -9999999;
 	}
-	
+
 	public int getRow() {
 		return row;
 	}
-	
+
 	public int getCol() {
 		return col;
 	}
-	
+
 	public int[][] getField() {
 		return field;
 	}
@@ -47,11 +44,9 @@ public class Field implements IRenderable {
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		
-		gc.drawImage(ResourseLoader.bg1,0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
-		
-		
-		
+
+		gc.drawImage(ResourseLoader.bg1, 0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+
 	}
 
 }

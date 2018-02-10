@@ -43,7 +43,6 @@ public class Player extends Entity {
 		direction = DOWN;
 	}
 
-	
 	public boolean frontHaveObject(double otherX, double otherY, int otherW, int otherH, int changeX, int changeY) {
 		double x1, x2, y1, y2;
 		x1 = x - width / 2 + changeX;
@@ -77,17 +76,16 @@ public class Player extends Entity {
 		for (Counter c : logic.counterInGame) {
 			if (frontHaveObject(c.getX(), c.getY(), c.getWidth(), c.getHeight(), frontX, frontY)) {
 				double x1, x2, y1, y2;
-				if (direction==LEFT || direction==RIGHT) {
+				if (direction == LEFT || direction == RIGHT) {
 					y1 = y - height;
 					y2 = c.getY() - c.getHeight();
-					if ((y1>=y2 && y2+c.getHeight()-y1 >= height/2) ||
-							(y1<y2 && y1+height-y2 >= height/2))
+					if ((y1 >= y2 && y2 + c.getHeight() - y1 >= height / 2)
+							|| (y1 < y2 && y1 + height - y2 >= height / 2))
 						return c;
-				} else if (direction==UP || direction==DOWN) {
+				} else if (direction == UP || direction == DOWN) {
 					x1 = x - width / 2;
 					x2 = c.getX() - c.getWidth() / 2;
-					if ((x1>=x2 && x2+c.getWidth()-x1 >= width/2) ||
-							(x1<x2 && x1+width-x2 >= width/2)) 
+					if ((x1 >= x2 && x2 + c.getWidth() - x1 >= width / 2) || (x1 < x2 && x1 + width - x2 >= width / 2))
 						return c;
 				}
 			}
@@ -101,44 +99,41 @@ public class Player extends Entity {
 		foodOnPlayer = counter.setFoodOnCounter(foodOnPlayer);
 	}
 
-	/*private void callIngredient(Counter counter) {
-		if (counter != null && counter.counterHaveFood())
-			foodOnPlayer = counter.callIngredient(this);
-	}*/
-	
+	/*
+	 * private void callIngredient(Counter counter) { if (counter != null &&
+	 * counter.counterHaveFood()) foodOnPlayer = counter.callIngredient(this); }
+	 */
+
 	// for check run process
 	private void callIngredient(Counter counter) {
 		if (counter != null) {
-			if(counter.counterHaveFood()) {
+			if (counter.counterHaveFood()) {
 				foodOnPlayer = counter.callIngredient(this);
 				System.out.println("sucess for call ingredient");
-			} else System.out.println("counter not have food");
-		}
-		else System.out.println("In front of not have counter for use");
+			} else
+				System.out.println("counter not have food");
+		} else
+			System.out.println("In front of not have counter for use");
 	}
 
-	/*private void chopping(Counter counter) {
-		if (counter instanceof Chopper && counter.getFoodOnShelf() != null) {
-			((Chopper) counter).chopping();
-			return;
-		}
-		System.out.println("Can't chopping");		
-	}*/
-		
+	/*
+	 * private void chopping(Counter counter) { if (counter instanceof Chopper &&
+	 * counter.getFoodOnShelf() != null) { ((Chopper) counter).chopping(); return; }
+	 * System.out.println("Can't chopping"); }
+	 */
+
 	private void chopping(Counter counter) {
-		if (counter instanceof Chopper) { 
+		if (counter instanceof Chopper) {
 			if (counter.counterHaveFood()) {
 				((Chopper) counter).chopping();
-				isChop =true;
+				isChop = true;
 				return;
-			}
-			else {
+			} else {
 				System.out.println("no food can chopping");
 				isChop = false;
 			}
 
-		}
-		else {
+		} else {
 			System.out.println("It's not Chopper");
 			isChop = false;
 		}
@@ -191,7 +186,7 @@ public class Player extends Entity {
 		if (InputUtility.getKeyPressed(KeyCode.DOWN)) {
 			down();
 		}
-		
+
 		if (InputUtility.getKeyPressed(KeyCode.S)) {
 			chopping(counter);
 		}
@@ -216,23 +211,21 @@ public class Player extends Entity {
 	}
 
 	public void draw(GraphicsContext gc) {
-		
-		gc.drawImage(ResourseLoader.player1.get(direction), x - width/2-25, y - height-30, 90, 90);
+
+		gc.drawImage(ResourseLoader.player1.get(direction), x - width / 2 - 25, y - height - 30, 90, 90);
 		/*
-		gc.setFill(Color.BLACK);
-		gc.strokeRect(x - width / 2, y - height - scope, width, scope * 2 + height);
-		gc.strokeRect(x - width / 2 - scope, y - height, scope * 2 + width, height);
-		*/
-		gc.drawImage(ResourseLoader.effChop, x - width/2-25, y - height-30 , 100,100);
+		 * gc.setFill(Color.BLACK); gc.strokeRect(x - width / 2, y - height - scope,
+		 * width, scope * 2 + height); gc.strokeRect(x - width / 2 - scope, y - height,
+		 * scope * 2 + width, height);
+		 */
+		gc.drawImage(ResourseLoader.effChop, x - width / 2 - 25, y - height - 30, 100, 100);
 		if (foodOnPlayer != null) {
-			foodOnPlayer.draw(gc, x-1, y-30);
+			foodOnPlayer.draw(gc, x - 1, y - 30);
 		}
 	}
 
 	public int getZ() {
 		return 9;
 	}
-
-
 
 }

@@ -6,9 +6,9 @@ import model.player.Player;
 
 public abstract class Counter extends Entity {
 	protected IRenderableFood foodOnCounter;
-	
+
 	public abstract boolean canSettle(IRenderableFood foodOnPlayer);
-	
+
 	public Counter(double x, double y, int w, int h) {
 		this.x = x;
 		this.y = y;
@@ -16,28 +16,37 @@ public abstract class Counter extends Entity {
 		height = h;
 		foodOnCounter = null;
 	}
-	
+
 	public IRenderableFood callIngredient(Player player) {
 		IRenderableFood c = foodOnCounter;
 		foodOnCounter = null;
 		return c;
 	}
-	
+
 	public boolean counterHaveFood() {
-		if (foodOnCounter != null) return true;
+		if (foodOnCounter != null)
+			return true;
 		return false;
 	};
-	
+
 	public IRenderableFood setFoodOnCounter(IRenderableFood food) {
-  		foodOnCounter = food;
- 		return null;
-  	}
-	
-	public int getWidth()	{return width;}
-	
-	public int getHeight()	{return height;}
-	
-	public double getX()	{return x;}
-	
-	public double getY()	{return y;}
+		foodOnCounter = food;
+		return null;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public double getX() {
+		return x;
+	}
+
+	public double getY() {
+		return y;
+	}
 }

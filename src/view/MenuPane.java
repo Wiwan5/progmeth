@@ -1,6 +1,5 @@
 package view;
 
-
 import java.util.List;
 
 import Utility.ResourseLoader;
@@ -28,22 +27,22 @@ import javafx.util.Duration;
 import main.Main;
 import model.player.Player;
 
-public class MenuPane extends Pane{
+public class MenuPane extends Pane {
 	private MenuTeb menu;
-	private Canvas mCanvas =new Canvas(Main.weight,Main.height);
+	private Canvas mCanvas = new Canvas(Main.weight, Main.height);
 	private KeyFrame kFrame;
 	private Timeline menuLoop;
-	public Font font =Font.font("Time New Roman",FontWeight.BOLD,30);
+	public Font font = Font.font("Time New Roman", FontWeight.BOLD, 30);
 	private TextField name;
-	
+
 	public MenuPane() {
 		super();
-		menu = new MenuTeb();		
+		menu = new MenuTeb();
 		name = new TextField();
-		
+
 		GraphicsContext gc = mCanvas.getGraphicsContext2D();
-		name.setLayoutX(Main.weight/2-180);
-		name.setLayoutY(350);
+		name.setLayoutX(Main.weight / 2 - 180);
+		name.setLayoutY(300);
 		name.setMinSize(200, 50);
 		name.setFont(font);
 		name.setVisible(false);
@@ -52,21 +51,21 @@ public class MenuPane extends Pane{
 		kFrame = new KeyFrame(Duration.millis(23), new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				if(menu.getState()==1) {
+				if (menu.getState() == 1) {
 					bg(gc);
 					textname(gc);
 					name.setVisible(true);
 					drawMenu(gc);
-					
+
 				}
-				if(menu.getState()==0) {
+				if (menu.getState() == 0) {
 					bg(gc);
 					name.clear();
 					name.setVisible(false);
 					drawlogo(gc);
 					drawMenu(gc);
 				}
-				if(menu.getState()==2) {
+				if (menu.getState() == 2) {
 					bg(gc);
 					drawlogo(gc);
 					name.setVisible(false);
@@ -75,10 +74,9 @@ public class MenuPane extends Pane{
 			}
 		});
 		getChildren().addAll(mCanvas, name);
-		
-		
+
 	}
-	
+
 	public void start() {
 		MenuControl.reset();
 		ResourseLoader.mMusic.play();
@@ -88,18 +86,14 @@ public class MenuPane extends Pane{
 		menuLoop.getKeyFrames().add(kFrame);
 		menuLoop.play();
 	}
-	
-	
-	
-	
+
 	public void stop() {
 		menuLoop.stop();
 		ResourseLoader.mMusic.stop();
 		MenuControl.reset();
 	}
-	
 
-	//getter
+	// getter
 	public MenuTeb getMenu() {
 		return menu;
 	}
@@ -107,61 +101,59 @@ public class MenuPane extends Pane{
 	public Canvas getMenuCanvas() {
 		return mCanvas;
 	}
-	
-	
-	
-	//DRAW CANVAS
+
+	// DRAW CANVAS
 	public void bg(GraphicsContext gc) {
-		gc.drawImage(ResourseLoader.bg0, 0,0,Main.weight,Main.height);
-		/*
-		gc.setFill(Color.AQUAMARINE);
-		gc.fillRect(10, 10,150, 120);
-		*/
+		gc.drawImage(ResourseLoader.bg0, 0, 0, Main.weight, Main.height);
+
 	}
-	
+
 	public void drawMenu(GraphicsContext gc) {
 		gc.setTextBaseline(VPos.CENTER);
 		gc.setTextAlign(TextAlignment.CENTER);
 		try {
-		List<String> m = menu.getMenu();
-		for(int i = 0;i<m.size();i++) {
-			gc.setFill(Color.BROWN);
-			if(i == menu.getSelect())	gc.setFill(Color.CHOCOLATE);
-			gc.fillRoundRect(Main.weight/2-100, 500+i*80, 200, 50, 10, 10);
-			gc.setTextBaseline(VPos.CENTER);
-			gc.setTextAlign(TextAlignment.CENTER);
-			gc.setFont(font);
-			if(i == menu.getSelect())	gc.setFill(Color.BEIGE);
-			else	gc.setFill(Color.BURLYWOOD);
-			gc.fillText((String) m.get(i),Main.weight/2,520+i*80);
-		}
-		
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	public void drawlogo(GraphicsContext gc) {
-		gc.drawImage(ResourseLoader.logo,Main.weight/2-300,100);
-	}
-	
-	public void textname(GraphicsContext gc) {
-		try{
-		gc.setTextBaseline(VPos.CENTER);
-		gc.setTextAlign(TextAlignment.CENTER);
-		gc.setFont(font);
-		if(menu.getState()==1) {
-		gc.setFill(Color.SIENNA);
-		gc.fillText("Hello, Chef",Main.weight/2-100,280);
-		}
-		
+			List<String> m = menu.getMenu();
+			for (int i = 0; i < m.size(); i++) {
+				gc.setFill(Color.BROWN);
+				if (i == menu.getSelect())
+					gc.setFill(Color.CHOCOLATE);
+				gc.fillRoundRect(Main.weight / 2 - 100, 450 + i * 80, 200, 50, 10, 10);
+				gc.setTextBaseline(VPos.CENTER);
+				gc.setTextAlign(TextAlignment.CENTER);
+				gc.setFont(font);
+				if (i == menu.getSelect())
+					gc.setFill(Color.BEIGE);
+				else
+					gc.setFill(Color.BURLYWOOD);
+				gc.fillText((String) m.get(i), Main.weight / 2, 470 + i * 80);
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
+	public void drawlogo(GraphicsContext gc) {
+		gc.drawImage(ResourseLoader.logo, Main.weight / 2 - 300, 100);
+	}
+
+	public void textname(GraphicsContext gc) {
+		try {
+			gc.setTextBaseline(VPos.CENTER);
+			gc.setTextAlign(TextAlignment.CENTER);
+			gc.setFont(font);
+			if (menu.getState() == 1) {
+				gc.setFill(Color.SIENNA);
+				gc.fillText("Hello, Chef", Main.weight / 2 - 100, 250);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	public String getName() {
 		return name.getText().trim();
 	}
-	
 
 }

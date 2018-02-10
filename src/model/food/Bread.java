@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 public class Bread extends Ingredient {
-	
+
 	public Bread() {
 		state = COOKED;
 	}
@@ -20,8 +20,8 @@ public class Bread extends Ingredient {
 	@Override
 	public void draw(GraphicsContext gc, double x, double y) {
 		// TODO Auto-generated method stub
-		
-		gc.drawImage(ResourseLoader.bread, x-25, y-60, 50, 50);
+
+		gc.drawImage(ResourseLoader.bread, x - 25, y - 60, 50, 50);
 	}
 
 }

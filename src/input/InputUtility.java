@@ -11,7 +11,7 @@ public class InputUtility {
 	private static Set<KeyCode> activeKeys = new HashSet<>();
 	private static Queue<KeyCode> triggerKeys = new ConcurrentLinkedQueue<>();
 	private static final Set<KeyCode> POLLABLE_KEYS = new HashSet<>();
-	
+
 	static {
 		// KeyCode D -> key for chopping
 		POLLABLE_KEYS.add(KeyCode.A);
@@ -19,28 +19,37 @@ public class InputUtility {
 		POLLABLE_KEYS.add(KeyCode.F);
 		POLLABLE_KEYS.add(KeyCode.P);
 	}
-	
+
 	public static boolean getKeyPressed(KeyCode keycode) {
 		return activeKeys.contains(keycode);
 	}
-	
+
 	public static void setKeyPressed(KeyCode keycode, boolean pressed) {
 		if (pressed) {
 			if (POLLABLE_KEYS.contains(keycode) && !activeKeys.contains(keycode)) {
 				triggerKeys.add(keycode);
 			}
 			activeKeys.add(keycode);
-		}else {
+		} else {
 			activeKeys.remove(keycode);
 		}
 		System.out.println(activeKeys);
 	}
-	
+
 	public static boolean isPollAvailable() {
 		return triggerKeys.size() != 0;
 	}
-	
+
 	public static KeyCode pollKey() {
 		return triggerKeys.poll();
 	}
+
+	public static Set<KeyCode> getActiveKeys() {
+		return activeKeys;
+	}
+
+	public static Queue<KeyCode> getTriggerKeys() {
+		return triggerKeys;
+	}
+
 }

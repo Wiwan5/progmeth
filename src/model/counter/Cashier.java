@@ -14,7 +14,7 @@ public class Cashier extends Counter {
 		super(x, y, w, h);
 		this.model = model;
 	}
-	
+
 	@Override
 	public boolean canSettle(IRenderableFood foodOnPlayer) {
 		if (foodOnPlayer instanceof Plate) {
@@ -23,12 +23,12 @@ public class Cashier extends Counter {
 		}
 		return false;
 	}
-	
+
 	@Override
 	public IRenderableFood setFoodOnCounter(IRenderableFood food) {
 		Plate plate = (Plate) food;
 		model.serve(plate.getFoodOnPlate());
-		//foodOnCounter = new Plate();
+		// foodOnCounter = new Plate();
 		plate.dumpFood();
 		return plate;
 	}
@@ -36,11 +36,9 @@ public class Cashier extends Counter {
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		
-		gc.drawImage(ResourseLoader.counter[8], x-width/2 - 20, y-height, width+20, height);
-		
-		
-		
+
+		gc.drawImage(ResourseLoader.counter[8], x - width / 2 - 20, y - height, width + 20, height);
+
 		if (foodOnCounter != null) {
 			foodOnCounter.draw(gc, x, y);
 		}

@@ -1,4 +1,5 @@
 package Utility;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -11,19 +12,17 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 
-public class Score implements Comparable<Score>{
+public class Score implements Comparable<Score> {
 	public String content;
 	private String nm;
 	private int sc;
-	
-	public Score(String name,int score){
+
+	public Score(String name, int score) {
 		this.nm = name;
-		this.sc = score;		
+		this.sc = score;
 	}
-	
-	
-	
-	public static void add(String name,int score) {		//don't know the future
+
+	public static void add(String name, int score) { // don't know the future
 		try (BufferedWriter wr = new BufferedWriter(new FileWriter("score.dat", true))) {
 			wr.write(name + "~~" + score + "\n");
 			wr.flush();
@@ -35,23 +34,19 @@ public class Score implements Comparable<Score>{
 			});
 		}
 	}
-	
-	
-	
-	
+
 	public static void read() {
 		PriorityQueue<Score> pq = new PriorityQueue<>();
 		try (BufferedReader in = new BufferedReader(new FileReader("score.dat"))) {
-			for (String x = in.readLine(); x != null; x = in.readLine())
-            {
+			for (String x = in.readLine(); x != null; x = in.readLine()) {
 				String[] rd = x.split("~~");
 				Score c = new Score(rd[0], Integer.parseInt(rd[1]));
 				pq.add(c);
-            }
+			}
 			String content = "Top ten ranking :\n\n";
 			for (int i = 0; i < 10 && !pq.isEmpty(); i++) {
 				Score s = pq.poll();
-				content += "\t"+(i + 1) + ".  Chief   " + s.getNm() + "          Score:  " + s.getSc() + "\n";
+				content += "\t" + (i + 1) + ".  Chief   " + s.getNm() + "          Score:  " + s.getSc() + "\n";
 			}
 			Alert alert = new Alert(AlertType.INFORMATION, content, ButtonType.OK);
 			alert.setHeaderText("Scoreboard");
@@ -63,36 +58,21 @@ public class Score implements Comparable<Score>{
 			alert.setTitle("Scoreboard");
 			alert.showAndWait();
 		}
-		
-		
-		
+
 	}
 
-	
-	
 	public String getNm() {
 		return nm;
 	}
-
-
 
 	public int getSc() {
 		return sc;
 	}
 
-
-
 	@Override
 	public int compareTo(Score o) {
-		// TODO Auto-generated method stub	
-		return Integer.compare(o.getSc(),getSc());
+		// TODO Auto-generated method stub
+		return Integer.compare(o.getSc(), getSc());
 	}
 
-	
-	
-	
-	
-	
-	
-	
 }
