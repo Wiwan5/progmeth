@@ -1,9 +1,9 @@
 package main;
 
-import controller.MenuControl;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
+import menuController.MenuControl;
 import view.MenuPane;
 import view.SceneManager;
 

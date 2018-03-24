@@ -54,7 +54,7 @@ public class GamePane extends Pane {
 		ResourseLoader.gMusic.stop();
 		Platform.runLater(() -> {
 			Alert alert = new Alert(AlertType.INFORMATION, "Your score :  " + GameModel.getScore(), ButtonType.OK);
-			alert.setHeaderText("Cheif  :   " + Player.name);
+			alert.setHeaderText("Chef  :   " + Player.name);
 			alert.setTitle("GameOver");
 			alert.showAndWait();
 			SceneManager.getCurrent().goTo("menu");

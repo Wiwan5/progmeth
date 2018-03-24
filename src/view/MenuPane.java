@@ -3,9 +3,6 @@ package view;
 import java.util.List;
 
 import Utility.ResourseLoader;
-
-import controller.MenuControl;
-import controller.MenuTeb;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -15,7 +12,7 @@ import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.TextField;
-
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -25,14 +22,17 @@ import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 
 import main.Main;
+import menuController.MenuControl;
+import menuController.MenuTeb;
 import model.player.Player;
 
-public class MenuPane extends Pane {
+public class MenuPane extends AnchorPane {
 	private MenuTeb menu;
 	private Canvas mCanvas = new Canvas(Main.weight, Main.height);
 	private KeyFrame kFrame;
 	private Timeline menuLoop;
 	public Font font = Font.font("Time New Roman", FontWeight.BOLD, 30);
+	public Font fontInTextField = Font.font("Time New Roman", FontWeight.BOLD,20);
 	private TextField name;
 
 	public MenuPane() {
@@ -41,31 +41,24 @@ public class MenuPane extends Pane {
 		name = new TextField();
 
 		GraphicsContext gc = mCanvas.getGraphicsContext2D();
-		name.setLayoutX(Main.weight / 2 - 180);
-		name.setLayoutY(300);
-		name.setMinSize(200, 50);
-		name.setFont(font);
+		name.setLayoutX(Main.weight / 2 - 190);
+		name.setLayoutY(430);
+		name.setMinSize(400, 60);
+		name.setFont(fontInTextField);
 		name.setVisible(false);
 		name.setAlignment(Pos.CENTER);
-		name.setPromptText(" TYPE YOUR NAME ");
+		name.setPromptText("Hello,Chef ..TYPE YOUR NAME..");
 		kFrame = new KeyFrame(Duration.millis(23), new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				if (menu.getState() == 1) {
+				if (menu.getState() == 0) {
 					bg(gc);
-					textname(gc);
+					drawlogo(gc);
 					name.setVisible(true);
 					drawMenu(gc);
 
 				}
-				if (menu.getState() == 0) {
-					bg(gc);
-					name.clear();
-					name.setVisible(false);
-					drawlogo(gc);
-					drawMenu(gc);
-				}
-				if (menu.getState() == 2) {
+				if (menu.getState() == 1) {
 					bg(gc);
 					drawlogo(gc);
 					name.setVisible(false);
@@ -114,6 +107,7 @@ public class MenuPane extends Pane {
 		try {
 			List<String> m = menu.getMenu();
 			for (int i = 0; i < m.size(); i++) {
+				if(m.get(i).equals(""))	continue;
 				gc.setFill(Color.BROWN);
 				if (i == menu.getSelect())
 					gc.setFill(Color.CHOCOLATE);
@@ -137,21 +131,7 @@ public class MenuPane extends Pane {
 		gc.drawImage(ResourseLoader.logo, Main.weight / 2 - 300, 100);
 	}
 
-	public void textname(GraphicsContext gc) {
-		try {
-			gc.setTextBaseline(VPos.CENTER);
-			gc.setTextAlign(TextAlignment.CENTER);
-			gc.setFont(font);
-			if (menu.getState() == 1) {
-				gc.setFill(Color.SIENNA);
-				gc.fillText("Hello, Chef", Main.weight / 2 - 100, 250);
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
+	
 	public String getName() {
 		return name.getText().trim();
 	}

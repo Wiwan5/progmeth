@@ -13,7 +13,7 @@ import model.IRenderable;
 
 import model.Menu;
 import model.counter.Stove;
-import model.exception.menuException;
+import model.exception.MenuException;
 
 public class GameScreen extends Canvas {
 
@@ -110,7 +110,7 @@ public class GameScreen extends Canvas {
 
 			menu.updateMenu(gc);
 
-		} catch (menuException e) {
+		} catch (MenuException e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}

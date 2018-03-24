@@ -12,7 +12,7 @@ import Utility.Time;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import model.counter.Counter;
-import model.exception.menuException;
+import model.exception.MenuException;
 import model.food.Food;
 
 public class Menu {
@@ -67,7 +67,7 @@ public class Menu {
 		return false;
 	}
 
-	public void updateMenu(GraphicsContext gc) throws menuException {
+	public void updateMenu(GraphicsContext gc) throws MenuException {
 		int ch = 0;
 		boolean remove = false;
 		for (Pair<Food, Time> menu : allMenu) {
@@ -79,16 +79,15 @@ public class Menu {
 
 		}
 		if (remove) {
-			for (Pair<Food, Time> menu : allMenu) {
-				if (menu.second.isTimeup()) {
-					allMenu.remove(menu);
-
+			for (int i =0;i<allMenu.size();i++) {
+				if (allMenu.get(i).second.isTimeup()) {
+					allMenu.remove(allMenu.get(i));
 				}
 
 			}
 		}
 		if (allMenu.size() == 0 || allMenu.size() >= 4)
-			throw new menuException();
+			throw new MenuException();
 
 		if (allMenu.size() <= 2) {
 			generateMenu();

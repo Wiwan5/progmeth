@@ -1,4 +1,4 @@
-package controller;
+package menuController;
 
 import java.util.Set;
 import java.util.concurrent.ConcurrentSkipListSet;

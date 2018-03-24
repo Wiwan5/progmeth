@@ -1,12 +1,10 @@
 package model.exception;
 
-import model.Menu;
 
-public class menuException extends ArrayIndexOutOfBoundsException {
+public class MenuException extends ArrayIndexOutOfBoundsException {
 	private static final long serialVersionUID = 1L;
-	Menu m;
 
-	public menuException() {
+	public MenuException() {
 		// TODO Auto-generated constructor stub
 		System.out.println("Menu out of bounds");
 	}

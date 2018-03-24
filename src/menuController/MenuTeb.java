@@ -1,4 +1,4 @@
-package controller;
+package menuController;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -20,18 +20,14 @@ public class MenuTeb {
 	private int state = 0;
 
 	private List<String> mainMenu = new CopyOnWriteArrayList<>();
-	private List<String> playMenu = new CopyOnWriteArrayList<>();
 	private List<String> gamePlayMenu = new CopyOnWriteArrayList<>();
 
 	{
+		mainMenu.add("");
 		mainMenu.add("Start Game");
 		mainMenu.add("Scoreboard");
-		mainMenu.add("Exit");
 
-		playMenu.add("Play");
-		playMenu.add("Main Menu");
-		playMenu.add("Exit");
-
+	
 		gamePlayMenu.add("Play again");
 		gamePlayMenu.add("Scoreboard");
 		gamePlayMenu.add("Main Menu");
@@ -45,42 +41,23 @@ public class MenuTeb {
 		state = 0;
 	}
 
-	private void gotoPlaymenu() {
-		select = -1;
-		state = 1;
-	}
-
 	public void gotoGameplaymenu() {
 		select = -1;
-		state = 2;
+		state = 1;
 	}
 
 	public List<String> getMenu() {
 		if (state == 0)
 			return mainMenu;
-		if (state == 1)
-			return playMenu;
 		return gamePlayMenu;
 	}
 
 	public void click() {
 		ResourseLoader.click_sound.play();
 		if (state == 0) {
-			if (select == 0) {
-				gotoPlaymenu();
-			} else if (select == 1) {
-				Score.read();
-			} else if (select == 2) {
-				Platform.runLater(() -> {
-					Platform.exit();
-					System.exit(0);
-				});
-
-			}
-		} else if (state == 1) {
 			GamePane gameP = ((GamePane) SceneManager.getCurrent().getPane("game"));
 			MenuPane menuP = ((MenuPane) SceneManager.getCurrent().getPane("menu"));
-			if (select == 0) {
+			if (select == 1) {
 				String name = menuP.getName();
 				if (name.isEmpty()) {
 					Alert alert = new Alert(AlertType.ERROR, "The name is empty. Please type your name", ButtonType.OK);
@@ -98,19 +75,12 @@ public class MenuTeb {
 
 				}
 
-			} else if (select == 1) {
-				gotoMainmenu();
-
 			} else if (select == 2) {
+				Score.read();
 
-				Platform.runLater(() -> {
-					Platform.exit();
-					System.exit(0);
-				});
+			} 
 
-			}
-
-		} else if (state == 2) {
+		} else if (state == 1) {
 			GamePane gameP = ((GamePane) SceneManager.getCurrent().getPane("game"));
 			MenuPane menuP = ((MenuPane) SceneManager.getCurrent().getPane("menu"));
 			if (select == 0) {
