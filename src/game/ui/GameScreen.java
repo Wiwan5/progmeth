@@ -21,7 +21,7 @@ public class GameScreen extends Canvas {
 	private static final long LOOP_TIME = 1000000000 / FPS;
 
 	private static final Font SCORE_TIME_FONT = new Font("Monospace", 40);
-	private static final Font DEADLINE = new Font("Monospace", 60);
+	private static final Font DEADLINE = new Font("Monospace", 50);
 
 	private GraphicsContext gc;
 	Menu menu;
@@ -91,15 +91,15 @@ public class GameScreen extends Canvas {
 			if (model.getTimeSecond() < 10) {
 				gc.setFont(DEADLINE);
 				gc.setFill(Color.web("#dab41b"));
-				gc.fillText("" + model.getTimeSecond(), Main.weight - 105, 79);
+				gc.fillText("" + model.getTimeSecond(), Main.weight - 100, 79);
 				gc.setFill(Color.RED);
-				gc.fillText("" + model.getTimeSecond(), Main.weight - 109, 76);
+				gc.fillText("" + model.getTimeSecond(), Main.weight - 105, 76);
 			} else {
 				gc.setFont(SCORE_TIME_FONT);
 				gc.setFill(Color.web("#dab41b"));
-				gc.fillText("" + model.getTimeSecond(), Main.weight - 105, 77);
+				gc.fillText("" + model.getTimeSecond(), Main.weight - 100, 77);
 				gc.setFill(Color.web("#716658"));
-				gc.fillText("" + model.getTimeSecond(), Main.weight - 109, 74);
+				gc.fillText("" + model.getTimeSecond(), Main.weight - 105, 74);
 			}
 
 			gc.setFont(SCORE_TIME_FONT);

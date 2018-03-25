@@ -43,8 +43,8 @@ public class ResourseLoader {
 
 	// public static AudioClip game_music = new AudioClip();
 	public static AudioClip click_sound;
-	public static AudioClip mMusic;
-	public static AudioClip gMusic;
+	//public static AudioClip mMusic;
+	//public static AudioClip gMusic;
 	public static AudioClip gameOver_sound;
 	public static AudioClip rip_sound;
 	public static AudioClip chop_sound;
@@ -52,8 +52,7 @@ public class ResourseLoader {
 	public static void LoadResource() {
 		try {
 			click_sound = new AudioClip("file:res/sound/click.wav");
-			mMusic = new AudioClip("file:res/sound/mMusic.wav");
-			gMusic = new AudioClip("file:res/sound/gMusic.wav");
+			
 			gameOver_sound = new AudioClip("file:res/sound/gameOver.wav");
 			rip_sound = new AudioClip("file:res/sound/rip.wav");
 			chop_sound = new AudioClip("file:res/sound/chop.mp3");

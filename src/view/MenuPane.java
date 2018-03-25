@@ -20,6 +20,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 //import javafx.scene.media.AudioClip;
 import javafx.util.Duration;
+import javafx.scene.media.AudioClip;
 
 import main.Main;
 import menuController.MenuControl;
@@ -28,19 +29,20 @@ import model.player.Player;
 
 public class MenuPane extends AnchorPane {
 	private MenuTeb menu;
-	private Canvas mCanvas = new Canvas(Main.weight, Main.height);
+	private static Canvas mCanvas =  new Canvas(Main.weight, Main.height);;
 	private KeyFrame kFrame;
 	private Timeline menuLoop;
 	public Font font = Font.font("Time New Roman", FontWeight.BOLD, 30);
 	public Font fontInTextField = Font.font("Time New Roman", FontWeight.BOLD,20);
 	private TextField name;
-
+	private AudioClip mMusic = new AudioClip("file:res/sound/mMusic.wav");;
 	public MenuPane() {
-		super();
+		super(mCanvas);
 		menu = new MenuTeb();
 		name = new TextField();
 
 		GraphicsContext gc = mCanvas.getGraphicsContext2D();
+		getChildren().add(name);
 		name.setLayoutX(Main.weight / 2 - 190);
 		name.setLayoutY(430);
 		name.setMinSize(400, 60);
@@ -59,21 +61,21 @@ public class MenuPane extends AnchorPane {
 
 				}
 				if (menu.getState() == 1) {
+					name.setVisible(false);
 					bg(gc);
 					drawlogo(gc);
-					name.setVisible(false);
 					drawMenu(gc);
 				}
 			}
 		});
-		getChildren().addAll(mCanvas, name);
+		
 
 	}
 
 	public void start() {
 		MenuControl.reset();
-		ResourseLoader.mMusic.play();
-		ResourseLoader.mMusic.setCycleCount(Timeline.INDEFINITE);
+		mMusic.setCycleCount(AudioClip.INDEFINITE);
+		mMusic.play();
 		menuLoop = new Timeline();
 		menuLoop.setCycleCount(Timeline.INDEFINITE);
 		menuLoop.getKeyFrames().add(kFrame);
@@ -82,7 +84,7 @@ public class MenuPane extends AnchorPane {
 
 	public void stop() {
 		menuLoop.stop();
-		ResourseLoader.mMusic.stop();
+		mMusic.stop();
 		MenuControl.reset();
 	}
 

@@ -27,7 +27,6 @@ public class Main extends Application {
 			menuControler.keyEvent();
 			primaryStage.getIcons().add(ResourseLoader.icon);
 			primaryStage.setTitle("Prog Chief...Cooking game");
-			primaryStage.centerOnScreen();
 			primaryStage.setResizable(false);
 			sceneManager.goTo("menu");
 

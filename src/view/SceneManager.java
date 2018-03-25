@@ -33,8 +33,8 @@ public class SceneManager {
 			((GamePane) mPane.get(key)).getCanvas().requestFocus();
 		}
 		if (mPane.get(key) instanceof MenuPane) {
+		//	((MenuPane) mPane.get(key)).getMenuCanvas().requestFocus();
 			((MenuPane) mPane.get(key)).start();
-			((MenuPane) mPane.get(key)).getMenuCanvas().requestFocus();
 
 		}
 	}
