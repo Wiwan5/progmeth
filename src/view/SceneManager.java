@@ -31,6 +31,7 @@ public class SceneManager {
 		mPane.get(key).requestFocus();
 		if (mPane.get(key) instanceof GamePane) {
 			((GamePane) mPane.get(key)).getCanvas().requestFocus();
+
 		}
 		if (mPane.get(key) instanceof MenuPane) {
 		//	((MenuPane) mPane.get(key)).getMenuCanvas().requestFocus();

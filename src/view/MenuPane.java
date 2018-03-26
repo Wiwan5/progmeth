@@ -29,7 +29,7 @@ import model.player.Player;
 
 public class MenuPane extends AnchorPane {
 	private MenuTeb menu;
-	private static Canvas mCanvas =  new Canvas(Main.weight, Main.height);;
+	private static Canvas mCanvas;
 	private KeyFrame kFrame;
 	private Timeline menuLoop;
 	public Font font = Font.font("Time New Roman", FontWeight.BOLD, 30);
@@ -37,11 +37,12 @@ public class MenuPane extends AnchorPane {
 	private TextField name;
 	private AudioClip mMusic = new AudioClip("file:res/sound/mMusic.wav");;
 	public MenuPane() {
-		super(mCanvas);
+		super();
 		menu = new MenuTeb();
 		name = new TextField();
-
+		mCanvas =  new Canvas(Main.weight, Main.height);
 		GraphicsContext gc = mCanvas.getGraphicsContext2D();
+		getChildren().add(mCanvas);
 		getChildren().add(name);
 		name.setLayoutX(Main.weight / 2 - 190);
 		name.setLayoutY(430);

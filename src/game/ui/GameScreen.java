@@ -41,6 +41,7 @@ public class GameScreen extends Canvas {
 	}
 
 	public void startAnimation() {
+		this.requestFocus();
 		gameAnimation = new Thread(this::animationLoop, "Game Animation Thread");
 		isAnimationRunning = true;
 		gameAnimation.start();
