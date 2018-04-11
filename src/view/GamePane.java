@@ -26,7 +26,7 @@ public class GamePane extends Pane {
 	private static GameScreen canvas ;
 	private static GameLogic logic;
 	private static GraphicsContext gc;
-	public static Font font = Font.font("Time New Roman", FontWeight.BOLD, 100);
+	private static Font font = Font.font("Time New Roman", FontWeight.BOLD, 100);
 	private static AudioClip gMusic = new AudioClip("file:res/sound/gMusic.wav");
 
 	public GamePane() {

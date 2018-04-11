@@ -32,15 +32,16 @@ public class MenuPane extends AnchorPane {
 	private static Canvas mCanvas;
 	private KeyFrame kFrame;
 	private Timeline menuLoop;
-	public Font font = Font.font("Time New Roman", FontWeight.BOLD, 30);
-	public Font fontInTextField = Font.font("Time New Roman", FontWeight.BOLD,20);
+	private static final Font font = Font.font("Time New Roman", FontWeight.BOLD, 30);
+	private static final Font fontInTextField = Font.font("Time New Roman", FontWeight.BOLD, 23);
 	private TextField name;
 	private AudioClip mMusic = new AudioClip("file:res/sound/mMusic.wav");;
+
 	public MenuPane() {
 		super();
 		menu = new MenuTeb();
 		name = new TextField();
-		mCanvas =  new Canvas(Main.width, Main.height);
+		mCanvas = new Canvas(Main.width, Main.height);
 		GraphicsContext gc = mCanvas.getGraphicsContext2D();
 		getChildren().add(mCanvas);
 		getChildren().add(name);
@@ -54,22 +55,19 @@ public class MenuPane extends AnchorPane {
 		kFrame = new KeyFrame(Duration.millis(23), new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
+				draw(gc);
 				if (menu.getState() == 0) {
-					bg(gc);
-					drawlogo(gc);
+
 					name.setVisible(true);
 					drawMenu(gc);
 
 				}
 				if (menu.getState() == 1) {
 					name.setVisible(false);
-					bg(gc);
-					drawlogo(gc);
 					drawMenu(gc);
 				}
 			}
 		});
-		
 
 	}
 
@@ -87,20 +85,7 @@ public class MenuPane extends AnchorPane {
 		mMusic.stop();
 	}
 
-	// getter
-	public MenuTeb getMenu() {
-		return menu;
-	}
-
-	public Canvas getMenuCanvas() {
-		return mCanvas;
-	}
-
 	// DRAW CANVAS
-	public void bg(GraphicsContext gc) {
-		gc.drawImage(ResourceLoader.bg0, 0, 0, Main.width, Main.height);
-
-	}
 
 	public void drawMenu(GraphicsContext gc) {
 		gc.setTextBaseline(VPos.CENTER);
@@ -108,13 +93,13 @@ public class MenuPane extends AnchorPane {
 		try {
 			List<String> m = menu.getMenu();
 			for (int i = 0; i < m.size(); i++) {
-				if(m.get(i).equals(""))	continue;
+				if (m.get(i).equals(""))
+					continue;
 				gc.setFill(Color.BROWN);
 				if (i == menu.getSelect())
 					gc.setFill(Color.CHOCOLATE);
 				gc.fillRoundRect(Main.width / 2 - 100, 450 + i * 80, 200, 50, 10, 10);
-				gc.setTextBaseline(VPos.CENTER);
-				gc.setTextAlign(TextAlignment.CENTER);
+				
 				gc.setFont(font);
 				if (i == menu.getSelect())
 					gc.setFill(Color.BEIGE);
@@ -128,13 +113,21 @@ public class MenuPane extends AnchorPane {
 		}
 	}
 
-	public void drawlogo(GraphicsContext gc) {
+	public void draw(GraphicsContext gc) {
+		gc.drawImage(ResourceLoader.bg0, 0, 0,Main.width,Main.height);
 		gc.drawImage(ResourceLoader.logo, Main.width / 2 - 300, 100);
 	}
 
-	
+	// getter
 	public String getName() {
 		return name.getText().trim();
 	}
 
+	public MenuTeb getMenu() {
+		return menu;
+	}
+
+	public Canvas getMenuCanvas() {
+		return mCanvas;
+	}
 }
