@@ -8,44 +8,42 @@ import javafx.scene.input.KeyCode;
 import main.Main;
 
 public class MenuControl {
-	MenuTeb menu;
-	Canvas menuC;
-	private static Set<KeyCode> keyPress;
+	protected MenuTeb menu;
+	protected Canvas menuCanvas;
 
 	public MenuControl(Canvas mCanvas, MenuTeb menu) {
 		this.menu = menu;
-		this.menuC = mCanvas;
-		keyPress = new ConcurrentSkipListSet<>();
+		this.menuCanvas = mCanvas;
 
 	}
 
 	public void keyEvent() {
 
-		menuC.setOnMouseMoved(e -> {
-			if (e.getX() >= Main.weight / 2 - 100 && e.getY() >= 450 && e.getX() <= 200 + Main.weight / 2 - 100
+		menuCanvas.setOnMouseMoved(e -> {
+			if (e.getX() >= Main.width / 2 - 100 && e.getY() >= 450 && e.getX() <= 200 + Main.width / 2 - 100
 					&& e.getY() <= 450 + 50) {
 				System.out.println("Menu1");
 				menu.setSelect(0);
-			} else if (e.getX() >= Main.weight / 2 - 100 && e.getY() >= 450 + 80
-					&& e.getX() <= 200 + Main.weight / 2 - 100 && e.getY() <= 450 + 50 + 80) {
+			} else if (e.getX() >= Main.width / 2 - 100 && e.getY() >= 450 + 80
+					&& e.getX() <= 200 + Main.width / 2 - 100 && e.getY() <= 450 + 50 + 80) {
 				System.out.println("Menu2");
 				menu.setSelect(1);
-			} else if (e.getX() >= Main.weight / 2 - 100 && e.getY() >= 450 + 80 + 80
-					&& e.getX() <= 200 + Main.weight / 2 - 100 && e.getY() <= 450 + 50 + 80 + 80) {
+			} else if (e.getX() >= Main.width / 2 - 100 && e.getY() >= 450 + 80 + 80
+					&& e.getX() <= 200 + Main.width / 2 - 100 && e.getY() <= 450 + 50 + 80 + 80) {
 				System.out.println("Menu3");
 				menu.setSelect(2);
 			} else
 				menu.setSelect(-1);
 		});
 
-		menuC.setOnMousePressed(e -> {
+		menuCanvas.setOnMousePressed(e -> {
 			System.out.println("Click");
-			if ((e.getX() >= Main.weight / 2 - 100 && e.getY() >= 450 && e.getX() <= 200 + Main.weight / 2 - 100
+			if ((e.getX() >= Main.width / 2 - 100 && e.getY() >= 450 && e.getX() <= 200 + Main.width / 2 - 100
 					&& e.getY() <= 450 + 50)
-					|| (e.getX() >= Main.weight / 2 - 100 && e.getY() >= 450 + 80
-							&& e.getX() <= 200 + Main.weight / 2 - 100 && e.getY() <= 450 + 50 + 80)
-					|| (e.getX() >= Main.weight / 2 - 100 && e.getY() >= 450 + 80 + 80
-							&& e.getX() <= 200 + Main.weight / 2 - 100 && e.getY() <= 450 + 50 + 80 + 80))
+					|| (e.getX() >= Main.width / 2 - 100 && e.getY() >= 450 + 80
+							&& e.getX() <= 200 + Main.width / 2 - 100 && e.getY() <= 450 + 50 + 80)
+					|| (e.getX() >= Main.width / 2 - 100 && e.getY() >= 450 + 80 + 80
+							&& e.getX() <= 200 + Main.width / 2 - 100 && e.getY() <= 450 + 50 + 80 + 80))
 				menu.click();
 		});
 		/*
@@ -55,10 +53,6 @@ public class MenuControl {
 		 * 
 		 * menu.click(); } });
 		 */
-	}
-
-	public static void reset() {
-		keyPress.clear();
 	}
 
 }

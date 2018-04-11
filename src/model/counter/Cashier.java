@@ -1,6 +1,6 @@
 package model.counter;
 
-import Utility.ResourseLoader;
+import Utility.ResourceLoader;
 import javafx.scene.canvas.GraphicsContext;
 import model.GameModel;
 import model.food.IRenderableFood;
@@ -37,7 +37,7 @@ public class Cashier extends Counter {
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 
-		gc.drawImage(ResourseLoader.counter[8], x - width / 2 - 20, y - height, width + 20, height);
+		gc.drawImage(ResourceLoader.counter[8], x - width / 2 - 20, y - height, width + 20, height);
 
 		if (foodOnCounter != null) {
 			foodOnCounter.draw(gc, x, y);

@@ -2,7 +2,7 @@ package view;
 
 import java.util.List;
 
-import Utility.ResourseLoader;
+import Utility.ResourceLoader;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -40,11 +40,11 @@ public class MenuPane extends AnchorPane {
 		super();
 		menu = new MenuTeb();
 		name = new TextField();
-		mCanvas =  new Canvas(Main.weight, Main.height);
+		mCanvas =  new Canvas(Main.width, Main.height);
 		GraphicsContext gc = mCanvas.getGraphicsContext2D();
 		getChildren().add(mCanvas);
 		getChildren().add(name);
-		name.setLayoutX(Main.weight / 2 - 190);
+		name.setLayoutX(Main.width / 2 - 190);
 		name.setLayoutY(430);
 		name.setMinSize(400, 60);
 		name.setFont(fontInTextField);
@@ -74,7 +74,6 @@ public class MenuPane extends AnchorPane {
 	}
 
 	public void start() {
-		MenuControl.reset();
 		mMusic.setCycleCount(AudioClip.INDEFINITE);
 		mMusic.play();
 		menuLoop = new Timeline();
@@ -86,7 +85,6 @@ public class MenuPane extends AnchorPane {
 	public void stop() {
 		menuLoop.stop();
 		mMusic.stop();
-		MenuControl.reset();
 	}
 
 	// getter
@@ -100,7 +98,7 @@ public class MenuPane extends AnchorPane {
 
 	// DRAW CANVAS
 	public void bg(GraphicsContext gc) {
-		gc.drawImage(ResourseLoader.bg0, 0, 0, Main.weight, Main.height);
+		gc.drawImage(ResourceLoader.bg0, 0, 0, Main.width, Main.height);
 
 	}
 
@@ -114,7 +112,7 @@ public class MenuPane extends AnchorPane {
 				gc.setFill(Color.BROWN);
 				if (i == menu.getSelect())
 					gc.setFill(Color.CHOCOLATE);
-				gc.fillRoundRect(Main.weight / 2 - 100, 450 + i * 80, 200, 50, 10, 10);
+				gc.fillRoundRect(Main.width / 2 - 100, 450 + i * 80, 200, 50, 10, 10);
 				gc.setTextBaseline(VPos.CENTER);
 				gc.setTextAlign(TextAlignment.CENTER);
 				gc.setFont(font);
@@ -122,7 +120,7 @@ public class MenuPane extends AnchorPane {
 					gc.setFill(Color.BEIGE);
 				else
 					gc.setFill(Color.BURLYWOOD);
-				gc.fillText((String) m.get(i), Main.weight / 2, 470 + i * 80);
+				gc.fillText((String) m.get(i), Main.width / 2, 470 + i * 80);
 			}
 
 		} catch (Exception e) {
@@ -131,7 +129,7 @@ public class MenuPane extends AnchorPane {
 	}
 
 	public void drawlogo(GraphicsContext gc) {
-		gc.drawImage(ResourseLoader.logo, Main.weight / 2 - 300, 100);
+		gc.drawImage(ResourceLoader.logo, Main.width / 2 - 300, 100);
 	}
 
 	

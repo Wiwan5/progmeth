@@ -7,11 +7,11 @@ import menuController.MenuControl;
 import view.MenuPane;
 import view.SceneManager;
 
-import Utility.ResourseLoader;
+import Utility.ResourceLoader;
 
 public class Main extends Application {
 
-	public static final int weight = 900;
+	public static final int width = 900;
 	public static final int height = 700;
 
 	private SceneManager sceneManager;
@@ -21,11 +21,10 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			sceneManager = new SceneManager(primaryStage);
-			ResourseLoader.LoadResource();
 			menuControler = new MenuControl(((MenuPane) sceneManager.getPane("menu")).getMenuCanvas(),
 					((MenuPane) sceneManager.getPane("menu")).getMenu());
 			menuControler.keyEvent();
-			primaryStage.getIcons().add(ResourseLoader.icon);
+			primaryStage.getIcons().add(ResourceLoader.icon);
 			primaryStage.setTitle("Prog Chief...Cooking game");
 			primaryStage.setResizable(false);
 			sceneManager.goTo("menu");

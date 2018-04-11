@@ -1,16 +1,13 @@
 package model.food;
 
-import Utility.ResourseLoader;
+import Utility.ResourceLoader;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 public class Plate implements IRenderableFood {
-
-	private static Image image;
-	static {
-		image = new Image("file:res/img/plate.png");
-	}
+	private static Image image = new Image("file:res/img/plate.png");
+	
 
 	private Food foodOnPlate;
 
@@ -84,24 +81,24 @@ public class Plate implements IRenderableFood {
 		if (foodOnPlate.getIngredient(Food.MEAT) == true) {
 			if (foodOnPlate.getIngredient(Food.BREAD) == true) {
 				if (foodOnPlate.getIngredient(Food.VEGETABLE) == true) {
-					gc.drawImage(ResourseLoader.brVM, x - 25, yOfIngredient - 35, 50, 45);
+					gc.drawImage(ResourceLoader.brVM, x - 25, yOfIngredient - 35, 50, 45);
 				} else
-					gc.drawImage(ResourseLoader.brMeat, x - 25, yOfIngredient - 35, 50, 45);
+					gc.drawImage(ResourceLoader.brMeat, x - 25, yOfIngredient - 35, 50, 45);
 			} else if (foodOnPlate.getIngredient(Food.VEGETABLE) == true) {
-				gc.drawImage(ResourseLoader.meatV, x - 25, yOfIngredient - 35, 55, 50);
+				gc.drawImage(ResourceLoader.meatV, x - 25, yOfIngredient - 35, 55, 50);
 			} else {
-				gc.drawImage(ResourseLoader.meat[9], x - 25, yOfIngredient - 30, 45, 40);
+				gc.drawImage(ResourceLoader.meat[9], x - 25, yOfIngredient - 30, 45, 40);
 
 			}
 		} else if (foodOnPlate.getIngredient(Food.BREAD) == true) {
 			if (foodOnPlate.getIngredient(Food.VEGETABLE) == true) {
-				gc.drawImage(ResourseLoader.brVeg, x - 25, yOfIngredient - 35, 50, 45);
+				gc.drawImage(ResourceLoader.brVeg, x - 25, yOfIngredient - 35, 50, 45);
 			} else {
-				gc.drawImage(ResourseLoader.bread, x - 25, yOfIngredient - 30, 50, 45);
+				gc.drawImage(ResourceLoader.bread, x - 25, yOfIngredient - 30, 50, 45);
 			}
 
 		} else if (foodOnPlate.getIngredient(Food.VEGETABLE) == true) {
-			gc.drawImage(ResourseLoader.veg[7], x - 25, yOfIngredient - 30, 50, 45);
+			gc.drawImage(ResourceLoader.veg[7], x - 25, yOfIngredient - 30, 50, 45);
 
 		}
 	}

@@ -1,6 +1,6 @@
 package model.field;
 
-import Utility.ResourseLoader;
+import Utility.ResourceLoader;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import model.IRenderable;
@@ -45,7 +45,7 @@ public class Field implements IRenderable {
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 
-		gc.drawImage(ResourseLoader.bg1, 0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+		gc.drawImage(ResourceLoader.bg1, 0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
 
 	}
 

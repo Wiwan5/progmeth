@@ -1,6 +1,6 @@
 package model.counter;
 
-import Utility.ResourseLoader;
+import Utility.ResourceLoader;
 import javafx.scene.canvas.GraphicsContext;
 import model.food.*;
 import model.player.Player;
@@ -45,11 +45,11 @@ public class Chest extends Counter {
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		if (ingredient == Food.MEAT) {
-			gc.drawImage(ResourseLoader.counter[2], x - width / 2, y - height, width, height + 25);
+			gc.drawImage(ResourceLoader.counter[2], x - width / 2, y - height, width, height + 25);
 		} else if (ingredient == Food.VEGETABLE) {
-			gc.drawImage(ResourseLoader.counter[3], x - width / 2, y - height, width, height + 25);
+			gc.drawImage(ResourceLoader.counter[3], x - width / 2, y - height, width, height + 25);
 		} else {
-			gc.drawImage(ResourseLoader.counter[4], x - width / 2, y - height, width, height + 25);
+			gc.drawImage(ResourceLoader.counter[4], x - width / 2, y - height, width, height + 25);
 		}
 
 		if (foodOnCounter != null) {

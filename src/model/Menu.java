@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import Utility.Pair;
-import Utility.ResourseLoader;
+import Utility.ResourceLoader;
 import Utility.Time;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -41,11 +41,11 @@ public class Menu {
 			food = new Food(false, true, true);
 			t = new Time(30000);
 		}
-		if (n == 2) {
+		if (n == 3) {
 			food = new Food(true, true, true);
 			t = new Time(60000);
 		}
-		if (n == 3) {
+		if (n == 2) {
 			food = new Food(true, false, true);
 			t = new Time(50000);
 		}
@@ -82,14 +82,15 @@ public class Menu {
 			for (int i =0;i<allMenu.size();i++) {
 				if (allMenu.get(i).second.isTimeup()) {
 					allMenu.remove(allMenu.get(i));
+					i-=1;
 				}
 
 			}
 		}
-		if (allMenu.size() == 0 || allMenu.size() >= 4)
+		if (allMenu.size() >= 4)
 			throw new MenuException();
 
-		if (allMenu.size() <= 2) {
+		if (allMenu.size() < 3) {
 			generateMenu();
 		}
 	}
@@ -100,14 +101,14 @@ public class Menu {
 		double y = pos.second;
 		gc.setFill(Color.HONEYDEW);
 		gc.fillRect(x + 10, y, 130, 100);
-		gc.drawImage(ResourseLoader.bread, x + 20, y + 60, 30, 30);
+		gc.drawImage(ResourceLoader.bread, x + 20, y + 60, 30, 30);
 
 		if (menu.first.getIngredient(0) == true) {
-			gc.drawImage(ResourseLoader.meat[0], x + 55, y + 60, 30, 30);
+			gc.drawImage(ResourceLoader.meat[0], x + 55, y + 60, 30, 30);
 
 		}
 		if (menu.first.getIngredient(1) == true) {
-			gc.drawImage(ResourseLoader.veg[0], x + 90, y + 60, 30, 30);
+			gc.drawImage(ResourceLoader.veg[0], x + 90, y + 60, 30, 30);
 		}
 	}
 

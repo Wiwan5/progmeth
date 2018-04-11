@@ -3,7 +3,7 @@ package menuController;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import Utility.ResourseLoader;
+import Utility.ResourceLoader;
 import Utility.Score;
 import view.MenuPane;
 import view.SceneManager;
@@ -30,10 +30,7 @@ public class MenuTeb {
 	
 		gamePlayMenu.add("Play again");
 		gamePlayMenu.add("Scoreboard");
-		gamePlayMenu.add("Main Menu");
-	}
-
-	public MenuTeb() {
+		gamePlayMenu.add("New Player");
 	}
 
 	private void gotoMainmenu() {
@@ -41,7 +38,7 @@ public class MenuTeb {
 		state = 0;
 	}
 
-	public void gotoGameplaymenu() {
+	private void gotoGameplaymenu() {
 		select = -1;
 		state = 1;
 	}
@@ -53,7 +50,7 @@ public class MenuTeb {
 	}
 
 	public void click() {
-		ResourseLoader.click_sound.play();
+		ResourceLoader.click_sound.play();
 		if (state == 0) {
 			GamePane gameP = ((GamePane) SceneManager.getCurrent().getPane("game"));
 			MenuPane menuP = ((MenuPane) SceneManager.getCurrent().getPane("menu"));
@@ -64,12 +61,13 @@ public class MenuTeb {
 					alert.setHeaderText(null);
 					alert.setTitle("Name is empty");
 					alert.showAndWait();
+					select = -1;
 				} else {
 					// call class that control game and set name of chief
 
 					menuP.stop();
 					SceneManager.getCurrent().goTo("game");
-					Player.name = name;
+					Player.setName(name);
 					gotoGameplaymenu();
 					gameP.start();
 
@@ -77,7 +75,7 @@ public class MenuTeb {
 
 			} else if (select == 2) {
 				Score.read();
-
+				select = -1;
 			} 
 
 		} else if (state == 1) {
@@ -85,10 +83,12 @@ public class MenuTeb {
 			MenuPane menuP = ((MenuPane) SceneManager.getCurrent().getPane("menu"));
 			if (select == 0) {
 				menuP.stop();
+				select = -1;
 				SceneManager.getCurrent().goTo("game");
 				gameP.start();
 			} else if (select == 1) {
 				Score.read();
+				select = -1;
 			} else if (select == 2) {
 				gotoMainmenu();
 
@@ -109,9 +109,6 @@ public class MenuTeb {
 		select = i;
 	}
 
-	public void clear() {
-		select = -1;
-		state = 0;
-	}
+	
 
 }

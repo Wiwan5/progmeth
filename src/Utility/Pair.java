@@ -4,16 +4,13 @@ public class Pair<x, y> {
 	public x first;
 	public y second;
 
-	public Pair() {
+	public Pair(x first, y second) {
+		this.first = first;
+		this.second = second;
 	}
 
-	public Pair(x f, y s) {
-		this.first = f;
-		this.second = s;
-	}
-
-	public static <x, y> Pair<x, y> make_pair(x f, y s) {
-		return new Pair<>(f, s);
+	public static <x, y> Pair<x, y> make_pair(x first, y second) {
+		return new Pair<>(first, second);
 	}
 
 }

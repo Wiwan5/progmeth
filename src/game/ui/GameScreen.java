@@ -30,7 +30,7 @@ public class GameScreen extends Canvas {
 	private boolean isAnimationRunning;
 
 	public GameScreen() {
-		this.setWidth(Main.weight);
+		this.setWidth(Main.width);
 		this.setHeight(Main.height);
 		menu = new Menu();
 		isAnimationRunning = false;
@@ -92,22 +92,22 @@ public class GameScreen extends Canvas {
 			if (model.getTimeSecond() < 10) {
 				gc.setFont(DEADLINE);
 				gc.setFill(Color.web("#dab41b"));
-				gc.fillText("" + model.getTimeSecond(), Main.weight - 100, 79);
+				gc.fillText("" + model.getTimeSecond(), Main.width - 100, 79);
 				gc.setFill(Color.RED);
-				gc.fillText("" + model.getTimeSecond(), Main.weight - 105, 76);
+				gc.fillText("" + model.getTimeSecond(), Main.width - 105, 76);
 			} else {
 				gc.setFont(SCORE_TIME_FONT);
 				gc.setFill(Color.web("#dab41b"));
-				gc.fillText("" + model.getTimeSecond(), Main.weight - 100, 77);
+				gc.fillText("" + model.getTimeSecond(), Main.width - 100, 77);
 				gc.setFill(Color.web("#716658"));
-				gc.fillText("" + model.getTimeSecond(), Main.weight - 105, 74);
+				gc.fillText("" + model.getTimeSecond(), Main.width - 105, 74);
 			}
 
 			gc.setFont(SCORE_TIME_FONT);
 			gc.setFill(Color.web("#b682b2"));
-			gc.fillText("" + GameModel.getScore(), Main.weight - 80, Main.height - 57);
+			gc.fillText("" + GameModel.getScore(), Main.width - 80, Main.height - 57);
 			gc.setFill(Color.web("#716658"));
-			gc.fillText("" + GameModel.getScore(), Main.weight - 83, Main.height - 60);
+			gc.fillText("" + GameModel.getScore(), Main.width - 83, Main.height - 60);
 
 			menu.updateMenu(gc);
 

@@ -11,14 +11,14 @@ import javafx.scene.layout.Pane;
 
 public class SceneManager {
 	private Stage stage;
-	private static SceneManager crrS = null;
+	private static SceneManager currentStage = null;
 
 	private HashMap<String, Scene> mScene = new HashMap<>();
 	private HashMap<String, Pane> mPane = new HashMap<>();
 
 	public SceneManager(Stage stage) {
 		this.stage = stage;
-		crrS = this;
+		currentStage = this;
 		mPane.put("game", new GamePane());
 		mPane.put("menu", new MenuPane());
 		mScene.put("game", new Scene(mPane.get("game")));
@@ -53,7 +53,7 @@ public class SceneManager {
 	}
 
 	public static SceneManager getCurrent() {
-		return crrS;
+		return currentStage;
 	}
 
 }

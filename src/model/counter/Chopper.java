@@ -1,6 +1,6 @@
 package model.counter;
 
-import Utility.ResourseLoader;
+import Utility.ResourceLoader;
 import javafx.scene.canvas.GraphicsContext;
 import model.food.Chopable;
 import model.food.IRenderableFood;
@@ -24,7 +24,7 @@ public class Chopper extends Counter {
 		Chopable food = (Chopable) ingredient;
 		food.addTimeToChopped();
 		if (food.getTimeToChopped() > 0 && food.getTimeToChopped() % 10 == 0) {
-			ResourseLoader.chop_sound.play();
+			ResourceLoader.chop_sound.play();
 
 		}
 		System.out.println("time of Chopped " + food.getTimeToChopped());
@@ -50,9 +50,9 @@ public class Chopper extends Counter {
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		if (foodOnCounter == null)
-			gc.drawImage(ResourseLoader.counter[5], x - width / 2, y - height, width, height);
+			gc.drawImage(ResourceLoader.counter[5], x - width / 2, y - height, width, height);
 		else
-			gc.drawImage(ResourseLoader.counter[6], x - width / 2, y - height, width, height);
+			gc.drawImage(ResourceLoader.counter[6], x - width / 2, y - height, width, height);
 
 		if (foodOnCounter != null) {
 			foodOnCounter.draw(gc, x, y);

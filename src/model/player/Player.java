@@ -8,12 +8,12 @@ import model.counter.Chopper;
 import model.counter.Counter;
 import model.food.IRenderableFood;
 import model.food.Plate;
-import Utility.ResourseLoader;
+import Utility.ResourceLoader;
 import game.logic.GameLogic;
 import input.InputUtility;
 
 public class Player extends Entity {
-	public static String name = "";
+	private static String name = "";
 	private static final int RIGHT = 1;
 	private static final int LEFT = 2;
 	private static final int UP = 3;
@@ -109,7 +109,7 @@ public class Player extends Entity {
 		if (counter != null) {
 			if (counter.counterHaveFood()) {
 				foodOnPlayer = counter.callIngredient(this);
-				System.out.println("sucess for call ingredient");
+				System.out.println("success for call ingredient");
 			} else
 				System.out.println("counter not have food");
 		} else
@@ -149,7 +149,7 @@ public class Player extends Entity {
 
 	private void right() {
 		direction = RIGHT;
-		if (canWalk(speed, 0) && x < Main.weight - width / 2)
+		if (canWalk(speed, 0) && x < Main.width - width / 2)
 			this.x += speed;
 	}
 
@@ -201,24 +201,23 @@ public class Player extends Entity {
 				}
 			}
 			// -----------------------for develop-------------------------
-			else if (key == KeyCode.F) {
+		/*	else if (key == KeyCode.F) {
 				foodOnPlayer = null;
 			} else if (key == KeyCode.P) {
 				foodOnPlayer = new Plate();
-			}
+			} */
 		}
 		// -----------------------------------------------------------
 	}
 
 	public void draw(GraphicsContext gc) {
 
-		gc.drawImage(ResourseLoader.player1.get(direction), x - width / 2 - 25, y - height - 30, 90, 90);
+		gc.drawImage(ResourceLoader.player1.get(direction), x - width / 2 - 25, y - height - 30, 90, 90);
 		/*
 		 * gc.setFill(Color.BLACK); gc.strokeRect(x - width / 2, y - height - scope,
 		 * width, scope * 2 + height); gc.strokeRect(x - width / 2 - scope, y - height,
 		 * scope * 2 + width, height);
 		 */
-		gc.drawImage(ResourseLoader.effChop, x - width / 2 - 25, y - height - 30, 100, 100);
 		if (foodOnPlayer != null) {
 			foodOnPlayer.draw(gc, x - 1, y - 30);
 		}
@@ -227,5 +226,12 @@ public class Player extends Entity {
 	public int getZ() {
 		return 9;
 	}
+	
+	public static String getName() {
+		return name;
+	}
 
+	public static void setName(String name) {
+		Player.name = name;
+	}
 }

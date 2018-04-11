@@ -2,7 +2,7 @@ package view;
 
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import Utility.ResourseLoader;
+import Utility.ResourceLoader;
 import Utility.Score;
 import game.logic.GameLogic;
 import game.ui.GameScreen;
@@ -51,14 +51,14 @@ public class GamePane extends Pane {
 	}
 
 	public void stop() {
-		ResourseLoader.gameOver_sound.play(1.5);
+		ResourceLoader.gameOver_sound.play(1.5);
 		logic.stopGame();
 		canvas.stopAnimation();
-		Score.add(Player.name, GameModel.getScore());
+		Score.add(Player.getName(), GameModel.getScore());
 		gMusic.stop();
 		Platform.runLater(() -> {
 			Alert alert = new Alert(AlertType.INFORMATION, "Your score :  " + GameModel.getScore(), ButtonType.OK);
-			alert.setHeaderText("Chef  :   " + Player.name);
+			alert.setHeaderText("Chef  :   " + Player.getName());
 			alert.setTitle("GameOver");
 			alert.showAndWait();
 			SceneManager.getCurrent().goTo("menu");

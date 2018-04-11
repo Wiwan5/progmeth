@@ -1,6 +1,6 @@
 package model.counter;
 
-import Utility.ResourseLoader;
+import Utility.ResourceLoader;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -45,11 +45,11 @@ public class Stove extends Counter {
 
 	public static void setMusic(boolean play) {
 		if (play) {
-			ResourseLoader.rip_sound.play();
-			ResourseLoader.rip_sound.setVolume(5);
-			ResourseLoader.rip_sound.setCycleCount(javafx.animation.Animation.INDEFINITE);
+			ResourceLoader.rip_sound.play();
+			ResourceLoader.rip_sound.setVolume(5);
+			ResourceLoader.rip_sound.setCycleCount(javafx.animation.Animation.INDEFINITE);
 		} else
-			ResourseLoader.rip_sound.stop();
+			ResourceLoader.rip_sound.stop();
 	}
 
 	public void ripening() {
@@ -80,7 +80,7 @@ public class Stove extends Counter {
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.drawImage(ResourseLoader.counter[7], x - width / 2, y - height, width, height + 25);
+		gc.drawImage(ResourceLoader.counter[7], x - width / 2, y - height, width, height + 25);
 
 		if (foodOnCounter != null) {
 			foodOnCounter.draw(gc, x, y);

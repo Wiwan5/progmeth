@@ -13,13 +13,12 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 
 public class Score implements Comparable<Score> {
-	public String content;
-	private String nm;
-	private int sc;
+	private String name;
+	private int score;
 
 	public Score(String name, int score) {
-		this.nm = name;
-		this.sc = score;
+		this.name = name;
+		this.score = score;
 	}
 
 	public static void add(String name, int score) { // don't know the future
@@ -46,7 +45,7 @@ public class Score implements Comparable<Score> {
 			String content = "Top ten ranking :\n\n";
 			for (int i = 0; i < 10 && !pq.isEmpty(); i++) {
 				Score s = pq.poll();
-				content += "\t" + (i + 1) + ".  Chief   " + s.getNm() + "          Score:  " + s.getSc() + "\n";
+				content += "\t" + (i + 1) + ".  Chief   " + s.getName() + "          Score:  " + s.getScore() + "\n";
 			}
 			Alert alert = new Alert(AlertType.INFORMATION, content, ButtonType.OK);
 			alert.setHeaderText("Scoreboard");
@@ -61,18 +60,18 @@ public class Score implements Comparable<Score> {
 
 	}
 
-	public String getNm() {
-		return nm;
+	public String getName() {
+		return name;
 	}
 
-	public int getSc() {
-		return sc;
+	public int getScore() {
+		return score;
 	}
 
 	@Override
 	public int compareTo(Score o) {
 		// TODO Auto-generated method stub
-		return Integer.compare(o.getSc(), getSc());
+		return Integer.compare(o.getScore(), getScore());
 	}
 
 }
