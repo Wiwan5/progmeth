@@ -35,7 +35,7 @@ public class Stove extends Counter {
 					e.printStackTrace();
 				}
 			}
-			setMusic(false);
+			setSound(false);
 			if (food.getTimeToRippened() >= Ripenable.TIMEFORCOMPLETECHOPPED) {
 				food.setStateWhenCompleteRipen();
 				System.out.println("Ingredient is complete ripened");
@@ -43,7 +43,7 @@ public class Stove extends Counter {
 		}
 	};
 
-	public static void setMusic(boolean play) {
+	public static void setSound(boolean play) {
 		if (play) {
 			ResourceLoader.rip_sound.play();
 			ResourceLoader.rip_sound.setVolume(5);
@@ -56,7 +56,7 @@ public class Stove extends Counter {
 		Ingredient ingredient = (Ingredient) foodOnCounter;
 		if (ingredient.getState() != model.food.Ingredient.CAN_RIPEN)
 			return;
-		setMusic(true);
+		setSound(true);
 		new Thread(ripen).start();
 	}
 

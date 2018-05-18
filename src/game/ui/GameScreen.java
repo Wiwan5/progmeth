@@ -74,7 +74,7 @@ public class GameScreen extends Canvas {
 				e.printStackTrace();
 			}
 		}
-		Stove.setMusic(false);
+		Stove.setSound(false);
 	}
 
 	public void addListerner() {
