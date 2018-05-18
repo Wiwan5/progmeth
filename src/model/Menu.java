@@ -72,11 +72,12 @@ public class Menu {
 
 	public void updateMenu(GraphicsContext gc) throws MenuException {
 		int ch = 0;
+		boolean remove = false;
 		for (int i =0;i<allMenu.size();i++) {
 			if (allMenu.get(i).second.isTimeup()) {
 				allMenu.remove(allMenu.get(i));
 				i-=1;
-				generateMenu();
+				remove = true;
 			}
 			else {
 				draw(Menu.position.get(ch), allMenu.get(i), gc);
@@ -85,11 +86,15 @@ public class Menu {
 				ch++;
 			}
 		}
-		/*if(amountPlate%5 == 0 && amountPlate != 0 && allMenu.size()<=3) {
-			generateMenu();
-		}*/
 		if (allMenu.size() >= 4) {
 			throw new MenuException();
+		}
+		if (remove) {
+			generateMenu();
+		}
+		
+		if(allMenu.size()<= 2) {
+			generateMenu();
 		}
 		
 		

@@ -129,7 +129,9 @@ public class GameScreen extends Canvas {
 			gc.fillText("" + score.first, Main.width - 88, Main.height - 55);
 			scoreEffect--;
 			menu.updateMenu(gc);
-
+			if(model.getTimeSecond() == 80 ) {
+				menu.generateMenu();
+			}
 		} catch (MenuException e) {
 			// TODO: handle exception
 			e.printStackTrace();
