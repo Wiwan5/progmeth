@@ -1,5 +1,7 @@
 package game.ui;
 
+import Utility.Pair;
+import Utility.Time;
 import input.InputUtility;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -22,12 +24,15 @@ public class GameScreen extends Canvas {
 
 	private static final Font SCORE_TIME_FONT = new Font("Monospace", 40);
 	private static final Font DEADLINE = new Font("Monospace", 50);
+	private static final Font SCORE_EFFECT= new Font("Monospace", 20);
 
 	private GraphicsContext gc;
-	Menu menu;
+	private Menu menu;
 	private GameModel model;
 	private Thread gameAnimation;
 	private boolean isAnimationRunning;
+	private Pair<Integer,Integer> score;
+	private int scoreEffect;
 
 	public GameScreen() {
 		this.setWidth(Main.width);
@@ -36,7 +41,8 @@ public class GameScreen extends Canvas {
 		isAnimationRunning = false;
 		gc = this.getGraphicsContext2D();
 		// this.setVisible(true);
-
+		scoreEffect = 0;
+		score = Pair.make_pair(0, 0);
 		addListerner();
 	}
 
@@ -92,23 +98,36 @@ public class GameScreen extends Canvas {
 			if (model.getTimeSecond() < 10) {
 				gc.setFont(DEADLINE);
 				gc.setFill(Color.web("#dab41b"));
-				gc.fillText("" + model.getTimeSecond(), Main.width - 100, 79);
+				gc.fillText("" + model.getTimeSecond(), Main.width - 90, 75);
 				gc.setFill(Color.RED);
-				gc.fillText("" + model.getTimeSecond(), Main.width - 105, 76);
+				gc.fillText("" + model.getTimeSecond(), Main.width - 95, 72);
 			} else {
 				gc.setFont(SCORE_TIME_FONT);
 				gc.setFill(Color.web("#dab41b"));
-				gc.fillText("" + model.getTimeSecond(), Main.width - 100, 77);
+				gc.fillText("" + model.getTimeSecond(), Main.width - 98, 70);
 				gc.setFill(Color.web("#716658"));
-				gc.fillText("" + model.getTimeSecond(), Main.width - 105, 74);
+				gc.fillText("" + model.getTimeSecond(), Main.width - 102, 66);
 			}
-
+			
+			
+			if(model.getScore() != score.first) {
+				//gc.fillText("+"+, x, y);
+				score.second = model.getScore() - score.first;
+				scoreEffect = 10;
+				score.first = model.getScore();
+			}
+			if(scoreEffect > 0 && score.second != 0) {
+				System.out.println(scoreEffect);	
+				gc.setFont(SCORE_EFFECT);
+				gc.setFill(Color.BROWN);
+				gc.fillText("+"+score.second,Main.width -80, Main.height -80-2*scoreEffect);
+			}
 			gc.setFont(SCORE_TIME_FONT);
 			gc.setFill(Color.web("#b682b2"));
-			gc.fillText("" + GameModel.getScore(), Main.width - 80, Main.height - 57);
+			gc.fillText("" + score.first, Main.width - 84, Main.height - 52);
 			gc.setFill(Color.web("#716658"));
-			gc.fillText("" + GameModel.getScore(), Main.width - 83, Main.height - 60);
-
+			gc.fillText("" + score.first, Main.width - 88, Main.height - 55);
+			scoreEffect--;
 			menu.updateMenu(gc);
 
 		} catch (MenuException e) {

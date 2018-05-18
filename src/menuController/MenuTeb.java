@@ -64,12 +64,20 @@ public class MenuTeb {
 					select = -1;
 				} else {
 					// call class that control game and set name of chief
-
+					select = -1;
 					menuP.stop();
-					SceneManager.getCurrent().goTo("game");
-					Player.setName(name);
-					gotoGameplaymenu();
-					gameP.start();
+					Platform.runLater(new Runnable() {
+						
+						@Override
+						public void run() {
+							// TODO Auto-generated method stub
+							SceneManager.getCurrent().goTo("game");
+							Player.setName(name);
+							gotoGameplaymenu();
+							gameP.start();
+						}
+					});
+					
 
 				}
 
@@ -84,8 +92,15 @@ public class MenuTeb {
 			if (select == 0) {
 				menuP.stop();
 				select = -1;
-				SceneManager.getCurrent().goTo("game");
-				gameP.start();
+				Platform.runLater(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						SceneManager.getCurrent().goTo("game");
+						gameP.start();
+					}
+				});
 			} else if (select == 1) {
 				Score.read();
 				select = -1;

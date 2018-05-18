@@ -8,12 +8,11 @@ import model.food.Ingredient;
 
 public class Chopper extends Counter {
 
-	static boolean check;
 
 	public Chopper(double x, double y, int w, int h) {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
-		check = false;
+
 	}
 
 	public void chopping() {
@@ -31,7 +30,6 @@ public class Chopper extends Counter {
 
 		if (food.getTimeToChopped() >= Chopable.TIMEFORCOMPLETECHOPPED) {
 			food.setStateWhenCompleteChop();
-			check = false;
 			System.out.println("Ingredient is complete chopped");
 		}
 	}

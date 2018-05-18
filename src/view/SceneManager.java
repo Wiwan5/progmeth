@@ -1,8 +1,10 @@
 package view;
 
 import javafx.stage.Stage;
+import main.Main;
 
-import java.util.HashMap;
+import java.util.concurrent.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,16 +15,17 @@ public class SceneManager {
 	private Stage stage;
 	private static SceneManager currentStage = null;
 
-	private HashMap<String, Scene> mScene = new HashMap<>();
-	private HashMap<String, Pane> mPane = new HashMap<>();
+	private ConcurrentMap<String, Scene> mScene = new ConcurrentHashMap<>();
+	
+	private ConcurrentMap<String, Pane> mPane = new ConcurrentHashMap<>();
 
 	public SceneManager(Stage stage) {
-		this.stage = stage;
 		currentStage = this;
 		mPane.put("game", new GamePane());
 		mPane.put("menu", new MenuPane());
-		mScene.put("game", new Scene(mPane.get("game")));
-		mScene.put("menu", new Scene(mPane.get("menu")));
+		mScene.put("game", new Scene(mPane.get("game"),Main.width,Main.height));
+		mScene.put("menu", new Scene(mPane.get("menu"),Main.width,Main.height));
+		this.stage = stage;
 
 	}
 
@@ -34,12 +37,15 @@ public class SceneManager {
 
 		}
 		if (mPane.get(key) instanceof MenuPane) {
-		//	((MenuPane) mPane.get(key)).getMenuCanvas().requestFocus();
+			((MenuPane) mPane.get(key)).getMenuCanvas().requestFocus();
 			((MenuPane) mPane.get(key)).start();
 
 		}
 	}
-
+	public void firstTime() {
+		stage.setScene(mScene.get("menu"));
+		
+	}
 	public Scene getScene(String key) {
 		return mScene.get(key);
 	}

@@ -11,7 +11,7 @@ public class GameModel {
 
 	private static final long START_NANO_TIME = 180000000000L;
 
-	static int score;
+	private static int score;
 	long remainingNanoTime;
 
 	public GameModel() {
@@ -55,17 +55,21 @@ public class GameModel {
 	}
 
 	public boolean serve(Food food) {
+		int scoreBeforeAdd = 20;
+		if (food.getIngredient(Food.MEAT) == true) {
+			scoreBeforeAdd += 30;
+		}
+		if (food.getIngredient(Food.VEGETABLE) == true) {
+			scoreBeforeAdd += 20;
+		}
 		if (menu.remove(food)) {
-			if (food.getIngredient(Food.MEAT) == true) {
-				score += 30;
-			}
-			if (food.getIngredient(Food.VEGETABLE) == true) {
-				score += 20;
-			}
+			score += scoreBeforeAdd;
 			menu.generateMenu();
+			//menu.amountPlate++;
 			System.out.println("correct menu");
 			return true;
 		}
+		
 		System.out.println("incorrect menu");
 		return false;
 	}

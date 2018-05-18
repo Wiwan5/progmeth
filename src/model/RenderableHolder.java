@@ -38,13 +38,6 @@ public class RenderableHolder {
 		}
 	}
 
-	public void update() {
-		/*
-		 * for (int i= entities.size() - 1; i>=0; i--) {
-		 * 
-		 * }
-		 */
-	}
 
 	public List<IRenderable> getEntities() {
 		return entities;

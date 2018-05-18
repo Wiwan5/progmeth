@@ -48,11 +48,11 @@ public class Meat extends Ingredient implements Chopable, Ripenable {
 			}
 		} else if (state == CAN_RIPEN) {
 			if (timeToRipened >= 0 && timeToRipened < 240) {
-				gc.drawImage(ResourceLoader.meat[0], x - 25, y - 60, 50, 45);
+				gc.drawImage(ResourceLoader.meat[0], x - 20, y - 60, 40, 45);
 			} else if (timeToRipened >= 240 && timeToRipened < 600) {
-				gc.drawImage(ResourceLoader.meat[8], x - 25, y - 60, 50, 45);
+				gc.drawImage(ResourceLoader.meat[8], x - 20, y - 60, 40, 45);
 			} else if (timeToRipened >= 600 && timeToRipened <= 720) {
-				gc.drawImage(ResourceLoader.meat[9], x - 25, y - 60, 50, 45);
+				gc.drawImage(ResourceLoader.meat[9], x - 20, y - 60, 40, 45);
 			}
 
 			if (timeToRipened >= 1) {
@@ -62,7 +62,7 @@ public class Meat extends Ingredient implements Chopable, Ripenable {
 				gc.fillRect(x - 20, y - 40, (double) (timeToRipened / 72 * 3), 5);
 			}
 		} else if (state == COOKED) {
-			gc.drawImage(ResourceLoader.meat[9], x - 25, y - 60, 50, 45);
+			gc.drawImage(ResourceLoader.meat[9], x - 20, y - 60, 40, 45);
 
 		}
 	}

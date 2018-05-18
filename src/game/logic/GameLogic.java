@@ -106,6 +106,7 @@ public class GameLogic {
 		}
 	};
 
+	
 	public void logicUpdate(long elapsedTime) {
 		player.update();
 		model.decreaseRemainingTime(elapsedTime);
