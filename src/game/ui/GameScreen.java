@@ -24,7 +24,7 @@ public class GameScreen extends Canvas {
 
 	private static final Font SCORE_TIME_FONT = new Font("Monospace", 40);
 	private static final Font DEADLINE = new Font("Monospace", 50);
-	private static final Font SCORE_EFFECT= new Font("Monospace", 20);
+	private static final Font SCORE_EFFECT= new Font("Monospace", 25);
 
 	private GraphicsContext gc;
 	private Menu menu;
@@ -129,9 +129,6 @@ public class GameScreen extends Canvas {
 			gc.fillText("" + score.first, Main.width - 88, Main.height - 55);
 			scoreEffect--;
 			menu.updateMenu(gc);
-			if(model.getTimeSecond() == 80 ) {
-				menu.generateMenu();
-			}
 		} catch (MenuException e) {
 			// TODO: handle exception
 			e.printStackTrace();

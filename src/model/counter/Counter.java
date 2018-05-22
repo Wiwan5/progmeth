@@ -19,6 +19,7 @@ public abstract class Counter extends Entity {
 
 	public IRenderableFood callIngredient(Player player) {
 		IRenderableFood c = foodOnCounter;
+		
 		foodOnCounter = null;
 		return c;
 	}

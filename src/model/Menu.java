@@ -18,21 +18,20 @@ import model.food.Food;
 public class Menu {
 	public static CopyOnWriteArrayList<Pair<Food, Time>> allMenu;
 	public static ArrayList<Pair<Double, Double>> position = new ArrayList<>();
-	//public static int amountPlate;
+	// public static int amountPlate;
 	static {
 		position.add(Pair.make_pair(0.0, 0.0));
 		position.add(Pair.make_pair(180.0, 0.0));
 		position.add(Pair.make_pair(360.0, 0.0));
 		position.add(Pair.make_pair(540.0, 0.0));
-		position.add(Pair.make_pair(720.0, 0.0));
 
 	}
 
 	public Menu() {
 		// TODO Auto-generated constructor stub
 		allMenu = new CopyOnWriteArrayList();
-		//amountPlate = 0;
-		
+		// amountPlate = 0;
+
 	}
 
 	public Pair<Food, Time> generateMenu() {
@@ -73,16 +72,15 @@ public class Menu {
 	public void updateMenu(GraphicsContext gc) throws MenuException {
 		int ch = 0;
 		boolean remove = false;
-		for (int i =0;i<allMenu.size();i++) {
+		for (int i = 0; i < allMenu.size(); i++) {
 			if (allMenu.get(i).second.isTimeup()) {
 				allMenu.remove(allMenu.get(i));
-				i-=1;
+				i -= 1;
 				remove = true;
-			}
-			else {
+			} else {
 				draw(Menu.position.get(ch), allMenu.get(i), gc);
 				drawTime(Menu.position.get(ch), allMenu.get(i), gc);
-				System.out.println("+"+i);
+				System.out.println("+" + i);
 				ch++;
 			}
 		}
@@ -90,14 +88,16 @@ public class Menu {
 			throw new MenuException();
 		}
 		if (remove) {
+			if (allMenu.size() > 3) {
+				return;
+			}
 			generateMenu();
 		}
-		
-		if(allMenu.size()<= 2) {
+
+		if (allMenu.size() <= 2) {
 			generateMenu();
 		}
-		
-		
+
 	}
 
 	private void draw(Pair<Double, Double> pos, Pair<Food, Time> menu, GraphicsContext gc) {
