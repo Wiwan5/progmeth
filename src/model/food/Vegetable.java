@@ -45,7 +45,7 @@ public class Vegetable extends Ingredient implements Chopable {
 				gc.fillRect(x - 20, y - 40, (double) (timeToChopped / 7 * 3), 5);
 			}
 		} else if (state == COOKED) {
-			gc.drawImage(ResourceLoader.veg[7], x - 20, y - 50, 40, 35);
+			gc.drawImage(ResourceLoader.veg[7], x - 20, y - 50, 45, 40);
 		}
 	}
 

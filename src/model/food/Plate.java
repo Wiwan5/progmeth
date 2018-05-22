@@ -87,7 +87,7 @@ public class Plate implements IRenderableFood {
 			} else if (foodOnPlate.getIngredient(Food.VEGETABLE) == true) {
 				gc.drawImage(ResourceLoader.meatV, x - 25, yOfIngredient - 35, 55, 50);
 			} else {
-				gc.drawImage(ResourceLoader.meat[9], x - 25, yOfIngredient - 30, 45, 40);
+				gc.drawImage(ResourceLoader.meat[10], x - 25, yOfIngredient - 30, 45, 40);
 
 			}
 		} else if (foodOnPlate.getIngredient(Food.BREAD) == true) {
@@ -98,7 +98,7 @@ public class Plate implements IRenderableFood {
 			}
 
 		} else if (foodOnPlate.getIngredient(Food.VEGETABLE) == true) {
-			gc.drawImage(ResourceLoader.veg[7], x - 25, yOfIngredient - 30, 50, 45);
+			gc.drawImage(ResourceLoader.veg[7], x - 25, yOfIngredient - 30, 45, 40);
 
 		}
 	}

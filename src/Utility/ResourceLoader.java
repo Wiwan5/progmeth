@@ -28,7 +28,7 @@ public class ResourceLoader {
 	// ingredient
 	public static Image bread = new Image("file:res/img/bread.png");
 	public static Image[] veg = new Image[8];
-	public static Image[] meat = new Image[10];
+	public static Image[] meat = new Image[11];
 
 	// mix
 	public static final Image brVeg = new Image("file:res/img/brveg.png");
@@ -47,7 +47,7 @@ public class ResourceLoader {
 
 	static {
 		// load ingradient
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 11; i++) {
 			meat[i] = new Image("file:res/img/meat" + i + ".png");
 			if (i < 8) {
 				veg[i] = new Image("file:res/img/veg" + i + ".png");
