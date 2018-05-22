@@ -23,21 +23,21 @@ public class Meat extends Ingredient implements Chopable, Ripenable {
 		// TODO Auto-generated method stub
 		if (state == CAN_CHOP) {
 			if (timeToChopped >= 65 && timeToChopped <= 70) {
-				gc.drawImage(ResourceLoader.meat[7], x - 30, y - 60, 55, 50);
+				gc.drawImage(ResourceLoader.meat[7], x - 20, y - 55, 40, 45);
 			} else if (timeToChopped >= 55 && timeToChopped < 65) {
-				gc.drawImage(ResourceLoader.meat[6], x - 30, y - 60, 55, 50);
+				gc.drawImage(ResourceLoader.meat[6], x - 20, y - 55, 40, 45);
 			} else if (timeToChopped >= 50 && timeToChopped < 55) {
-				gc.drawImage(ResourceLoader.meat[5], x - 30, y - 60, 55, 50);
+				gc.drawImage(ResourceLoader.meat[5], x - 20, y - 55, 40, 45);
 			} else if (timeToChopped >= 40 && timeToChopped < 50) {
-				gc.drawImage(ResourceLoader.meat[4], x - 30, y - 60, 55, 50);
+				gc.drawImage(ResourceLoader.meat[4], x - 20, y - 55, 40, 45);
 			} else if (timeToChopped >= 30 && timeToChopped < 40) {
-				gc.drawImage(ResourceLoader.meat[3], x - 30, y - 60, 55, 50);
+				gc.drawImage(ResourceLoader.meat[3], x - 20, y - 55, 40, 45);
 			} else if (timeToChopped >= 20 && timeToChopped < 30) {
-				gc.drawImage(ResourceLoader.meat[2], x - 30, y - 60, 55, 50);
+				gc.drawImage(ResourceLoader.meat[2], x - 20, y - 55, 40, 45);
 			} else if (timeToChopped >= 10 && timeToChopped < 20) {
-				gc.drawImage(ResourceLoader.meat[1], x - 30, y - 60, 55, 50);
+				gc.drawImage(ResourceLoader.meat[1], x - 20, y - 55, 40, 45);
 			} else if (timeToChopped >= 0 && timeToChopped < 10) {
-				gc.drawImage(ResourceLoader.meat[0], x - 30, y - 60, 55, 50);
+				gc.drawImage(ResourceLoader.meat[0], x -20, y - 55, 40, 45);
 
 			}
 			if (timeToChopped >= 1) {
@@ -48,11 +48,11 @@ public class Meat extends Ingredient implements Chopable, Ripenable {
 			}
 		} else if (state == CAN_RIPEN) {
 			if (timeToRipened >= 0 && timeToRipened < 240) {
-				gc.drawImage(ResourceLoader.meat[0], x - 20, y - 60, 40, 45);
+				gc.drawImage(ResourceLoader.meat[0], x - 20, y - 50, 40, 35);
 			} else if (timeToRipened >= 240 && timeToRipened < 600) {
-				gc.drawImage(ResourceLoader.meat[8], x - 20, y - 60, 40, 45);
+				gc.drawImage(ResourceLoader.meat[8], x - 20, y - 50, 38, 40);
 			} else if (timeToRipened >= 600 && timeToRipened <= 720) {
-				gc.drawImage(ResourceLoader.meat[9], x - 20, y - 60, 40, 45);
+				gc.drawImage(ResourceLoader.meat[9], x - 20, y - 50, 40, 45);
 			}
 
 			if (timeToRipened >= 1) {

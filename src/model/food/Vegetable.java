@@ -23,19 +23,19 @@ public class Vegetable extends Ingredient implements Chopable {
 		gc.setFill(Color.GREENYELLOW);
 		if (state == CAN_CHOP) {
 			if (timeToChopped >= 55 && timeToChopped <= 70) {
-				gc.drawImage(ResourceLoader.veg[6], x - 30, y - 60, 55, 50);
+				gc.drawImage(ResourceLoader.veg[6], x - 20, y - 55, 45, 40);
 			} else if (timeToChopped >= 50 && timeToChopped < 55) {
-				gc.drawImage(ResourceLoader.veg[5], x - 30, y - 60, 55, 50);
+				gc.drawImage(ResourceLoader.veg[5], x - 20, y - 55, 45, 40);
 			} else if (timeToChopped >= 40 && timeToChopped < 50) {
-				gc.drawImage(ResourceLoader.veg[4], x - 30, y - 60, 55, 50);
+				gc.drawImage(ResourceLoader.veg[4], x - 20, y - 55, 45, 40);
 			} else if (timeToChopped >= 30 && timeToChopped < 40) {
-				gc.drawImage(ResourceLoader.veg[3], x - 30, y - 60, 55, 50);
+				gc.drawImage(ResourceLoader.veg[3], x - 20, y - 55, 45, 40);
 			} else if (timeToChopped >= 20 && timeToChopped < 30) {
-				gc.drawImage(ResourceLoader.veg[2], x - 30, y - 60, 55, 50);
+				gc.drawImage(ResourceLoader.veg[2], x - 20, y - 55, 45, 40);
 			} else if (timeToChopped >= 10 && timeToChopped < 20) {
-				gc.drawImage(ResourceLoader.veg[1], x - 30, y - 60, 55, 50);
+				gc.drawImage(ResourceLoader.veg[1], x - 20, y - 55, 45, 40);
 			} else if (timeToChopped >= 0 && timeToChopped < 10) {
-				gc.drawImage(ResourceLoader.veg[0], x - 30, y - 60, 55, 50);
+				gc.drawImage(ResourceLoader.veg[0], x - 20, y - 55, 45, 40);
 
 			}
 			if (timeToChopped >= 1) {
@@ -45,7 +45,7 @@ public class Vegetable extends Ingredient implements Chopable {
 				gc.fillRect(x - 20, y - 40, (double) (timeToChopped / 7 * 3), 5);
 			}
 		} else if (state == COOKED) {
-			gc.drawImage(ResourceLoader.veg[7], x - 25, y - 60, 50, 45);
+			gc.drawImage(ResourceLoader.veg[7], x - 20, y - 50, 40, 35);
 		}
 	}
 
