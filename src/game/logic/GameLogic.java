@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Utility.Score;
+import javafx.application.Platform;
 import model.field.Field;
 import model.food.Plate;
 import model.player.Player;
@@ -90,8 +91,15 @@ public class GameLogic {
 				long elapsedTime = System.nanoTime() - lastLoopStartTime;
 				if (elapsedTime >= LOOP_TIME) {
 					lastLoopStartTime += LOOP_TIME;
-
-					logicUpdate(elapsedTime);
+					Platform.runLater(new Runnable() {
+						
+						@Override
+						public void run() {
+							// TODO Auto-generated method stub
+							logicUpdate(elapsedTime);
+						}
+					});
+					
 					// System.out.println("Game Loop Thred");
 					Thread.yield();
 				}

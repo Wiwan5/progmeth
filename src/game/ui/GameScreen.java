@@ -3,6 +3,7 @@ package game.ui;
 import Utility.Pair;
 import Utility.Time;
 import input.InputUtility;
+import javafx.application.Platform;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -64,8 +65,10 @@ public class GameScreen extends Canvas {
 			long now = System.nanoTime();
 			if (now - lastLoopStartTime >= LOOP_TIME) {
 				lastLoopStartTime += LOOP_TIME;
-
-				updateAnimation(now);
+				Platform.runLater(()->{
+					updateAnimation(now);
+				});
+				
 			}
 
 			try {
